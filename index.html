@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>موهبة - ثانوية هوزان</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -26,16 +26,16 @@
             --radius-sm: 12px;
         }
 
-        /* ===== RESET & BASE ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 110px;
+            scroll-padding-top: 100px;
         }
 
         body {
@@ -45,6 +45,7 @@
             min-height: 100vh;
             overflow-x: hidden;
             line-height: 1.6;
+            padding-bottom: 20px;
         }
 
         h1,
@@ -57,7 +58,7 @@
         }
 
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
         }
         ::-webkit-scrollbar-track {
             background: var(--bg-elevated);
@@ -81,76 +82,114 @@
             z-index: 1;
             max-width: 1300px;
             margin: 0 auto;
-            padding: 0 25px 30px;
+            padding: 0 12px 20px;
         }
 
         /* ===== NAVBAR ===== */
         .navbar {
             position: sticky;
-            top: 16px;
+            top: 10px;
             z-index: 50;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 10px;
+            padding: 14px 18px;
+            margin: 10px 0 20px;
+            background: rgba(15, 20, 33, 0.85);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-radius: 28px;
+            border: 1px solid var(--border);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
+        }
+
+        .navbar-top {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 16px;
-            padding: 14px 30px;
-            margin: 20px 0 40px;
-            background: rgba(15, 20, 33, 0.65);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            border-radius: 60px;
-            border: 1px solid var(--border);
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
-            transition: 0.3s;
+            gap: 10px;
             flex-wrap: wrap;
         }
 
-        .navbar:hover {
-            border-color: rgba(249, 212, 35, 0.3);
-        }
-
         .logo {
-            font-size: 28px;
+            font-size: 22px;
             font-weight: 900;
             background: linear-gradient(135deg, var(--gold), var(--gold-2));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 6px;
             white-space: nowrap;
         }
 
         .logo i {
             -webkit-text-fill-color: var(--gold);
-            font-size: 30px;
-            filter: drop-shadow(0 0 20px rgba(249, 212, 35, 0.3));
+            font-size: 22px;
         }
 
         .logo .sub {
-            font-size: 16px;
+            font-size: 13px;
             -webkit-text-fill-color: var(--text-dimmer);
             font-weight: 600;
         }
 
+        .star-counter {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(249, 212, 35, 0.08);
+            border: 1px solid var(--border);
+            padding: 5px 14px;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: 14px;
+            color: var(--gold);
+            white-space: nowrap;
+        }
+
+        .star-counter i {
+            font-size: 13px;
+        }
+        .star-counter.pulse {
+            animation: starPulse 0.5s ease;
+        }
+
+        @keyframes starPulse {
+            0% {
+                transform: scale(1);
+            }
+            35% {
+                transform: scale(1.15);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
         .nav-links {
             display: flex;
-            gap: 6px;
+            gap: 4px;
             flex-wrap: wrap;
-            align-items: center;
+            justify-content: center;
         }
 
         .nav-links a {
             color: var(--text-dim);
             text-decoration: none;
-            padding: 9px 18px;
-            border-radius: 40px;
+            padding: 7px 14px;
+            border-radius: 30px;
             font-weight: 700;
-            font-size: 15.5px;
+            font-size: 13px;
             transition: 0.25s;
             display: flex;
             align-items: center;
-            gap: 7px;
+            gap: 5px;
+        }
+
+        .nav-links a i {
+            font-size: 14px;
         }
 
         .nav-links a:hover {
@@ -164,59 +203,24 @@
             box-shadow: 0 8px 24px rgba(249, 212, 35, 0.25);
         }
 
-        .star-counter {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(249, 212, 35, 0.08);
-            border: 1px solid var(--border);
-            padding: 8px 18px;
-            border-radius: 40px;
-            font-weight: 800;
-            font-size: 15px;
-            color: var(--gold);
-            white-space: nowrap;
-        }
-
-        .star-counter i {
-            font-size: 15px;
-        }
-        .star-counter.pulse {
-            animation: starPulse 0.5s ease;
-        }
-
-        @keyframes starPulse {
-            0% {
-                transform: scale(1);
-            }
-            35% {
-                transform: scale(1.18);
-                box-shadow: 0 0 0 8px rgba(249, 212, 35, 0);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-
         section {
-            padding: 50px 0 30px;
-            margin-bottom: 10px;
-            scroll-margin-top: 110px;
+            padding: 30px 0 20px;
+            margin-bottom: 0;
+            scroll-margin-top: 100px;
         }
 
         .section-title {
-            font-size: clamp(30px, 4.5vw, 44px);
+            font-size: clamp(24px, 5vw, 36px);
             font-weight: 800;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 12px;
         }
 
         .section-title i {
             color: var(--gold);
             font-size: 0.85em;
-            filter: drop-shadow(0 0 30px rgba(249, 212, 35, 0.15));
         }
 
         .section-title .highlight {
@@ -227,62 +231,24 @@
 
         .section-sub {
             color: var(--text-dim);
-            font-size: 18px;
-            margin-bottom: 36px;
+            font-size: 16px;
+            margin-bottom: 20px;
             border-right: 4px solid var(--gold);
-            padding-right: 18px;
+            padding-right: 14px;
         }
 
         .hero {
             text-align: center;
-            padding: clamp(50px, 8vw, 80px) 20px 60px;
+            padding: 30px 16px 40px;
             background: radial-gradient(ellipse at 50% 0%, rgba(249, 212, 35, 0.06), transparent 70%);
-            border-radius: 48px;
+            border-radius: 32px;
             border: 1px solid rgba(249, 212, 35, 0.08);
             position: relative;
             overflow: hidden;
         }
 
         .orbit-wrap {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 640px;
-            height: 640px;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .orbit-ring {
-            position: absolute;
-            inset: 0;
-            border: 1px solid rgba(249, 212, 35, 0.08);
-            border-radius: 50%;
-        }
-        .orbit-ring.r2 {
-            inset: 60px;
-            animation: spin 40s linear infinite;
-        }
-        .orbit-ring.r3 {
-            inset: 120px;
-            animation: spin 60s linear infinite reverse;
-        }
-        .orbit-ring .dot {
-            position: absolute;
-            top: -4px;
-            right: 50%;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--gold);
-            box-shadow: 0 0 12px 3px rgba(249, 212, 35, 0.5);
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
+            display: none;
         }
 
         .hero-inner {
@@ -293,22 +259,22 @@
         .hero-eyebrow {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            font-size: 14px;
+            gap: 6px;
+            font-size: 12px;
             font-weight: 700;
             color: var(--gold);
             background: rgba(249, 212, 35, 0.08);
             border: 1px solid var(--border);
-            padding: 6px 18px;
+            padding: 4px 14px;
             border-radius: 30px;
-            margin-bottom: 22px;
+            margin-bottom: 14px;
         }
 
         .hero h1 {
-            font-size: clamp(34px, 6vw, 68px);
+            font-size: clamp(28px, 6vw, 50px);
             font-weight: 900;
-            line-height: 1.15;
-            margin-bottom: 18px;
+            line-height: 1.2;
+            margin-bottom: 12px;
         }
 
         .hero h1 .gold {
@@ -318,55 +284,50 @@
         }
 
         .hero p {
-            font-size: clamp(16px, 2vw, 21px);
+            font-size: clamp(14px, 1.8vw, 18px);
             color: #b0bcdd;
             max-width: 700px;
-            margin: 10px auto 26px;
-            line-height: 1.9;
+            margin: 8px auto 18px;
+            line-height: 1.8;
         }
 
         .hero-badges {
             display: flex;
             justify-content: center;
-            gap: 14px;
+            gap: 8px;
             flex-wrap: wrap;
-            margin-top: 20px;
+            margin-top: 12px;
         }
 
         .hero-badge {
             background: rgba(249, 212, 35, 0.07);
             border: 1px solid var(--border);
-            padding: 10px 24px;
-            border-radius: 50px;
-            font-size: 16px;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 13px;
             font-weight: 600;
             display: flex;
             align-items: center;
-            gap: 9px;
+            gap: 6px;
             color: #e0e5f0;
-            transition: 0.3s;
         }
 
         .hero-badge i {
             color: var(--gold);
-        }
-
-        .hero-badge:hover {
-            background: rgba(249, 212, 35, 0.14);
-            transform: translateY(-2px);
+            font-size: 13px;
         }
 
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            margin-top: 8px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin-top: 6px;
         }
 
         .card-idea {
             background: rgba(255, 255, 255, 0.03);
             border-radius: var(--radius-lg);
-            padding: 30px 26px;
+            padding: 22px 20px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: 0.35s;
             position: relative;
@@ -385,10 +346,9 @@
         }
 
         .card-idea:hover {
-            transform: translateY(-6px);
+            transform: translateY(-4px);
             border-color: rgba(249, 212, 35, 0.2);
             background: rgba(249, 212, 35, 0.03);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
         }
 
         .card-idea:hover::before {
@@ -396,34 +356,34 @@
         }
 
         .card-idea .icon {
-            font-size: 36px;
+            font-size: 28px;
             color: var(--gold);
-            margin-bottom: 14px;
+            margin-bottom: 10px;
             display: block;
         }
 
         .card-idea h3 {
-            font-size: 21px;
-            margin-bottom: 8px;
+            font-size: 18px;
+            margin-bottom: 6px;
             color: var(--text);
         }
         .card-idea p {
             color: #9aa5c5;
-            line-height: 1.8;
-            font-size: 15.5px;
+            line-height: 1.7;
+            font-size: 14px;
         }
 
         .game-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 24px;
-            margin-top: 8px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 14px;
+            margin-top: 6px;
         }
 
         .game-card {
             background: radial-gradient(ellipse at top, rgba(249, 212, 35, 0.06), transparent);
-            border-radius: var(--radius-lg);
-            padding: 28px 22px 22px;
+            border-radius: var(--radius-md);
+            padding: 18px 14px 16px;
             border: 1px solid rgba(249, 212, 35, 0.09);
             text-align: center;
             transition: 0.35s;
@@ -433,41 +393,53 @@
         }
 
         .game-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-4px);
             border-color: rgba(249, 212, 35, 0.3);
-            box-shadow: 0 30px 70px rgba(249, 212, 35, 0.06);
+            box-shadow: 0 20px 50px rgba(249, 212, 35, 0.06);
         }
 
         .game-card .game-icon {
-            font-size: 52px;
+            font-size: 36px;
             color: var(--gold);
-            margin-bottom: 10px;
+            margin-bottom: 6px;
             display: block;
-            filter: drop-shadow(0 0 30px rgba(249, 212, 35, 0.12));
         }
 
         .game-card h3 {
-            font-size: 23px;
-            margin-bottom: 6px;
+            font-size: 17px;
+            margin-bottom: 4px;
         }
         .game-card p {
             color: #9aa5c5;
-            font-size: 15px;
-            margin-bottom: 14px;
-            line-height: 1.6;
-            min-height: 48px;
+            font-size: 13px;
+            margin-bottom: 10px;
+            line-height: 1.5;
+            min-height: 36px;
+        }
+
+        .game-card .difficulty {
+            position: absolute;
+            top: 10px;
+            inset-inline-start: 10px;
+            background: rgba(249, 212, 35, 0.12);
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--gold);
+            border: 1px solid var(--border);
         }
 
         .play-btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             background: linear-gradient(135deg, var(--gold), var(--gold-2));
             color: #0a0e17;
             font-weight: 700;
-            padding: 11px 34px;
-            border-radius: 60px;
-            font-size: 16px;
+            padding: 8px 22px;
+            border-radius: 40px;
+            font-size: 14px;
             transition: 0.25s;
             border: none;
             text-decoration: none;
@@ -475,60 +447,45 @@
         }
 
         .play-btn:hover {
-            transform: scale(1.05);
+            transform: scale(1.04);
             box-shadow: 0 8px 30px rgba(249, 212, 35, 0.3);
-        }
-
-        .game-card .difficulty {
-            position: absolute;
-            top: 16px;
-            inset-inline-start: 16px;
-            background: rgba(249, 212, 35, 0.12);
-            padding: 4px 15px;
-            border-radius: 30px;
-            font-size: 12.5px;
-            font-weight: 700;
-            color: var(--gold);
-            border: 1px solid var(--border);
         }
 
         .game-panel {
             background: rgba(255, 255, 255, 0.03);
-            border-radius: 36px;
-            padding: 28px;
+            border-radius: 24px;
+            padding: 16px;
             border: 1px solid var(--border);
         }
 
         .game-panel-head {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 14px;
-            margin-bottom: 22px;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 16px;
         }
 
         .game-panel-head h2 {
             color: var(--gold);
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 24px;
+            gap: 8px;
+            font-size: 20px;
         }
 
         .head-right {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             align-items: center;
             flex-wrap: wrap;
         }
 
         .stat-pill {
             background: rgba(249, 212, 35, 0.08);
-            padding: 8px 18px;
-            border-radius: 30px;
+            padding: 4px 14px;
+            border-radius: 20px;
             font-weight: 700;
-            font-size: 14.5px;
+            font-size: 13px;
             border: 1px solid var(--border);
         }
 
@@ -536,12 +493,12 @@
             background: rgba(255, 70, 70, 0.12);
             border: 1px solid rgba(255, 70, 70, 0.25);
             color: var(--coral);
-            padding: 9px 22px;
-            border-radius: 30px;
+            padding: 6px 16px;
+            border-radius: 20px;
             cursor: pointer;
             font-weight: 700;
             font-family: inherit;
-            font-size: 14.5px;
+            font-size: 13px;
             transition: 0.2s;
         }
         .close-btn:hover {
@@ -551,13 +508,13 @@
         .ghost-btn {
             background: rgba(249, 212, 35, 0.1);
             border: 1px solid var(--border);
-            padding: 10px 26px;
-            border-radius: 40px;
+            padding: 8px 20px;
+            border-radius: 30px;
             color: var(--gold);
             cursor: pointer;
             font-family: inherit;
             font-weight: 700;
-            font-size: 15px;
+            font-size: 14px;
             transition: 0.2s;
         }
         .ghost-btn:hover {
@@ -567,10 +524,10 @@
         .solid-btn {
             background: linear-gradient(135deg, var(--gold), var(--gold-2));
             border: none;
-            padding: 13px 36px;
-            border-radius: 60px;
+            padding: 10px 28px;
+            border-radius: 40px;
             font-weight: 800;
-            font-size: 17px;
+            font-size: 15px;
             color: #0a0e17;
             cursor: pointer;
             font-family: inherit;
@@ -588,9 +545,9 @@
         }
 
         .feedback-line {
-            margin-top: 14px;
-            font-size: 17px;
-            min-height: 26px;
+            margin-top: 12px;
+            font-size: 16px;
+            min-height: 24px;
             font-weight: 700;
             text-align: center;
         }
@@ -608,24 +565,26 @@
             background: rgba(255, 255, 255, 0.06);
             border: 2px solid var(--border);
             color: #fff;
-            padding: 13px 22px;
-            border-radius: 50px;
-            font-size: 20px;
+            padding: 10px 16px;
+            border-radius: 40px;
+            font-size: 18px;
             text-align: center;
             outline: none;
             font-family: inherit;
             transition: 0.2s;
+            width: 100%;
+            max-width: 300px;
         }
         .text-input:focus {
             border-color: var(--gold);
         }
 
-        /* ===== MEMORY GAME - with images ===== */
+        /* ===== MEMORY GAME ===== */
         #memoryBoard {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 14px;
-            max-width: 520px;
+            gap: 10px;
+            max-width: 400px;
             margin: 0 auto;
             perspective: 600px;
         }
@@ -634,8 +593,8 @@
             aspect-ratio: 1;
             cursor: pointer;
             position: relative;
-            border-radius: 16px;
-            min-height: 80px;
+            border-radius: 14px;
+            min-height: 70px;
         }
 
         .mem-card .mem-inner {
@@ -653,7 +612,7 @@
         .mem-face {
             position: absolute;
             inset: 0;
-            border-radius: 16px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -665,12 +624,12 @@
 
         .mem-back {
             background: linear-gradient(145deg, rgba(249, 212, 35, 0.12), rgba(249, 212, 35, 0.03));
-            font-size: 40px;
+            font-size: 32px;
             color: var(--gold);
         }
 
         .mem-back i {
-            font-size: 48px;
+            font-size: 36px;
             opacity: 0.6;
             animation: pulseStar 2s ease-in-out infinite;
         }
@@ -696,8 +655,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 14px;
-            transition: 0.3s;
+            border-radius: 12px;
         }
 
         .mem-card.matched .mem-front {
@@ -713,60 +671,54 @@
         /* ===== FLAG GAME ===== */
         .flag-display {
             text-align: center;
-            padding: 20px;
+            padding: 10px;
         }
 
         .flag-display img {
-            width: 220px;
-            height: 147px;
-            border-radius: 16px;
+            width: 180px;
+            height: 120px;
+            border-radius: 14px;
             border: 2px solid var(--border);
             object-fit: cover;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-            transition: 0.3s;
-        }
-
-        .flag-display img:hover {
-            transform: scale(1.02);
-            border-color: var(--gold);
         }
 
         .flag-input-area {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             justify-content: center;
             flex-wrap: wrap;
-            margin: 16px 0;
+            margin: 12px 0;
         }
 
         .flag-input-area input {
-            width: 280px;
-            font-size: 18px;
+            width: 220px;
+            font-size: 16px;
         }
 
         .flag-options {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            max-width: 400px;
+            gap: 10px;
+            max-width: 360px;
             margin: 10px auto;
         }
 
         .flag-opt {
-            padding: 14px 12px;
-            border-radius: 18px;
+            padding: 12px 10px;
+            border-radius: 16px;
             border: 2px solid var(--border);
             background: rgba(255, 255, 255, 0.04);
             cursor: pointer;
             font-weight: 700;
-            font-size: 17px;
+            font-size: 15px;
             font-family: inherit;
             color: var(--text);
             transition: 0.15s;
         }
 
         .flag-opt:hover:not(:disabled) {
-            transform: translateY(-3px);
+            transform: translateY(-2px);
             border-color: var(--gold);
         }
 
@@ -782,197 +734,76 @@
             cursor: default;
         }
 
-        /* ===== OTHER GAMES ===== */
-        #wordDisplay {
-            display: flex;
+        /* ===== SIMON GAME - 6 Colors ===== */
+        #simonBoard {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 10px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 22px;
-        }
-        .word-slot {
-            background: rgba(255, 255, 255, 0.05);
-            width: 44px;
-            height: 54px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-            font-size: 26px;
-            font-weight: 800;
-            border-bottom: 3px solid var(--gold);
-            color: var(--text-dimmer);
-        }
-        .word-slot.filled {
-            color: var(--text);
-        }
-        #wordKeyboard {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            justify-content: center;
-            max-width: 480px;
-            margin: 0 auto;
-        }
-        .key-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border);
-            color: var(--text);
-            font-family: inherit;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.15s;
-        }
-        .key-btn:hover:not(:disabled) {
-            background: rgba(249, 212, 35, 0.15);
-            border-color: var(--gold);
-        }
-        .key-btn.correct {
-            background: rgba(78, 225, 160, 0.18);
-            border-color: var(--teal);
-            color: var(--teal);
-        }
-        .key-btn.wrong {
-            background: rgba(255, 70, 70, 0.14);
-            border-color: var(--coral);
-            color: var(--coral);
-            opacity: 0.6;
-        }
-        .key-btn:disabled {
-            cursor: not-allowed;
-        }
-        .lives-row {
-            display: flex;
-            gap: 6px;
-            justify-content: center;
-            margin-top: 16px;
-            font-size: 20px;
-        }
-        .lives-row .lost {
-            opacity: 0.2;
-        }
-
-        #reactionBox {
-            background: rgba(255, 255, 255, 0.04);
-            border-radius: 30px;
-            padding: 50px 20px;
-            min-height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            border: 2px solid rgba(249, 212, 35, 0.06);
-            transition: 0.25s;
-            cursor: pointer;
-        }
-        .reaction-history {
-            display: flex;
-            gap: 8px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 16px;
-        }
-        .reaction-chip {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 5px 14px;
-            border-radius: 20px;
-            font-size: 13.5px;
-            color: var(--text-dim);
-        }
-
-        .trivia-options {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        .trivia-opt {
-            padding: 16px;
-            border-radius: 18px;
-            border: 2px solid var(--border);
-            background: rgba(255, 255, 255, 0.04);
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 16px;
-            font-family: inherit;
-            color: var(--text);
-            transition: 0.15s;
-        }
-        .trivia-opt:hover:not(:disabled) {
-            transform: translateY(-3px);
-            border-color: var(--gold);
-        }
-        .trivia-opt.correct {
-            border-color: var(--teal);
-            background: rgba(78, 225, 160, 0.12);
-        }
-        .trivia-opt.wrong {
-            border-color: var(--coral);
-            background: rgba(255, 70, 70, 0.12);
-        }
-        .trivia-opt:disabled {
-            cursor: default;
-        }
-
-        .simon-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 14px;
             max-width: 320px;
             margin: 10px auto 0;
         }
+
         .simon-btn {
             aspect-ratio: 1;
-            border-radius: 24px;
-            border: none;
+            border-radius: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.08);
             cursor: pointer;
-            opacity: 0.55;
-            transition: 0.12s;
+            opacity: 0.5;
+            transition: 0.1s;
+            min-height: 70px;
         }
+
         .simon-btn.lit {
             opacity: 1;
-            box-shadow: 0 0 40px 6px currentColor;
-            transform: scale(1.03);
+            box-shadow: 0 0 40px 8px currentColor;
+            transform: scale(1.04);
+            border-color: rgba(255, 255, 255, 0.4);
         }
+
         .simon-btn:disabled {
             cursor: default;
         }
-        #simonTL {
+
+        #simon0 {
             background: #f9d423;
             color: #f9d423;
         }
-        #simonTR {
+        #simon1 {
             background: #4ee1a0;
             color: #4ee1a0;
         }
-        #simonBL {
+        #simon2 {
             background: #6ea8ff;
             color: #6ea8ff;
         }
-        #simonBR {
+        #simon3 {
             background: #ff6b6b;
             color: #ff6b6b;
         }
+        #simon4 {
+            background: #ff9ff3;
+            color: #ff9ff3;
+        }
+        #simon5 {
+            background: #feca57;
+            color: #feca57;
+        }
 
+        /* ===== OTHER GAMES ===== */
         #typingText {
-            font-size: 28px;
+            font-size: 22px;
             font-weight: 700;
             text-align: center;
-            padding: 20px;
+            padding: 16px;
             background: rgba(0, 0, 0, 0.2);
-            border-radius: 20px;
-            margin: 10px 0 20px;
-            min-height: 80px;
+            border-radius: 16px;
+            margin: 10px 0 16px;
+            min-height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 4px;
+            gap: 3px;
             line-height: 1.8;
         }
         #typingText .char-correct {
@@ -991,51 +822,116 @@
             color: var(--text-dim);
         }
 
+        #reactionBox {
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 24px;
+            padding: 30px 16px;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border: 2px solid rgba(249, 212, 35, 0.06);
+            transition: 0.25s;
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+
+        .reaction-history {
+            display: flex;
+            gap: 6px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+        .reaction-chip {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            color: var(--text-dim);
+        }
+
+        .trivia-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .trivia-opt {
+            padding: 14px;
+            border-radius: 16px;
+            border: 2px solid var(--border);
+            background: rgba(255, 255, 255, 0.04);
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 15px;
+            font-family: inherit;
+            color: var(--text);
+            transition: 0.15s;
+        }
+        .trivia-opt:hover:not(:disabled) {
+            transform: translateY(-2px);
+            border-color: var(--gold);
+        }
+        .trivia-opt.correct {
+            border-color: var(--teal);
+            background: rgba(78, 225, 160, 0.12);
+        }
+        .trivia-opt.wrong {
+            border-color: var(--coral);
+            background: rgba(255, 70, 70, 0.12);
+        }
+        .trivia-opt:disabled {
+            cursor: default;
+        }
+
         .lesson-list {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 12px;
         }
         .lesson-item {
             background: rgba(255, 255, 255, 0.02);
-            border-radius: 26px;
-            padding: 22px 28px;
-            border-right: 5px solid var(--gold);
+            border-radius: 20px;
+            padding: 16px 20px;
+            border-right: 4px solid var(--gold);
             transition: 0.25s;
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 14px;
             flex-wrap: wrap;
         }
         .lesson-item:hover {
             background: rgba(249, 212, 35, 0.04);
-            transform: translateX(-4px);
+            transform: translateX(-3px);
         }
         .lesson-item .lesson-icon {
-            font-size: 30px;
+            font-size: 24px;
             color: var(--gold);
-            width: 50px;
+            width: 40px;
             text-align: center;
             flex-shrink: 0;
         }
         .lesson-item .lesson-content {
             flex: 1;
-            min-width: 200px;
+            min-width: 150px;
         }
         .lesson-item .lesson-content h3 {
-            font-size: 20px;
+            font-size: 17px;
             color: var(--text);
         }
         .lesson-item .lesson-content p {
             color: #9aa5c5;
-            margin-top: 4px;
-            font-size: 15px;
+            margin-top: 2px;
+            font-size: 14px;
         }
         .lesson-item .lesson-tag {
             background: rgba(249, 212, 35, 0.08);
-            padding: 4px 16px;
-            border-radius: 30px;
-            font-size: 13.5px;
+            padding: 3px 14px;
+            border-radius: 20px;
+            font-size: 12px;
             color: var(--gold);
             border: 1px solid var(--border);
             white-space: nowrap;
@@ -1043,72 +939,24 @@
 
         .footer {
             text-align: center;
-            padding: 40px 20px 16px;
+            padding: 30px 16px 10px;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
-            margin-top: 50px;
+            margin-top: 30px;
             color: var(--text-dimmer);
+            font-size: 14px;
         }
         .footer i {
             color: var(--gold);
-            margin: 0 5px;
+            margin: 0 4px;
         }
         .footer .heart {
             color: var(--coral);
         }
 
-        @media (max-width: 992px) {
-            .navbar {
-                flex-direction: column;
-                gap: 14px;
-                padding: 18px;
-                border-radius: 30px;
-            }
-            .nav-links {
-                justify-content: center;
-            }
-        }
-        @media (max-width: 600px) {
-            .game-grid,
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-            .lesson-item {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 18px;
-            }
-            .hero-badges {
-                flex-direction: column;
-                align-items: center;
-            }
-            #memoryBoard {
-                max-width: 340px;
-                gap: 8px;
-            }
-            .mem-card {
-                min-height: 60px;
-            }
-            .flag-display img {
-                width: 160px;
-                height: 107px;
-            }
-            .flag-options,
-            .trivia-options {
-                grid-template-columns: 1fr;
-            }
-            #typingText {
-                font-size: 20px;
-                padding: 14px;
-            }
-            .flag-input-area input {
-                width: 200px;
-            }
-        }
-
         .fade-up {
             opacity: 0;
-            transform: translateY(32px);
-            animation: fadeUp 0.7s ease forwards;
+            transform: translateY(24px);
+            animation: fadeUp 0.6s ease forwards;
         }
         @keyframes fadeUp {
             to {
@@ -1117,19 +965,165 @@
             }
         }
         .delay-1 {
-            animation-delay: 0.06s;
+            animation-delay: 0.05s;
         }
         .delay-2 {
-            animation-delay: 0.12s;
+            animation-delay: 0.1s;
         }
         .delay-3 {
-            animation-delay: 0.18s;
+            animation-delay: 0.15s;
         }
         .delay-4 {
-            animation-delay: 0.24s;
+            animation-delay: 0.2s;
         }
         .delay-5 {
-            animation-delay: 0.3s;
+            animation-delay: 0.25s;
+        }
+
+        @media (min-width: 600px) {
+            .navbar {
+                flex-direction: row;
+                flex-wrap: wrap;
+                padding: 12px 24px;
+                border-radius: 40px;
+            }
+            .navbar-top {
+                flex: 1;
+            }
+            .nav-links {
+                flex: 1;
+                justify-content: flex-end;
+            }
+            .game-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+            .game-panel-head {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            #simonBoard {
+                max-width: 380px;
+                gap: 14px;
+            }
+            .simon-btn {
+                min-height: 90px;
+                border-radius: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .game-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            .game-card {
+                padding: 14px 10px 12px;
+            }
+            .game-card .game-icon {
+                font-size: 28px;
+            }
+            .game-card h3 {
+                font-size: 14px;
+            }
+            .game-card p {
+                font-size: 12px;
+                min-height: 30px;
+            }
+            .game-card .difficulty {
+                font-size: 9px;
+                padding: 1px 8px;
+                top: 6px;
+                inset-inline-start: 6px;
+            }
+            .play-btn {
+                font-size: 12px;
+                padding: 6px 16px;
+            }
+            #memoryBoard {
+                max-width: 320px;
+                gap: 6px;
+            }
+            .mem-card {
+                min-height: 60px;
+            }
+            .flag-display img {
+                width: 140px;
+                height: 93px;
+            }
+            .flag-options,
+            .trivia-options {
+                grid-template-columns: 1fr;
+            }
+            .flag-input-area input {
+                width: 180px;
+            }
+            #typingText {
+                font-size: 17px;
+                padding: 12px;
+            }
+            .text-input {
+                font-size: 16px;
+                padding: 8px 14px;
+            }
+            #simonBoard {
+                max-width: 260px;
+                gap: 8px;
+            }
+            .simon-btn {
+                min-height: 55px;
+                border-radius: 16px;
+                border-width: 2px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .game-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+            .game-card {
+                padding: 10px 8px 10px;
+            }
+            .game-card .game-icon {
+                font-size: 22px;
+            }
+            .game-card h3 {
+                font-size: 12px;
+            }
+            .game-card p {
+                font-size: 10px;
+                min-height: 24px;
+            }
+            .play-btn {
+                font-size: 10px;
+                padding: 4px 12px;
+            }
+            .logo {
+                font-size: 16px;
+            }
+            .logo .sub {
+                font-size: 10px;
+            }
+            .star-counter {
+                font-size: 11px;
+                padding: 3px 10px;
+            }
+            .nav-links a {
+                font-size: 11px;
+                padding: 4px 10px;
+            }
+            .nav-links a i {
+                font-size: 11px;
+            }
+            .simon-btn {
+                min-height: 44px;
+                border-radius: 12px;
+            }
+            #simonBoard {
+                max-width: 210px;
+                gap: 6px;
+            }
         }
     </style>
 </head>
@@ -1140,8 +1134,13 @@
     <div class="container">
 
         <nav class="navbar">
-            <div class="logo">
-                <i class="fas fa-star"></i> موهبة <span class="sub">| هوزان</span>
+            <div class="navbar-top">
+                <div class="logo">
+                    <i class="fas fa-star"></i> موهبة <span class="sub">| هوزان</span>
+                </div>
+                <div class="star-counter" id="starCounter" aria-live="polite">
+                    <i class="fas fa-star"></i> <span id="starTotal">0</span>
+                </div>
             </div>
             <div class="nav-links">
                 <a href="#home" class="active"><i class="fas fa-home"></i> الرئيسية</a>
@@ -1149,29 +1148,21 @@
                 <a href="#games"><i class="fas fa-gamepad"></i> الألعاب</a>
                 <a href="#lessons"><i class="fas fa-chalkboard"></i> دروس</a>
             </div>
-            <div class="star-counter" id="starCounter" aria-live="polite">
-                <i class="fas fa-star"></i> نجومك: <span id="starTotal">0</span>
-            </div>
         </nav>
 
         <section id="home">
             <div class="hero fade-up">
-                <div class="orbit-wrap" aria-hidden="true">
-                    <div class="orbit-ring r2"><span class="dot"></span></div>
-                    <div class="orbit-ring r3"><span class="dot"></span></div>
-                </div>
                 <div class="hero-inner">
                     <span class="hero-eyebrow"><i class="fas fa-sparkles"></i> برنامج رعاية الموهوبين</span>
                     <h1>اكتشف <span class="gold">موهبتك</span><br />في ثانوية هوزان</h1>
                     <p>
                         منصة متكاملة لاكتشاف وتطوير القدرات العقلية والإبداعية لدى طلابنا،
-                        عبر أدوات تفاعلية وألعاب ذهنية ودروس نموذجية تصقل المواهب وتحفّز التفكير النقدي.
+                        عبر أدوات تفاعلية وألعاب ذهنية ودروس نموذجية.
                     </p>
                     <div class="hero-badges">
                         <span class="hero-badge"><i class="fas fa-users"></i> 20+ طالب</span>
                         <span class="hero-badge"><i class="fas fa-trophy"></i> 18 جائزة</span>
-                        <span class="hero-badge"><i class="fas fa-brain"></i> 8 ألعاب عقلية</span>
-                        <span class="hero-badge"><i class="fas fa-rocket"></i> برامج مبتكرة</span>
+                        <span class="hero-badge"><i class="fas fa-brain"></i> 8 ألعاب</span>
                     </div>
                 </div>
             </div>
@@ -1185,32 +1176,32 @@
                 <div class="card-idea fade-up delay-1">
                     <span class="icon"><i class="fas fa-puzzle-piece"></i></span>
                     <h3>التفكير التصميمي</h3>
-                    <p>حل المشكلات الواقعية عبر منهجية التفكير التصميمي: تعاطف، تعريف، أفكار، نموذج، اختبار.</p>
+                    <p>حل المشكلات الواقعية عبر منهجية التفكير التصميمي.</p>
                 </div>
                 <div class="card-idea fade-up delay-2">
                     <span class="icon"><i class="fas fa-chess-queen"></i></span>
                     <h3>ألعاب استراتيجية</h3>
-                    <p>الشطرنج، كوتشينة، وألعاب إدارة الموارد تنمي التخطيط طويل المدى والمرونة الذهنية.</p>
+                    <p>الشطرنج وألعاب إدارة الموارد تنمي التخطيط والمرونة الذهنية.</p>
                 </div>
                 <div class="card-idea fade-up delay-3">
                     <span class="icon"><i class="fas fa-code"></i></span>
                     <h3>برمجة ولغات</h3>
-                    <p>تعليم البرمجة (Python، Scratch) واللغات الأجنبية ينشط مناطق التعلم والذاكرة.</p>
+                    <p>تعليم البرمجة واللغات الأجنبية ينشط مناطق التعلم والذاكرة.</p>
                 </div>
                 <div class="card-idea fade-up delay-1">
                     <span class="icon"><i class="fas fa-microphone-alt"></i></span>
                     <h3>مناظرات ووعي</h3>
-                    <p>جلسات مناظرة حول مواضيع علمية وفلسفية تنمي المنطق والحجاج وسرعة البديهة.</p>
+                    <p>جلسات مناظرة تنمي المنطق والحجاج وسرعة البديهة.</p>
                 </div>
                 <div class="card-idea fade-up delay-2">
                     <span class="icon"><i class="fas fa-drafting-compass"></i></span>
                     <h3>مشاريع بحثية</h3>
-                    <p>تشجيع الطلاب على تقديم أبحاث مصغرة في مجالات العلوم والتكنولوجيا والابتكار.</p>
+                    <p>تشجيع الطلاب على تقديم أبحاث في مجالات العلوم والابتكار.</p>
                 </div>
                 <div class="card-idea fade-up delay-3">
                     <span class="icon"><i class="fas fa-heartbeat"></i></span>
                     <h3>العقل والجسد</h3>
-                    <p>تمارين التنفس، التأمل، والرياضة اليومية تحسن التركيز وتقلل التوتر وتعزز الأداء العقلي.</p>
+                    <p>تمارين التنفس والتأمل تحسن التركيز وتقلل التوتر.</p>
                 </div>
             </div>
         </section>
@@ -1224,62 +1215,62 @@
                     <span class="difficulty">⭐ سهل</span>
                     <span class="game-icon"><i class="fas fa-images"></i></span>
                     <h3>تحدي الذاكرة</h3>
-                    <p>اختبر ذاكرتك البصرية وتذكر أماكن الصور المتطابقة.</p>
-                    <button class="play-btn" onclick="showGame('memory')"><i class="fas fa-play"></i> العب الآن</button>
+                    <p>تذكر أماكن الصور المتطابقة.</p>
+                    <button class="play-btn" onclick="showGame('memory')"><i class="fas fa-play"></i> العب</button>
                 </div>
                 <div class="game-card fade-up delay-2">
                     <span class="difficulty">⭐⭐ متوسط</span>
                     <span class="game-icon"><i class="fas fa-flag"></i></span>
                     <h3>أعلام الدول</h3>
-                    <p>شاهد العلم واكتب اسم الدولة الصحيح.</p>
-                    <button class="play-btn" onclick="showGame('flags')"><i class="fas fa-play"></i> العب الآن</button>
+                    <p>شاهد العلم واكتب اسم الدولة.</p>
+                    <button class="play-btn" onclick="showGame('flags')"><i class="fas fa-play"></i> العب</button>
                 </div>
                 <div class="game-card fade-up delay-3">
                     <span class="difficulty">⭐⭐⭐ صعب</span>
                     <span class="game-icon"><i class="fas fa-globe-americas"></i></span>
                     <h3>جغرافيا الدول</h3>
-                    <p>اختر الدولة الصحيحة من خلال مشاهدة العلم.</p>
-                    <button class="play-btn" onclick="showGame('geography')"><i class="fas fa-play"></i> العب الآن</button>
+                    <p>اختر الدولة الصحيحة من العلم.</p>
+                    <button class="play-btn" onclick="showGame('geography')"><i class="fas fa-play"></i> العب</button>
                 </div>
                 <div class="game-card fade-up delay-4">
                     <span class="difficulty">⭐⭐ متوسط</span>
                     <span class="game-icon"><i class="fas fa-question-circle"></i></span>
                     <h3>ثقافة عامة</h3>
-                    <p>أسئلة متنوعة في الثقافة والعلوم والتاريخ.</p>
-                    <button class="play-btn" onclick="showGame('trivia')"><i class="fas fa-play"></i> العب الآن</button>
+                    <p>أسئلة متنوعة في الثقافة والعلوم.</p>
+                    <button class="play-btn" onclick="showGame('trivia')"><i class="fas fa-play"></i> العب</button>
                 </div>
                 <div class="game-card fade-up delay-5">
                     <span class="difficulty">⭐ سهل</span>
                     <span class="game-icon"><i class="fas fa-keyboard"></i></span>
                     <h3>سرعة الكتابة</h3>
-                    <p>اكتب النص المعروض بأسرع ما يمكن مع أقل أخطاء.</p>
-                    <button class="play-btn" onclick="showGame('typing')"><i class="fas fa-play"></i> العب الآن</button>
+                    <p>اكتب النص بأسرع ما يمكن.</p>
+                    <button class="play-btn" onclick="showGame('typing')"><i class="fas fa-play"></i> العب</button>
                 </div>
                 <div class="game-card fade-up delay-1">
                     <span class="difficulty">⭐⭐ متوسط</span>
                     <span class="game-icon"><i class="fas fa-bolt"></i></span>
                     <h3>سرعة البديهة</h3>
-                    <p>اختبر زمن رد فعلك واضغط عند ظهور الإشارة.</p>
-                    <button class="play-btn" onclick="showGame('reaction')"><i class="fas fa-play"></i> العب الآن</button>
+                    <p>اختبر زمن رد فعلك.</p>
+                    <button class="play-btn" onclick="showGame('reaction')"><i class="fas fa-play"></i> العب</button>
                 </div>
                 <div class="game-card fade-up delay-2">
                     <span class="difficulty">⭐⭐⭐ صعب</span>
                     <span class="game-icon"><i class="fas fa-th-large"></i></span>
                     <h3>سلسلة الألوان</h3>
-                    <p>احفظ التسلسل المتزايد للأضواء وكرره بالترتيب.</p>
-                    <button class="play-btn" onclick="showGame('simon')"><i class="fas fa-play"></i> العب الآن</button>
+                    <p>احفظ التسلسل المتزايد وكرره.</p>
+                    <button class="play-btn" onclick="showGame('simon')"><i class="fas fa-play"></i> العب</button>
                 </div>
                 <div class="game-card fade-up delay-3">
                     <span class="difficulty">⭐⭐ متوسط</span>
                     <span class="game-icon"><i class="fas fa-sort-numeric-up"></i></span>
                     <h3>سلسلة الأرقام</h3>
-                    <p>أكمل المتتالية المنطقية واختبر ذكاءك الاستنتاجي.</p>
-                    <button class="play-btn" onclick="showGame('sequence')"><i class="fas fa-play"></i> العب الآن</button>
+                    <p>أكمل المتتالية المنطقية.</p>
+                    <button class="play-btn" onclick="showGame('sequence')"><i class="fas fa-play"></i> العب</button>
                 </div>
             </div>
         </section>
 
-        <div id="game-areas" style="margin: 10px 0 30px;">
+        <div id="game-areas" style="margin: 10px 0 20px;">
 
             <!-- ===== MEMORY GAME ===== -->
             <div id="game-memory" class="game-area-container" style="display:none;">
@@ -1287,14 +1278,14 @@
                     <div class="game-panel-head">
                         <h2><i class="fas fa-images"></i> تحدي الذاكرة</h2>
                         <div class="head-right">
-                            <span class="stat-pill"><i class="fas fa-shoe-prints"></i> المحاولات: <span id="memoryAttempts">0</span></span>
-                            <span class="stat-pill"><i class="fas fa-star"></i> متطابق: <span id="memoryMatchedCount">0</span>/8</span>
+                            <span class="stat-pill"><i class="fas fa-shoe-prints"></i> <span id="memoryAttempts">0</span></span>
+                            <span class="stat-pill"><i class="fas fa-star"></i> <span id="memoryMatchedCount">0</span>/8</span>
                             <button class="close-btn" onclick="closeGame()"><i class="fas fa-times"></i> إغلاق</button>
                         </div>
                     </div>
                     <div id="memoryBoard"></div>
-                    <div style="text-align:center; margin-top:20px;">
-                        <button class="solid-btn" onclick="initMemoryGame()"><i class="fas fa-redo"></i> لعبة جديدة</button>
+                    <div style="text-align:center; margin-top:16px;">
+                        <button class="solid-btn" onclick="initMemoryGame()"><i class="fas fa-redo"></i> جديدة</button>
                     </div>
                     <div id="memoryStatus" class="feedback-line neutral" aria-live="polite"></div>
                 </div>
@@ -1306,20 +1297,20 @@
                     <div class="game-panel-head">
                         <h2><i class="fas fa-flag"></i> أعلام الدول</h2>
                         <div class="head-right">
-                            <span class="stat-pill"><i class="fas fa-fire"></i> السلسلة: <span id="flagStreak">0</span></span>
-                            <span class="stat-pill"><i class="fas fa-trophy"></i> النقاط: <span id="flagScore">0</span></span>
+                            <span class="stat-pill"><i class="fas fa-fire"></i> <span id="flagStreak">0</span></span>
+                            <span class="stat-pill"><i class="fas fa-trophy"></i> <span id="flagScore">0</span></span>
                             <button class="close-btn" onclick="closeGame()"><i class="fas fa-times"></i> إغلاق</button>
                         </div>
                     </div>
                     <div class="flag-display">
-                        <div id="flagImage"><img src="https://flagcdn.com/w320/sa.png" alt="علم الدولة" id="flagImg"></div>
-                        <div style="font-size:20px; color:var(--text-dim); margin:12px 0;">ما اسم هذه الدولة؟</div>
+                        <div><img src="https://flagcdn.com/w320/sa.png" alt="علم الدولة" id="flagImg"></div>
+                        <div style="font-size:18px; color:var(--text-dim); margin:8px 0;">ما اسم هذه الدولة؟</div>
                         <div class="flag-input-area">
-                            <input type="text" id="flagInput" class="text-input" placeholder="اكتب اسم الدولة..." style="width:280px;">
+                            <input type="text" id="flagInput" class="text-input" placeholder="اكتب اسم الدولة..." style="width:220px;">
                             <button class="solid-btn" onclick="checkFlagAnswer()"><i class="fas fa-check"></i> تحقق</button>
                         </div>
                         <div id="flagFeedback" class="feedback-line neutral" aria-live="polite"></div>
-                        <button class="ghost-btn" style="margin-top:12px;" onclick="nextFlagQuestion()"><i class="fas fa-forward"></i> سؤال جديد</button>
+                        <button class="ghost-btn" style="margin-top:8px;" onclick="nextFlagQuestion()"><i class="fas fa-forward"></i> جديد</button>
                     </div>
                 </div>
             </div>
@@ -1330,14 +1321,14 @@
                     <div class="game-panel-head">
                         <h2><i class="fas fa-globe-americas"></i> جغرافيا الدول</h2>
                         <div class="head-right">
-                            <span class="stat-pill"><i class="fas fa-fire"></i> السلسلة: <span id="geoStreak">0</span></span>
-                            <span class="stat-pill"><i class="fas fa-trophy"></i> النقاط: <span id="geoScore">0</span></span>
+                            <span class="stat-pill"><i class="fas fa-fire"></i> <span id="geoStreak">0</span></span>
+                            <span class="stat-pill"><i class="fas fa-trophy"></i> <span id="geoScore">0</span></span>
                             <button class="close-btn" onclick="closeGame()"><i class="fas fa-times"></i> إغلاق</button>
                         </div>
                     </div>
-                    <div style="text-align:center; padding:10px 0;">
-                        <div style="font-size:20px; color:var(--text-dim); margin-bottom:10px;">اختر الدولة الصحيحة لهذا العلم:</div>
-                        <div id="geoFlagDisplay"><img src="https://flagcdn.com/w320/sa.png" alt="علم الدولة" style="width:200px; height:133px; border-radius:16px; border:2px solid var(--border); object-fit:cover;"></div>
+                    <div style="text-align:center; padding:6px 0;">
+                        <div style="font-size:17px; color:var(--text-dim); margin-bottom:6px;">اختر الدولة الصحيحة:</div>
+                        <div id="geoFlagDisplay"><img src="https://flagcdn.com/w320/sa.png" alt="علم الدولة" style="width:160px; height:107px; border-radius:14px; border:2px solid var(--border); object-fit:cover;"></div>
                         <div class="flag-options" id="geoOptions"></div>
                         <div id="geoFeedback" class="feedback-line neutral" aria-live="polite"></div>
                     </div>
@@ -1350,13 +1341,13 @@
                     <div class="game-panel-head">
                         <h2><i class="fas fa-question-circle"></i> ثقافة عامة</h2>
                         <div class="head-right">
-                            <span class="stat-pill"><i class="fas fa-fire"></i> السلسلة: <span id="triviaStreak">0</span></span>
-                            <span class="stat-pill"><i class="fas fa-trophy"></i> النقاط: <span id="triviaScore">0</span></span>
+                            <span class="stat-pill"><i class="fas fa-fire"></i> <span id="triviaStreak">0</span></span>
+                            <span class="stat-pill"><i class="fas fa-trophy"></i> <span id="triviaScore">0</span></span>
                             <button class="close-btn" onclick="closeGame()"><i class="fas fa-times"></i> إغلاق</button>
                         </div>
                     </div>
-                    <div style="text-align:center; padding:10px 0;">
-                        <div id="triviaQuestion" style="font-size:20px; font-weight:700; padding:20px; min-height:60px; color:var(--text);">ما هي عاصمة فرنسا؟</div>
+                    <div style="text-align:center; padding:6px 0;">
+                        <div id="triviaQuestion" style="font-size:18px; font-weight:700; padding:14px; min-height:50px; color:var(--text);">ما هي عاصمة فرنسا؟</div>
                         <div class="trivia-options" id="triviaOptions"></div>
                         <div id="triviaFeedback" class="feedback-line neutral" aria-live="polite"></div>
                     </div>
@@ -1369,16 +1360,16 @@
                     <div class="game-panel-head">
                         <h2><i class="fas fa-keyboard"></i> سرعة الكتابة</h2>
                         <div class="head-right">
-                            <span class="stat-pill"><i class="fas fa-stopwatch"></i> <span id="typingTimer">0</span> ث</span>
-                            <span class="stat-pill"><i class="fas fa-tachometer-alt"></i> سرعة: <span id="typingSpeed">0</span> ك/د</span>
+                            <span class="stat-pill"><i class="fas fa-stopwatch"></i> <span id="typingTimer">0</span>ث</span>
+                            <span class="stat-pill"><i class="fas fa-tachometer-alt"></i> <span id="typingSpeed">0</span> ك/د</span>
                             <button class="close-btn" onclick="closeGame()"><i class="fas fa-times"></i> إغلاق</button>
                         </div>
                     </div>
-                    <div style="text-align:center; padding:10px 0;">
+                    <div style="text-align:center; padding:6px 0;">
                         <div id="typingText"></div>
-                        <input type="text" id="typingInput" class="text-input" style="width:100%; max-width:500px; font-size:22px;" placeholder="ابدأ الكتابة هنا..." autofocus>
+                        <input type="text" id="typingInput" class="text-input" style="width:100%; max-width:400px; font-size:18px;" placeholder="ابدأ الكتابة..." autofocus>
                         <div id="typingFeedback" class="feedback-line neutral" aria-live="polite"></div>
-                        <button class="solid-btn" style="margin-top:12px;" onclick="initTypingGame()"><i class="fas fa-redo"></i> نص جديد</button>
+                        <button class="solid-btn" style="margin-top:10px;" onclick="initTypingGame()"><i class="fas fa-redo"></i> نص جديد</button>
                     </div>
                 </div>
             </div>
@@ -1389,22 +1380,22 @@
                     <div class="game-panel-head">
                         <h2><i class="fas fa-bolt"></i> سرعة البديهة</h2>
                         <div class="head-right">
-                            <span class="stat-pill"><i class="fas fa-clock"></i> أسرع: <span id="reactionBest">--</span> ث</span>
+                            <span class="stat-pill"><i class="fas fa-clock"></i> أسرع: <span id="reactionBest">--</span>ث</span>
                             <button class="close-btn" onclick="closeGame()"><i class="fas fa-times"></i> إغلاق</button>
                         </div>
                     </div>
-                    <div style="text-align:center; padding:20px 0;">
+                    <div style="text-align:center; padding:10px 0;">
                         <div id="reactionBox" onclick="reactionBoxClick()" role="button" tabindex="0">
-                            <div id="reactionStatus" style="font-size:26px; color:#8892b0;">اضغط "ابدأ"</div>
-                            <div id="reactionTime" style="font-size:44px; font-weight:800; color:var(--gold); margin-top:10px;"></div>
+                            <div id="reactionStatus" style="font-size:20px; color:#8892b0;">اضغط "ابدأ"</div>
+                            <div id="reactionTime" style="font-size:34px; font-weight:800; color:var(--gold); margin-top:6px;"></div>
                         </div>
-                        <button id="reactionStartBtn" class="solid-btn" style="margin-top:20px;" onclick="startReactionGame(event)"><i class="fas fa-play"></i> ابدأ</button>
+                        <button id="reactionStartBtn" class="solid-btn" style="margin-top:14px;" onclick="startReactionGame(event)"><i class="fas fa-play"></i> ابدأ</button>
                         <div class="reaction-history" id="reactionHistory"></div>
                     </div>
                 </div>
             </div>
 
-            <!-- ===== SIMON GAME ===== -->
+            <!-- ===== SIMON GAME - 6 Colors ===== -->
             <div id="game-simon" class="game-area-container" style="display:none;">
                 <div class="game-panel">
                     <div class="game-panel-head">
@@ -1415,14 +1406,16 @@
                         </div>
                     </div>
                     <div style="text-align:center;">
-                        <div class="simon-grid">
-                            <button class="simon-btn" id="simonTL" onclick="simonPlayerClick(0)"></button>
-                            <button class="simon-btn" id="simonTR" onclick="simonPlayerClick(1)"></button>
-                            <button class="simon-btn" id="simonBL" onclick="simonPlayerClick(2)"></button>
-                            <button class="simon-btn" id="simonBR" onclick="simonPlayerClick(3)"></button>
+                        <div id="simonBoard">
+                            <button class="simon-btn" id="simon0" onclick="simonPlayerClick(0)"></button>
+                            <button class="simon-btn" id="simon1" onclick="simonPlayerClick(1)"></button>
+                            <button class="simon-btn" id="simon2" onclick="simonPlayerClick(2)"></button>
+                            <button class="simon-btn" id="simon3" onclick="simonPlayerClick(3)"></button>
+                            <button class="simon-btn" id="simon4" onclick="simonPlayerClick(4)"></button>
+                            <button class="simon-btn" id="simon5" onclick="simonPlayerClick(5)"></button>
                         </div>
-                        <div id="simonFeedback" class="feedback-line neutral" style="margin-top:18px;"></div>
-                        <button class="solid-btn" style="margin-top:6px;" onclick="startSimonGame()"><i class="fas fa-play"></i> ابدأ / أعد التشغيل</button>
+                        <div id="simonFeedback" class="feedback-line neutral" style="margin-top:14px;"></div>
+                        <button class="solid-btn" style="margin-top:6px;" onclick="startSimonGame()"><i class="fas fa-play"></i> ابدأ / أعد</button>
                     </div>
                 </div>
             </div>
@@ -1433,18 +1426,18 @@
                     <div class="game-panel-head">
                         <h2><i class="fas fa-sort-numeric-up"></i> سلسلة الأرقام</h2>
                         <div class="head-right">
-                            <span class="stat-pill"><i class="fas fa-star"></i> النقاط: <span id="seqScore">0</span></span>
+                            <span class="stat-pill"><i class="fas fa-star"></i> <span id="seqScore">0</span></span>
                             <button class="close-btn" onclick="closeGame()"><i class="fas fa-times"></i> إغلاق</button>
                         </div>
                     </div>
-                    <div style="text-align:center; padding:20px 0;">
-                        <div style="font-size:30px; font-weight:700; color:#f0f0f5; background:rgba(0,0,0,0.2); padding:20px; border-radius:28px; max-width:420px; margin:0 auto 22px; letter-spacing:6px;" id="sequenceDisplay">2, 5, 10, 17, ?</div>
-                        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-                            <input type="number" id="sequenceAnswer" placeholder="أدخل الرقم" class="text-input" style="width:180px;" inputmode="numeric">
+                    <div style="text-align:center; padding:10px 0;">
+                        <div style="font-size:26px; font-weight:700; color:#f0f0f5; background:rgba(0,0,0,0.2); padding:16px; border-radius:24px; max-width:360px; margin:0 auto 16px; letter-spacing:4px;" id="sequenceDisplay">2, 5, 10, 17, ?</div>
+                        <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+                            <input type="number" id="sequenceAnswer" placeholder="أدخل الرقم" class="text-input" style="width:150px;" inputmode="numeric">
                             <button class="solid-btn" onclick="checkSequenceGame()"><i class="fas fa-check"></i> تحقق</button>
                         </div>
                         <div id="seqFeedback" class="feedback-line neutral" aria-live="polite"></div>
-                        <div style="display:flex; gap:10px; justify-content:center; margin-top:8px;">
+                        <div style="display:flex; gap:8px; justify-content:center; margin-top:6px;">
                             <button class="ghost-btn" onclick="toggleSeqHint()"><i class="fas fa-lightbulb"></i> تلميح</button>
                             <button class="ghost-btn" onclick="nextSequence()"><i class="fas fa-forward"></i> التالي</button>
                         </div>
@@ -1463,7 +1456,7 @@
                     <span class="lesson-icon"><i class="fas fa-flask"></i></span>
                     <div class="lesson-content">
                         <h3>مختبر الابتكار العلمي</h3>
-                        <p>حصة تفاعلية يجري فيها الطلاب تجارب بسيطة (كيمياء، فيزياء) ثم يحللون النتائج ويقترحون تطبيقات حياتية.</p>
+                        <p>حصة تفاعلية يجري فيها الطلاب تجارب ويحللون النتائج.</p>
                     </div>
                     <span class="lesson-tag">🔬 علوم</span>
                 </div>
@@ -1471,7 +1464,7 @@
                     <span class="lesson-icon"><i class="fas fa-robot"></i></span>
                     <div class="lesson-content">
                         <h3>الروبوتات والذكاء الاصطناعي</h3>
-                        <p>تعريف الطلاب بأساسيات الذكاء الاصطناعي عبر مشاريع عملية (تصنيف صور، محادثات بسيطة) باستخدام منصات سهلة.</p>
+                        <p>تعريف بأساسيات الذكاء الاصطناعي عبر مشاريع عملية.</p>
                     </div>
                     <span class="lesson-tag">🤖 تقنية</span>
                 </div>
@@ -1479,7 +1472,7 @@
                     <span class="lesson-icon"><i class="fas fa-book-open"></i></span>
                     <div class="lesson-content">
                         <h3>نادي القراءة النقدية</h3>
-                        <p>قراءة نصوص أدبية أو علمية ومناقشتها من زوايا متعددة، مع تدريب على كتابة مراجعات نقدية وتلخيص.</p>
+                        <p>قراءة نصوص ومناقشتها مع تدريب على كتابة مراجعات.</p>
                     </div>
                     <span class="lesson-tag">📚 أدب</span>
                 </div>
@@ -1487,7 +1480,7 @@
                     <span class="lesson-icon"><i class="fas fa-globe-americas"></i></span>
                     <div class="lesson-content">
                         <h3>حل مشكلات مجتمعية</h3>
-                        <p>يقترح الطلاب حلولاً مبتكرة لمشكلات محلية (بيئية، اجتماعية) ويعرضونها كخطة عمل قابلة للتنفيذ.</p>
+                        <p>يقترح الطلاب حلولاً مبتكرة لمشكلات محلية.</p>
                     </div>
                     <span class="lesson-tag">🌍 اجتماعي</span>
                 </div>
@@ -1495,7 +1488,7 @@
                     <span class="lesson-icon"><i class="fas fa-music"></i></span>
                     <div class="lesson-content">
                         <h3>الإيقاع والتركيز</h3>
-                        <p>استخدام الإيقاعات الموسيقية لتحسين التركيز وحل التمارين، مع تطبيقات على الربط بين الموسيقى والرياضيات.</p>
+                        <p>استخدام الإيقاعات الموسيقية لتحسين التركيز وحل التمارين.</p>
                     </div>
                     <span class="lesson-tag">🎵 إبداع</span>
                 </div>
@@ -1507,7 +1500,7 @@
             <i class="fas fa-star" style="color:var(--gold);"></i> 2026
             <i class="fas fa-heart heart"></i>
             <br />
-            <span style="font-size:14px; color:#4a5470;">صممناها بحب لتنمية العقول</span>
+            <span style="font-size:12px; color:#4a5470;">صممناها بحب لتنمية العقول</span>
         </div>
 
     </div>
@@ -1536,7 +1529,7 @@
             const ctx = canvas.getContext('2d');
             let w, h;
             const particles = [];
-            const COUNT = 70;
+            const COUNT = 50;
 
             function resize() {
                 w = canvas.width = window.innerWidth;
@@ -1549,10 +1542,10 @@
                 constructor() {
                     this.x = Math.random() * w;
                     this.y = Math.random() * h;
-                    this.size = Math.random() * 2 + 1.5;
-                    this.speedX = (Math.random() - 0.5) * 0.35;
-                    this.speedY = (Math.random() - 0.5) * 0.35;
-                    this.opacity = Math.random() * 0.4 + 0.15;
+                    this.size = Math.random() * 2 + 1.2;
+                    this.speedX = (Math.random() - 0.5) * 0.3;
+                    this.speedY = (Math.random() - 0.5) * 0.3;
+                    this.opacity = Math.random() * 0.4 + 0.1;
                 }
                 update() {
                     this.x += this.speedX;
@@ -1576,12 +1569,12 @@
                         const dx = particles[i].x - particles[j].x;
                         const dy = particles[i].y - particles[j].y;
                         const dist = Math.sqrt(dx * dx + dy * dy);
-                        if (dist < 140) {
+                        if (dist < 120) {
                             ctx.beginPath();
                             ctx.moveTo(particles[i].x, particles[i].y);
                             ctx.lineTo(particles[j].x, particles[j].y);
-                            ctx.strokeStyle = `rgba(249, 212, 35, ${0.06 * (1 - dist / 140)})`;
-                            ctx.lineWidth = 0.7;
+                            ctx.strokeStyle = `rgba(249, 212, 35, ${0.05 * (1 - dist / 120)})`;
+                            ctx.lineWidth = 0.6;
                             ctx.stroke();
                         }
                     }
@@ -1618,7 +1611,7 @@
                     if (match) match.classList.add('active');
                 }
             });
-        }, { rootMargin: '-45% 0px -50% 0px' });
+        }, { rootMargin: '-40% 0px -50% 0px' });
         sections.forEach(s => s && spy.observe(s));
 
         // =====================================================
@@ -1650,9 +1643,8 @@
         });
 
         // =====================================================
-        // GAME 1: MEMORY (with images - using multiple sources)
+        // GAME 1: MEMORY
         // =====================================================
-        // Using a mix of reliable image sources
         const imageSets = [
             'https://picsum.photos/seed/animal1/200/200',
             'https://picsum.photos/seed/nature2/200/200',
@@ -1662,11 +1654,6 @@
             'https://picsum.photos/seed/mountain6/200/200',
             'https://picsum.photos/seed/ocean7/200/200',
             'https://picsum.photos/seed/forest8/200/200',
-            // Additional fallback images
-            'https://picsum.photos/200/200?random=10',
-            'https://picsum.photos/200/200?random=11',
-            'https://picsum.photos/200/200?random=12',
-            'https://picsum.photos/200/200?random=13',
         ];
 
         let memoryCards = [],
@@ -1685,7 +1672,6 @@
             status.textContent = 'اقلب بطاقتين متطابقتين';
             status.className = 'feedback-line neutral';
 
-            // Choose 8 random images from the pool
             const shuffledPool = [...imageSets].sort(() => Math.random() - 0.5);
             const selected = shuffledPool.slice(0, 8);
             let deck = [...selected, ...selected];
@@ -1745,7 +1731,7 @@
                         memoryStarsGiven = true;
                         const bonus = memoryAttempts <= 10 ? 8 : 5;
                         const status = document.getElementById('memoryStatus');
-                        status.textContent = `🎉 أحسنت! أكملت اللعبة في ${memoryAttempts} محاولة (+${bonus} نجوم)`;
+                        status.textContent = `🎉 أحسنت! في ${memoryAttempts} محاولة (+${bonus} نجوم)`;
                         status.className = 'feedback-line good';
                         addStars(bonus);
                     }
@@ -1754,13 +1740,13 @@
                         memoryFlipped = [];
                         memoryLock = false;
                         renderMemoryBoard();
-                    }, 800);
+                    }, 700);
                 }
             }
         }
 
         // =====================================================
-        // GAME 2: FLAGS (شاهد العلم واكتب اسم الدولة)
+        // GAME 2: FLAGS
         // =====================================================
         const flagData = [
             { code: 'sa', name: 'السعودية' },
@@ -1846,19 +1832,17 @@
                 flagStreak++;
                 document.getElementById('flagScore').textContent = flagScore;
                 document.getElementById('flagStreak').textContent = flagStreak;
-                fb.textContent = `✅ صحيح! 🎉 (${flagCurrent.name})`;
+                fb.textContent = `✅ صحيح! 🎉`;
                 fb.className = 'feedback-line good';
                 addStars(2);
             } else {
                 flagStreak = 0;
                 document.getElementById('flagStreak').textContent = '0';
-                fb.textContent = `❌ خطأ! الإجابة الصحيحة: ${flagCurrent.name}`;
+                fb.textContent = `❌ خطأ! الإجابة: ${flagCurrent.name}`;
                 fb.className = 'feedback-line bad';
             }
 
-            setTimeout(() => {
-                nextFlagQuestion();
-            }, 1500);
+            setTimeout(nextFlagQuestion, 1200);
         }
 
         document.getElementById('flagInput').addEventListener('keydown', function(e) {
@@ -1923,7 +1907,7 @@
                 document.getElementById('geoScore').textContent = geoScore;
                 document.getElementById('geoStreak').textContent = geoStreak;
                 btn.classList.add('correct');
-                fb.textContent = `✅ صحيح! 🎉 (${geoCurrent.name})`;
+                fb.textContent = '✅ صحيح! 🎉';
                 fb.className = 'feedback-line good';
                 addStars(2);
             } else {
@@ -1931,64 +1915,29 @@
                 document.getElementById('geoStreak').textContent = '0';
                 btn.classList.add('wrong');
                 allBtns.forEach(b => { if (b.dataset.correct === 'true') b.classList.add('correct'); });
-                fb.textContent = `❌ خطأ! الإجابة الصحيحة: ${geoCurrent.name}`;
+                fb.textContent = `❌ خطأ! الإجابة: ${geoCurrent.name}`;
                 fb.className = 'feedback-line bad';
             }
-            setTimeout(nextGeoQuestion, 1500);
+            setTimeout(nextGeoQuestion, 1200);
         }
 
         // =====================================================
         // GAME 4: TRIVIA
         // =====================================================
-        const triviaData = [{
-            q: 'ما هي عاصمة فرنسا؟',
-            options: ['لندن', 'باريس', 'برلين', 'مدريد'],
-            correct: 1
-        }, {
-            q: 'كم عدد الكواكب في المجموعة الشمسية؟',
-            options: ['7', '8', '9', '10'],
-            correct: 1
-        }, {
-            q: 'ما هو أكبر محيط في العالم؟',
-            options: ['الأطلسي', 'الهادئ', 'الهندي', 'المتجمد الجنوبي'],
-            correct: 1
-        }, {
-            q: 'من هو مؤلف رواية "مئة عام من العزلة"؟',
-            options: ['جبران خليل جبران', 'نجيب محفوظ', 'غابرييل غارسيا ماركيز', 'علي أحمد باكثير'],
-            correct: 2
-        }, {
-            q: 'ما هي أطول سلسلة جبال في العالم؟',
-            options: ['الهملايا', 'الأنديز', 'الروكي', 'جبال الألب'],
-            correct: 1
-        }, {
-            q: 'في أي عام هبط الإنسان على سطح القمر؟',
-            options: ['1967', '1969', '1971', '1973'],
-            correct: 1
-        }, {
-            q: 'ما هي عملة دولة اليابان؟',
-            options: ['الين', 'الوون', 'الدولار', 'اليورو'],
-            correct: 0
-        }, {
-            q: 'أين تقع مدينة الأقصر؟',
-            options: ['مصر', 'السعودية', 'الأردن', 'العراق'],
-            correct: 0
-        }, {
-            q: 'ما هي أصغر دولة في العالم من حيث المساحة؟',
-            options: ['موناكو', 'الفاتيكان', 'سان مارينو', 'ليختنشتاين'],
-            correct: 1
-        }, {
-            q: 'من هو مؤسس علم الاجتماع؟',
-            options: ['ابن خلدون', 'أوجست كونت', 'إميل دوركهايم', 'ماكس فيبر'],
-            correct: 0
-        }, {
-            q: 'كم عدد أضلاع المكعب؟',
-            options: ['8', '10', '12', '14'],
-            correct: 2
-        }, {
-            q: 'ما هي اللغة الأكثر انتشاراً في العالم؟',
-            options: ['الإنجليزية', 'الصينية', 'الإسبانية', 'العربية'],
-            correct: 1
-        }];
+        const triviaData = [
+            { q: 'ما هي عاصمة فرنسا؟', options: ['لندن', 'باريس', 'برلين', 'مدريد'], correct: 1 },
+            { q: 'كم عدد الكواكب في المجموعة الشمسية؟', options: ['7', '8', '9', '10'], correct: 1 },
+            { q: 'ما هو أكبر محيط في العالم؟', options: ['الأطلسي', 'الهادئ', 'الهندي', 'المتجمد'], correct: 1 },
+            { q: 'من مؤلف "مئة عام من العزلة"؟', options: ['جبران', 'نجيب محفوظ', 'ماركيز', 'باكثير'], correct: 2 },
+            { q: 'أطول سلسلة جبال في العالم؟', options: ['الهملايا', 'الأنديز', 'الروكي', 'الألب'], correct: 1 },
+            { q: 'عام هبوط الإنسان على القمر؟', options: ['1967', '1969', '1971', '1973'], correct: 1 },
+            { q: 'عملة اليابان؟', options: ['الين', 'الوون', 'الدولار', 'اليورو'], correct: 0 },
+            { q: 'أين تقع مدينة الأقصر؟', options: ['مصر', 'السعودية', 'الأردن', 'العراق'], correct: 0 },
+            { q: 'أصغر دولة في العالم؟', options: ['موناكو', 'الفاتيكان', 'سان مارينو', 'ليختنشتاين'], correct: 1 },
+            { q: 'مؤسس علم الاجتماع؟', options: ['ابن خلدون', 'أوجست كونت', 'دوركهايم', 'ماكس فيبر'], correct: 0 },
+            { q: 'كم عدد أضلاع المكعب؟', options: ['8', '10', '12', '14'], correct: 2 },
+            { q: 'اللغة الأكثر انتشاراً؟', options: ['الإنجليزية', 'الصينية', 'الإسبانية', 'العربية'], correct: 1 }
+        ];
 
         let triviaScore = 0,
             triviaStreak = 0,
@@ -2046,21 +1995,21 @@
                 document.getElementById('triviaStreak').textContent = '0';
                 btn.classList.add('wrong');
                 allBtns.forEach(b => { if (b.dataset.correct === 'true') b.classList.add('correct'); });
-                fb.textContent = `❌ خطأ! الإجابة الصحيحة: ${correctAnswer}`;
+                fb.textContent = `❌ خطأ! الإجابة: ${correctAnswer}`;
                 fb.className = 'feedback-line bad';
             }
-            setTimeout(nextTriviaQuestion, 1500);
+            setTimeout(nextTriviaQuestion, 1200);
         }
 
         // =====================================================
         // GAME 5: TYPING
         // =====================================================
         const typingTexts = [
-            'النجاح ليس محطة الوصول بل رحلة مستمرة من التعلم والتطور',
-            'العلم نور والجهل ظلام، فاطلب العلم من المهد إلى اللحد',
+            'النجاح ليس محطة الوصول بل رحلة مستمرة من التعلم',
+            'العلم نور والجهل ظلام فاطلب العلم من المهد إلى اللحد',
             'القراءة هي غذاء الروح وطريق العقول إلى المعرفة',
-            'التحديات هي فرص تظهر في ثياب جديدة، اقبلها بكل شجاعة',
-            'الإبداع هو القدرة على رؤية الأشياء بشكل مختلف عن الآخرين',
+            'التحديات هي فرص تظهر في ثياب جديدة اقبلها بشجاعة',
+            'الإبداع هو القدرة على رؤية الأشياء بشكل مختلف',
             'التعاون هو سر النجاح في أي فريق عمل ناجح',
             'التفكير الناقد هو مفتاح حل المشكلات المعقدة',
             'الذكاء العاطفي أهم من الذكاء المعرفي في بناء العلاقات',
@@ -2140,13 +2089,13 @@
                 const speed = Math.round((typingTargetText.length / typingSeconds) * 60);
                 document.getElementById('typingSpeed').textContent = speed;
                 const fb = document.getElementById('typingFeedback');
-                fb.textContent = `🎉 أحسنت! أكملت النص في ${typingSeconds} ثانية! (+5 نجوم)`;
+                fb.textContent = `🎉 أحسنت! في ${typingSeconds} ثانية (+5 نجوم)`;
                 fb.className = 'feedback-line good';
                 addStars(5);
             } else if (typed.length === typingTargetText.length && !allCorrect) {
                 document.getElementById('typingInput').disabled = true;
                 const fb = document.getElementById('typingFeedback');
-                fb.textContent = '⚠️ هناك أخطاء في النص! اضغط "نص جديد" للمحاولة مجدداً.';
+                fb.textContent = '⚠️ هناك أخطاء! اضغط "نص جديد" للمحاولة مجدداً';
                 fb.className = 'feedback-line bad';
                 if (typingTimerInterval) {
                     clearInterval(typingTimerInterval);
@@ -2256,9 +2205,9 @@
         }
 
         // =====================================================
-        // GAME 7: SIMON
+        // GAME 7: SIMON - 6 Colors
         // =====================================================
-        const simonIds = ['simonTL', 'simonTR', 'simonBL', 'simonBR'];
+        const simonIds = ['simon0', 'simon1', 'simon2', 'simon3', 'simon4', 'simon5'];
         let simonSequence = [],
             simonPlayerIndex = 0,
             simonLevel = 0,
@@ -2275,6 +2224,8 @@
             fb.textContent = 'اضغط ابدأ لمشاهدة التسلسل';
             fb.className = 'feedback-line neutral';
             setSimonButtonsEnabled(false);
+            // Reset all buttons
+            simonIds.forEach(id => document.getElementById(id).classList.remove('lit'));
         }
 
         function setSimonButtonsEnabled(enabled) {
@@ -2293,7 +2244,7 @@
             simonAccepting = false;
             setSimonButtonsEnabled(false);
             simonPlayerIndex = 0;
-            simonSequence.push(Math.floor(Math.random() * 4));
+            simonSequence.push(Math.floor(Math.random() * 6));
             simonLevel = simonSequence.length;
             document.getElementById('simonLevel').textContent = simonLevel;
             const fb = document.getElementById('simonFeedback');
@@ -2315,7 +2266,7 @@
                 }
                 litSimon(simonSequence[i], true);
                 i++;
-            }, 700);
+            }, 600);
         }
 
         function litSimon(idx, on) {
@@ -2326,7 +2277,7 @@
         function simonPlayerClick(idx) {
             if (!simonAccepting) return;
             litSimon(idx, true);
-            setTimeout(() => litSimon(idx, false), 220);
+            setTimeout(() => litSimon(idx, false), 200);
 
             const fb = document.getElementById('simonFeedback');
             if (idx === simonSequence[simonPlayerIndex]) {
@@ -2337,12 +2288,12 @@
                     fb.textContent = `✅ صحيح! المستوى ${simonLevel} (+2 نجوم)`;
                     fb.className = 'feedback-line good';
                     addStars(2);
-                    setTimeout(nextSimonRound, 900);
+                    setTimeout(nextSimonRound, 800);
                 }
             } else {
                 simonAccepting = false;
                 setSimonButtonsEnabled(false);
-                fb.textContent = `💔 خطأ! وصلت للمستوى ${simonLevel}. اضغط ابدأ للمحاولة من جديد`;
+                fb.textContent = `💔 خطأ! وصلت للمستوى ${simonLevel}. اضغط ابدأ من جديد`;
                 fb.className = 'feedback-line bad';
                 simonPlaying = false;
             }
@@ -2355,11 +2306,11 @@
             seqIndex = 0,
             seqHintShown = false;
         const seqPatterns = [
-            { seq: '2, 5, 10, 17, ?', answer: 26, hint: 'الفرق يزيد بمقدار 2 (n² + 1)' },
-            { seq: '3, 6, 12, 24, ?', answer: 48, hint: 'كل رقم = الرقم السابق × 2' },
+            { seq: '2, 5, 10, 17, ?', answer: 26, hint: 'الفرق يزيد بمقدار 2 (n²+1)' },
+            { seq: '3, 6, 12, 24, ?', answer: 48, hint: 'كل رقم = السابق × 2' },
             { seq: '1, 4, 9, 16, ?', answer: 25, hint: 'مربعات الأعداد (n²)' },
             { seq: '2, 6, 12, 20, ?', answer: 30, hint: 'n × (n+1)' },
-            { seq: '5, 10, 20, 40, ?', answer: 80, hint: 'كل رقم = الرقم السابق × 2' },
+            { seq: '5, 10, 20, 40, ?', answer: 80, hint: 'كل رقم = السابق × 2' },
             { seq: '1, 1, 2, 3, 5, ?', answer: 8, hint: 'فيبوناتشي: مجموع آخر رقمين' },
             { seq: '100, 90, 81, 73, ?', answer: 66, hint: 'الفرق يقل بمقدار 1' },
             { seq: '4, 9, 16, 25, ?', answer: 36, hint: 'مربعات الأعداد من 2' },
@@ -2415,7 +2366,7 @@
                 fb.className = 'feedback-line good';
                 addStars(2);
                 setTimeout(() => { seqIndex = (seqIndex + 1) % seqPatterns.length;
-                    showSequence(); }, 900);
+                    showSequence(); }, 800);
             } else {
                 fb.textContent = `❌ خطأ! تلميح: ${data.hint}`;
                 fb.className = 'feedback-line bad';
@@ -2439,12 +2390,10 @@
             }
         });
 
-        console.log('🚀 موقع موهبة - ثانوية هوزان يعمل بكامل طاقته!');
-
-        // Auto-init first game preview
+        // Auto-init
         setTimeout(() => {
             initMemoryGame();
-        }, 500);
+        }, 400);
     </script>
 
 </body>
