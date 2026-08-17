@@ -1,158 +1,2451 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>دحوم ستور - تحت الصيانة</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg1:#0f172a; /* dark navy */
-      --bg2:#0ea5a6; /* teal */
-      --accent:#ffd166; /* gold */
-      --card:#0b1220aa;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:'Cairo',system-ui,Segoe UI,Helvetica,Arial;}
-    body{
-      background:radial-gradient(1000px 600px at 10% 20%, rgba(14,165,166,0.12), transparent),
-                 linear-gradient(120deg,var(--bg1),#071024 60%);
-      color:#e6f0f6;
-      display:flex;align-items:center;justify-content:center;padding:24px;
-    }
-    .wrap{max-width:980px;width:100%;display:grid;grid-template-columns:1fr 420px;gap:32px;align-items:center}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>موهبة - ثانوية هوزان</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        /* ===== TOKENS ===== */
+        :root {
+            --bg: #0a0e17;
+            --bg-elevated: #121a2c;
+            --gold: #f9d423;
+            --gold-2: #f7971e;
+            --teal: #4ee1a0;
+            --coral: #ff6b6b;
+            --text: #f0f0f5;
+            --text-dim: #96a0c0;
+            --text-dimmer: #6a7490;
+            --border: rgba(249, 212, 35, 0.12);
+            --radius-lg: 32px;
+            --radius-md: 20px;
+            --radius-sm: 12px;
+        }
 
-    /* left big panel */
-    .panel{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-           border-radius:18px;padding:34px;border:1px solid rgba(255,255,255,0.04);box-shadow:0 10px 30px rgba(2,6,23,0.6);}
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .brand{display:flex;align-items:center;gap:16px}
-    .logo{
-      width:84px;height:84px;border-radius:16px;display:flex;align-items:center;justify-content:center;
-      background:linear-gradient(135deg,var(--bg2),#06b6d4);box-shadow:0 6px 18px rgba(6,182,212,0.18);flex-shrink:0
-    }
-    .logo svg{width:46px;height:46px;filter:drop-shadow(0 6px 14px rgba(6,182,212,0.18));}
-    .brand h1{margin:0;font-size:28px;letter-spacing:0.6px}
-    .brand p{margin:0.2rem 0 0;color:#cfe9ee;font-size:14px}
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 110px;
+        }
 
-    .title{margin-top:26px;font-size:34px;font-weight:700}
-    .desc{margin-top:10px;color:#bcdedf;line-height:1.6}
+        body {
+            font-family: 'Tajawal', 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
 
-    .actions{display:flex;gap:12px;margin-top:20px}
-    .btn{padding:12px 18px;border-radius:12px;border:none;cursor:pointer;font-weight:700}
-    .btn.primary{background:linear-gradient(90deg,var(--bg2),#0891b2);color:#012;}
-    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:inherit}
+        h1,
+        h2,
+        h3,
+        .logo,
+        .play-btn,
+        .section-title {
+            font-family: 'Cairo', 'Tajawal', sans-serif;
+        }
 
-    .meta{display:flex;gap:14px;align-items:center;margin-top:18px;color:#9fd8db}
-    .chip{background:rgba(255,255,255,0.02);padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,0.03)}
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-elevated);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--gold), var(--gold-2));
+            border-radius: 10px;
+        }
 
-    /* right card */
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:26px;border-radius:16px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 12px 40px rgba(2,6,23,0.6)}
-    .card h3{margin:0 0 8px 0}
-    .countdown{display:flex;gap:10px;justify-content:space-between}
-    .time{flex:1;background:rgba(255,255,255,0.03);padding:12px;border-radius:10px;text-align:center}
-    .time strong{display:block;font-size:20px}
-    .time small{display:block;color:#bfe8ea}
+        #particles-canvas {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
 
-    .subscribe{display:flex;gap:8px;margin-top:16px}
-    .subscribe input{flex:1;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
-    .subscribe button{padding:12px 14px;border-radius:10px;border:none;background:var(--accent);font-weight:700}
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 25px 30px;
+        }
 
-    /* animation */
-    .wrench{width:120px;height:120px;margin-left:auto;margin-right:auto;display:block}
-    @keyframes swing{0%{transform:rotate(0deg)}25%{transform:rotate(18deg)}50%{transform:rotate(-12deg)}75%{transform:rotate(10deg)}100%{transform:rotate(0deg)}}
-    .wrench svg{animation:swing 4s ease-in-out infinite}
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: sticky;
+            top: 16px;
+            z-index: 50;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 30px;
+            margin: 20px 0 40px;
+            background: rgba(15, 20, 33, 0.65);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-radius: 60px;
+            border: 1px solid var(--border);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
+            transition: 0.3s;
+            flex-wrap: wrap;
+        }
 
-    /* responsive */
-    @media (max-width:880px){.wrap{grid-template-columns:1fr;}.logo{width:68px;height:68px}.title{font-size:26px}.panel{padding:22px}.card{margin-top:6px}}
+        .navbar:hover {
+            border-color: rgba(249, 212, 35, 0.3);
+        }
 
-  </style>
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--gold), var(--gold-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            white-space: nowrap;
+        }
+
+        .logo i {
+            -webkit-text-fill-color: var(--gold);
+            font-size: 30px;
+            filter: drop-shadow(0 0 20px rgba(249, 212, 35, 0.3));
+        }
+
+        .logo .sub {
+            font-size: 16px;
+            -webkit-text-fill-color: var(--text-dimmer);
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            padding: 9px 18px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 15.5px;
+            transition: 0.25s;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(249, 212, 35, 0.1);
+            color: var(--gold);
+        }
+
+        .nav-links a.active {
+            background: linear-gradient(135deg, var(--gold), var(--gold-2));
+            color: #0a0e17;
+            box-shadow: 0 8px 24px rgba(249, 212, 35, 0.25);
+        }
+
+        .star-counter {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(249, 212, 35, 0.08);
+            border: 1px solid var(--border);
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-weight: 800;
+            font-size: 15px;
+            color: var(--gold);
+            white-space: nowrap;
+        }
+
+        .star-counter i {
+            font-size: 15px;
+        }
+        .star-counter.pulse {
+            animation: starPulse 0.5s ease;
+        }
+
+        @keyframes starPulse {
+            0% {
+                transform: scale(1);
+            }
+            35% {
+                transform: scale(1.18);
+                box-shadow: 0 0 0 8px rgba(249, 212, 35, 0);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        section {
+            padding: 50px 0 30px;
+            margin-bottom: 10px;
+            scroll-margin-top: 110px;
+        }
+
+        .section-title {
+            font-size: clamp(30px, 4.5vw, 44px);
+            font-weight: 800;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .section-title i {
+            color: var(--gold);
+            font-size: 0.85em;
+            filter: drop-shadow(0 0 30px rgba(249, 212, 35, 0.15));
+        }
+
+        .section-title .highlight {
+            background: linear-gradient(135deg, var(--gold), var(--gold-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-sub {
+            color: var(--text-dim);
+            font-size: 18px;
+            margin-bottom: 36px;
+            border-right: 4px solid var(--gold);
+            padding-right: 18px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: clamp(50px, 8vw, 80px) 20px 60px;
+            background: radial-gradient(ellipse at 50% 0%, rgba(249, 212, 35, 0.06), transparent 70%);
+            border-radius: 48px;
+            border: 1px solid rgba(249, 212, 35, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .orbit-wrap {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 640px;
+            height: 640px;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .orbit-ring {
+            position: absolute;
+            inset: 0;
+            border: 1px solid rgba(249, 212, 35, 0.08);
+            border-radius: 50%;
+        }
+        .orbit-ring.r2 {
+            inset: 60px;
+            animation: spin 40s linear infinite;
+        }
+        .orbit-ring.r3 {
+            inset: 120px;
+            animation: spin 60s linear infinite reverse;
+        }
+        .orbit-ring .dot {
+            position: absolute;
+            top: -4px;
+            right: 50%;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--gold);
+            box-shadow: 0 0 12px 3px rgba(249, 212, 35, 0.5);
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--gold);
+            background: rgba(249, 212, 35, 0.08);
+            border: 1px solid var(--border);
+            padding: 6px 18px;
+            border-radius: 30px;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 {
+            font-size: clamp(34px, 6vw, 68px);
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 .gold {
+            background: linear-gradient(135deg, var(--gold), var(--gold-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: clamp(16px, 2vw, 21px);
+            color: #b0bcdd;
+            max-width: 700px;
+            margin: 10px auto 26px;
+            line-height: 1.9;
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .hero-badge {
+            background: rgba(249, 212, 35, 0.07);
+            border: 1px solid var(--border);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            color: #e0e5f0;
+            transition: 0.3s;
+        }
+
+        .hero-badge i {
+            color: var(--gold);
+        }
+
+        .hero-badge:hover {
+            background: rgba(249, 212, 35, 0.14);
+            transform: translateY(-2px);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 8px;
+        }
+
+        .card-idea {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: var(--radius-lg);
+            padding: 30px 26px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.35s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-idea::before {
+            content: '';
+            position: absolute;
+            inset-inline: 0;
+            top: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            opacity: 0;
+            transition: 0.35s;
+        }
+
+        .card-idea:hover {
+            transform: translateY(-6px);
+            border-color: rgba(249, 212, 35, 0.2);
+            background: rgba(249, 212, 35, 0.03);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-idea:hover::before {
+            opacity: 1;
+        }
+
+        .card-idea .icon {
+            font-size: 36px;
+            color: var(--gold);
+            margin-bottom: 14px;
+            display: block;
+        }
+
+        .card-idea h3 {
+            font-size: 21px;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+        .card-idea p {
+            color: #9aa5c5;
+            line-height: 1.8;
+            font-size: 15.5px;
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-top: 8px;
+        }
+
+        .game-card {
+            background: radial-gradient(ellipse at top, rgba(249, 212, 35, 0.06), transparent);
+            border-radius: var(--radius-lg);
+            padding: 28px 22px 22px;
+            border: 1px solid rgba(249, 212, 35, 0.09);
+            text-align: center;
+            transition: 0.35s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(249, 212, 35, 0.3);
+            box-shadow: 0 30px 70px rgba(249, 212, 35, 0.06);
+        }
+
+        .game-card .game-icon {
+            font-size: 52px;
+            color: var(--gold);
+            margin-bottom: 10px;
+            display: block;
+            filter: drop-shadow(0 0 30px rgba(249, 212, 35, 0.12));
+        }
+
+        .game-card h3 {
+            font-size: 23px;
+            margin-bottom: 6px;
+        }
+        .game-card p {
+            color: #9aa5c5;
+            font-size: 15px;
+            margin-bottom: 14px;
+            line-height: 1.6;
+            min-height: 48px;
+        }
+
+        .play-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-2));
+            color: #0a0e17;
+            font-weight: 700;
+            padding: 11px 34px;
+            border-radius: 60px;
+            font-size: 16px;
+            transition: 0.25s;
+            border: none;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .play-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(249, 212, 35, 0.3);
+        }
+
+        .game-card .difficulty {
+            position: absolute;
+            top: 16px;
+            inset-inline-start: 16px;
+            background: rgba(249, 212, 35, 0.12);
+            padding: 4px 15px;
+            border-radius: 30px;
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--gold);
+            border: 1px solid var(--border);
+        }
+
+        .game-panel {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 36px;
+            padding: 28px;
+            border: 1px solid var(--border);
+        }
+
+        .game-panel-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-bottom: 22px;
+        }
+
+        .game-panel-head h2 {
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+        }
+
+        .head-right {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .stat-pill {
+            background: rgba(249, 212, 35, 0.08);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 14.5px;
+            border: 1px solid var(--border);
+        }
+
+        .close-btn {
+            background: rgba(255, 70, 70, 0.12);
+            border: 1px solid rgba(255, 70, 70, 0.25);
+            color: var(--coral);
+            padding: 9px 22px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 700;
+            font-family: inherit;
+            font-size: 14.5px;
+            transition: 0.2s;
+        }
+        .close-btn:hover {
+            background: rgba(255, 70, 70, 0.2);
+        }
+
+        .ghost-btn {
+            background: rgba(249, 212, 35, 0.1);
+            border: 1px solid var(--border);
+            padding: 10px 26px;
+            border-radius: 40px;
+            color: var(--gold);
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 15px;
+            transition: 0.2s;
+        }
+        .ghost-btn:hover {
+            background: rgba(249, 212, 35, 0.18);
+        }
+
+        .solid-btn {
+            background: linear-gradient(135deg, var(--gold), var(--gold-2));
+            border: none;
+            padding: 13px 36px;
+            border-radius: 60px;
+            font-weight: 800;
+            font-size: 17px;
+            color: #0a0e17;
+            cursor: pointer;
+            font-family: inherit;
+            transition: 0.2s;
+        }
+        .solid-btn:hover {
+            transform: scale(1.04);
+            box-shadow: 0 8px 28px rgba(249, 212, 35, 0.28);
+        }
+        .solid-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .feedback-line {
+            margin-top: 14px;
+            font-size: 17px;
+            min-height: 26px;
+            font-weight: 700;
+            text-align: center;
+        }
+        .feedback-line.good {
+            color: var(--teal);
+        }
+        .feedback-line.bad {
+            color: var(--coral);
+        }
+        .feedback-line.neutral {
+            color: var(--text-dim);
+        }
+
+        .text-input {
+            background: rgba(255, 255, 255, 0.06);
+            border: 2px solid var(--border);
+            color: #fff;
+            padding: 13px 22px;
+            border-radius: 50px;
+            font-size: 20px;
+            text-align: center;
+            outline: none;
+            font-family: inherit;
+            transition: 0.2s;
+        }
+        .text-input:focus {
+            border-color: var(--gold);
+        }
+
+        /* ===== MEMORY GAME - with images ===== */
+        #memoryBoard {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            max-width: 520px;
+            margin: 0 auto;
+            perspective: 600px;
+        }
+
+        .mem-card {
+            aspect-ratio: 1;
+            cursor: pointer;
+            position: relative;
+            border-radius: 16px;
+            min-height: 80px;
+        }
+
+        .mem-card .mem-inner {
+            position: absolute;
+            inset: 0;
+            transform-style: preserve-3d;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mem-card.flipped .mem-inner,
+        .mem-card.matched .mem-inner {
+            transform: rotateY(180deg);
+        }
+
+        .mem-face {
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backface-visibility: hidden;
+            border: 2px solid var(--border);
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .mem-back {
+            background: linear-gradient(145deg, rgba(249, 212, 35, 0.12), rgba(249, 212, 35, 0.03));
+            font-size: 40px;
+            color: var(--gold);
+        }
+
+        .mem-back i {
+            font-size: 48px;
+            opacity: 0.6;
+            animation: pulseStar 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseStar {
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+        }
+
+        .mem-front {
+            transform: rotateY(180deg);
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .mem-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 14px;
+            transition: 0.3s;
+        }
+
+        .mem-card.matched .mem-front {
+            border-color: rgba(78, 225, 160, 0.5);
+            box-shadow: 0 0 25px rgba(78, 225, 160, 0.15);
+        }
+
+        .mem-card.matched .mem-front img {
+            transform: scale(0.92);
+            filter: brightness(1.1);
+        }
+
+        /* ===== FLAG GAME ===== */
+        .flag-display {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .flag-display img {
+            width: 220px;
+            height: 147px;
+            border-radius: 16px;
+            border: 2px solid var(--border);
+            object-fit: cover;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            transition: 0.3s;
+        }
+
+        .flag-display img:hover {
+            transform: scale(1.02);
+            border-color: var(--gold);
+        }
+
+        .flag-input-area {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 16px 0;
+        }
+
+        .flag-input-area input {
+            width: 280px;
+            font-size: 18px;
+        }
+
+        .flag-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            max-width: 400px;
+            margin: 10px auto;
+        }
+
+        .flag-opt {
+            padding: 14px 12px;
+            border-radius: 18px;
+            border: 2px solid var(--border);
+            background: rgba(255, 255, 255, 0.04);
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 17px;
+            font-family: inherit;
+            color: var(--text);
+            transition: 0.15s;
+        }
+
+        .flag-opt:hover:not(:disabled) {
+            transform: translateY(-3px);
+            border-color: var(--gold);
+        }
+
+        .flag-opt.correct {
+            border-color: var(--teal);
+            background: rgba(78, 225, 160, 0.12);
+        }
+        .flag-opt.wrong {
+            border-color: var(--coral);
+            background: rgba(255, 70, 70, 0.12);
+        }
+        .flag-opt:disabled {
+            cursor: default;
+        }
+
+        /* ===== OTHER GAMES ===== */
+        #wordDisplay {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 22px;
+        }
+        .word-slot {
+            background: rgba(255, 255, 255, 0.05);
+            width: 44px;
+            height: 54px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            font-size: 26px;
+            font-weight: 800;
+            border-bottom: 3px solid var(--gold);
+            color: var(--text-dimmer);
+        }
+        .word-slot.filled {
+            color: var(--text);
+        }
+        #wordKeyboard {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        .key-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.15s;
+        }
+        .key-btn:hover:not(:disabled) {
+            background: rgba(249, 212, 35, 0.15);
+            border-color: var(--gold);
+        }
+        .key-btn.correct {
+            background: rgba(78, 225, 160, 0.18);
+            border-color: var(--teal);
+            color: var(--teal);
+        }
+        .key-btn.wrong {
+            background: rgba(255, 70, 70, 0.14);
+            border-color: var(--coral);
+            color: var(--coral);
+            opacity: 0.6;
+        }
+        .key-btn:disabled {
+            cursor: not-allowed;
+        }
+        .lives-row {
+            display: flex;
+            gap: 6px;
+            justify-content: center;
+            margin-top: 16px;
+            font-size: 20px;
+        }
+        .lives-row .lost {
+            opacity: 0.2;
+        }
+
+        #reactionBox {
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 30px;
+            padding: 50px 20px;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border: 2px solid rgba(249, 212, 35, 0.06);
+            transition: 0.25s;
+            cursor: pointer;
+        }
+        .reaction-history {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+        .reaction-chip {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 13.5px;
+            color: var(--text-dim);
+        }
+
+        .trivia-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .trivia-opt {
+            padding: 16px;
+            border-radius: 18px;
+            border: 2px solid var(--border);
+            background: rgba(255, 255, 255, 0.04);
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 16px;
+            font-family: inherit;
+            color: var(--text);
+            transition: 0.15s;
+        }
+        .trivia-opt:hover:not(:disabled) {
+            transform: translateY(-3px);
+            border-color: var(--gold);
+        }
+        .trivia-opt.correct {
+            border-color: var(--teal);
+            background: rgba(78, 225, 160, 0.12);
+        }
+        .trivia-opt.wrong {
+            border-color: var(--coral);
+            background: rgba(255, 70, 70, 0.12);
+        }
+        .trivia-opt:disabled {
+            cursor: default;
+        }
+
+        .simon-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            max-width: 320px;
+            margin: 10px auto 0;
+        }
+        .simon-btn {
+            aspect-ratio: 1;
+            border-radius: 24px;
+            border: none;
+            cursor: pointer;
+            opacity: 0.55;
+            transition: 0.12s;
+        }
+        .simon-btn.lit {
+            opacity: 1;
+            box-shadow: 0 0 40px 6px currentColor;
+            transform: scale(1.03);
+        }
+        .simon-btn:disabled {
+            cursor: default;
+        }
+        #simonTL {
+            background: #f9d423;
+            color: #f9d423;
+        }
+        #simonTR {
+            background: #4ee1a0;
+            color: #4ee1a0;
+        }
+        #simonBL {
+            background: #6ea8ff;
+            color: #6ea8ff;
+        }
+        #simonBR {
+            background: #ff6b6b;
+            color: #ff6b6b;
+        }
+
+        #typingText {
+            font-size: 28px;
+            font-weight: 700;
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            margin: 10px 0 20px;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 4px;
+            line-height: 1.8;
+        }
+        #typingText .char-correct {
+            color: var(--teal);
+        }
+        #typingText .char-wrong {
+            color: var(--coral);
+            text-decoration: underline;
+        }
+        #typingText .char-current {
+            background: rgba(249, 212, 35, 0.25);
+            border-radius: 4px;
+            padding: 0 3px;
+        }
+        #typingText .char-pending {
+            color: var(--text-dim);
+        }
+
+        .lesson-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .lesson-item {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 26px;
+            padding: 22px 28px;
+            border-right: 5px solid var(--gold);
+            transition: 0.25s;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .lesson-item:hover {
+            background: rgba(249, 212, 35, 0.04);
+            transform: translateX(-4px);
+        }
+        .lesson-item .lesson-icon {
+            font-size: 30px;
+            color: var(--gold);
+            width: 50px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .lesson-item .lesson-content {
+            flex: 1;
+            min-width: 200px;
+        }
+        .lesson-item .lesson-content h3 {
+            font-size: 20px;
+            color: var(--text);
+        }
+        .lesson-item .lesson-content p {
+            color: #9aa5c5;
+            margin-top: 4px;
+            font-size: 15px;
+        }
+        .lesson-item .lesson-tag {
+            background: rgba(249, 212, 35, 0.08);
+            padding: 4px 16px;
+            border-radius: 30px;
+            font-size: 13.5px;
+            color: var(--gold);
+            border: 1px solid var(--border);
+            white-space: nowrap;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 20px 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 50px;
+            color: var(--text-dimmer);
+        }
+        .footer i {
+            color: var(--gold);
+            margin: 0 5px;
+        }
+        .footer .heart {
+            color: var(--coral);
+        }
+
+        @media (max-width: 992px) {
+            .navbar {
+                flex-direction: column;
+                gap: 14px;
+                padding: 18px;
+                border-radius: 30px;
+            }
+            .nav-links {
+                justify-content: center;
+            }
+        }
+        @media (max-width: 600px) {
+            .game-grid,
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            .lesson-item {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 18px;
+            }
+            .hero-badges {
+                flex-direction: column;
+                align-items: center;
+            }
+            #memoryBoard {
+                max-width: 340px;
+                gap: 8px;
+            }
+            .mem-card {
+                min-height: 60px;
+            }
+            .flag-display img {
+                width: 160px;
+                height: 107px;
+            }
+            .flag-options,
+            .trivia-options {
+                grid-template-columns: 1fr;
+            }
+            #typingText {
+                font-size: 20px;
+                padding: 14px;
+            }
+            .flag-input-area input {
+                width: 200px;
+            }
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(32px);
+            animation: fadeUp 0.7s ease forwards;
+        }
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .delay-1 {
+            animation-delay: 0.06s;
+        }
+        .delay-2 {
+            animation-delay: 0.12s;
+        }
+        .delay-3 {
+            animation-delay: 0.18s;
+        }
+        .delay-4 {
+            animation-delay: 0.24s;
+        }
+        .delay-5 {
+            animation-delay: 0.3s;
+        }
+    </style>
 </head>
 <body>
-  <main class="wrap">
-    <section class="panel">
-      <div class="brand">
-        <div class="logo" aria-hidden="true">
-          <!-- simple bag icon -->
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M6 7V6a6 6 0 0112 0v1" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/>
-            <rect x="3" y="7" width="18" height="14" rx="3" stroke="#fff" stroke-width="1.6" opacity="0.95"/>
-            <path d="M8 11h8" stroke="#fff" stroke-width="1.6" stroke-linecap="round" opacity="0.95"/>
-          </svg>
+
+    <canvas id="particles-canvas"></canvas>
+
+    <div class="container">
+
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-star"></i> موهبة <span class="sub">| هوزان</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="active"><i class="fas fa-home"></i> الرئيسية</a>
+                <a href="#ideas"><i class="fas fa-lightbulb"></i> أفكار</a>
+                <a href="#games"><i class="fas fa-gamepad"></i> الألعاب</a>
+                <a href="#lessons"><i class="fas fa-chalkboard"></i> دروس</a>
+            </div>
+            <div class="star-counter" id="starCounter" aria-live="polite">
+                <i class="fas fa-star"></i> نجومك: <span id="starTotal">0</span>
+            </div>
+        </nav>
+
+        <section id="home">
+            <div class="hero fade-up">
+                <div class="orbit-wrap" aria-hidden="true">
+                    <div class="orbit-ring r2"><span class="dot"></span></div>
+                    <div class="orbit-ring r3"><span class="dot"></span></div>
+                </div>
+                <div class="hero-inner">
+                    <span class="hero-eyebrow"><i class="fas fa-sparkles"></i> برنامج رعاية الموهوبين</span>
+                    <h1>اكتشف <span class="gold">موهبتك</span><br />في ثانوية هوزان</h1>
+                    <p>
+                        منصة متكاملة لاكتشاف وتطوير القدرات العقلية والإبداعية لدى طلابنا،
+                        عبر أدوات تفاعلية وألعاب ذهنية ودروس نموذجية تصقل المواهب وتحفّز التفكير النقدي.
+                    </p>
+                    <div class="hero-badges">
+                        <span class="hero-badge"><i class="fas fa-users"></i> 20+ طالب</span>
+                        <span class="hero-badge"><i class="fas fa-trophy"></i> 18 جائزة</span>
+                        <span class="hero-badge"><i class="fas fa-brain"></i> 8 ألعاب عقلية</span>
+                        <span class="hero-badge"><i class="fas fa-rocket"></i> برامج مبتكرة</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ideas">
+            <div class="section-title fade-up"><i class="fas fa-lightbulb"></i><span class="highlight">أفكار</span> لتنمية العقل</div>
+            <div class="section-sub fade-up delay-1">استراتيجيات عملية لتحفيز التفكير والإبداع</div>
+
+            <div class="cards-grid">
+                <div class="card-idea fade-up delay-1">
+                    <span class="icon"><i class="fas fa-puzzle-piece"></i></span>
+                    <h3>التفكير التصميمي</h3>
+                    <p>حل المشكلات الواقعية عبر منهجية التفكير التصميمي: تعاطف، تعريف، أفكار، نموذج، اختبار.</p>
+                </div>
+                <div class="card-idea fade-up delay-2">
+                    <span class="icon"><i class="fas fa-chess-queen"></i></span>
+                    <h3>ألعاب استراتيجية</h3>
+                    <p>الشطرنج، كوتشينة، وألعاب إدارة الموارد تنمي التخطيط طويل المدى والمرونة الذهنية.</p>
+                </div>
+                <div class="card-idea fade-up delay-3">
+                    <span class="icon"><i class="fas fa-code"></i></span>
+                    <h3>برمجة ولغات</h3>
+                    <p>تعليم البرمجة (Python، Scratch) واللغات الأجنبية ينشط مناطق التعلم والذاكرة.</p>
+                </div>
+                <div class="card-idea fade-up delay-1">
+                    <span class="icon"><i class="fas fa-microphone-alt"></i></span>
+                    <h3>مناظرات ووعي</h3>
+                    <p>جلسات مناظرة حول مواضيع علمية وفلسفية تنمي المنطق والحجاج وسرعة البديهة.</p>
+                </div>
+                <div class="card-idea fade-up delay-2">
+                    <span class="icon"><i class="fas fa-drafting-compass"></i></span>
+                    <h3>مشاريع بحثية</h3>
+                    <p>تشجيع الطلاب على تقديم أبحاث مصغرة في مجالات العلوم والتكنولوجيا والابتكار.</p>
+                </div>
+                <div class="card-idea fade-up delay-3">
+                    <span class="icon"><i class="fas fa-heartbeat"></i></span>
+                    <h3>العقل والجسد</h3>
+                    <p>تمارين التنفس، التأمل، والرياضة اليومية تحسن التركيز وتقلل التوتر وتعزز الأداء العقلي.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="games">
+            <div class="section-title fade-up"><i class="fas fa-gamepad"></i><span class="highlight">ألعاب</span> تفاعلية ممتعة</div>
+            <div class="section-sub fade-up delay-1">كل إجابة صحيحة تمنحك نجومًا تُضاف إلى رصيدك</div>
+
+            <div class="game-grid">
+                <div class="game-card fade-up delay-1">
+                    <span class="difficulty">⭐ سهل</span>
+                    <span class="game-icon"><i class="fas fa-images"></i></span>
+                    <h3>تحدي الذاكرة</h3>
+                    <p>اختبر ذاكرتك البصرية وتذكر أماكن الصور المتطابقة.</p>
+                    <button class="play-btn" onclick="showGame('memory')"><i class="fas fa-play"></i> العب الآن</button>
+                </div>
+                <div class="game-card fade-up delay-2">
+                    <span class="difficulty">⭐⭐ متوسط</span>
+                    <span class="game-icon"><i class="fas fa-flag"></i></span>
+                    <h3>أعلام الدول</h3>
+                    <p>شاهد العلم واكتب اسم الدولة الصحيح.</p>
+                    <button class="play-btn" onclick="showGame('flags')"><i class="fas fa-play"></i> العب الآن</button>
+                </div>
+                <div class="game-card fade-up delay-3">
+                    <span class="difficulty">⭐⭐⭐ صعب</span>
+                    <span class="game-icon"><i class="fas fa-globe-americas"></i></span>
+                    <h3>جغرافيا الدول</h3>
+                    <p>اختر الدولة الصحيحة من خلال مشاهدة العلم.</p>
+                    <button class="play-btn" onclick="showGame('geography')"><i class="fas fa-play"></i> العب الآن</button>
+                </div>
+                <div class="game-card fade-up delay-4">
+                    <span class="difficulty">⭐⭐ متوسط</span>
+                    <span class="game-icon"><i class="fas fa-question-circle"></i></span>
+                    <h3>ثقافة عامة</h3>
+                    <p>أسئلة متنوعة في الثقافة والعلوم والتاريخ.</p>
+                    <button class="play-btn" onclick="showGame('trivia')"><i class="fas fa-play"></i> العب الآن</button>
+                </div>
+                <div class="game-card fade-up delay-5">
+                    <span class="difficulty">⭐ سهل</span>
+                    <span class="game-icon"><i class="fas fa-keyboard"></i></span>
+                    <h3>سرعة الكتابة</h3>
+                    <p>اكتب النص المعروض بأسرع ما يمكن مع أقل أخطاء.</p>
+                    <button class="play-btn" onclick="showGame('typing')"><i class="fas fa-play"></i> العب الآن</button>
+                </div>
+                <div class="game-card fade-up delay-1">
+                    <span class="difficulty">⭐⭐ متوسط</span>
+                    <span class="game-icon"><i class="fas fa-bolt"></i></span>
+                    <h3>سرعة البديهة</h3>
+                    <p>اختبر زمن رد فعلك واضغط عند ظهور الإشارة.</p>
+                    <button class="play-btn" onclick="showGame('reaction')"><i class="fas fa-play"></i> العب الآن</button>
+                </div>
+                <div class="game-card fade-up delay-2">
+                    <span class="difficulty">⭐⭐⭐ صعب</span>
+                    <span class="game-icon"><i class="fas fa-th-large"></i></span>
+                    <h3>سلسلة الألوان</h3>
+                    <p>احفظ التسلسل المتزايد للأضواء وكرره بالترتيب.</p>
+                    <button class="play-btn" onclick="showGame('simon')"><i class="fas fa-play"></i> العب الآن</button>
+                </div>
+                <div class="game-card fade-up delay-3">
+                    <span class="difficulty">⭐⭐ متوسط</span>
+                    <span class="game-icon"><i class="fas fa-sort-numeric-up"></i></span>
+                    <h3>سلسلة الأرقام</h3>
+                    <p>أكمل المتتالية المنطقية واختبر ذكاءك الاستنتاجي.</p>
+                    <button class="play-btn" onclick="showGame('sequence')"><i class="fas fa-play"></i> العب الآن</button>
+                </div>
+            </div>
+        </section>
+
+        <div id="game-areas" style="margin: 10px 0 30px;">
+
+            <!-- ===== MEMORY GAME ===== -->
+            <div id="game-memory" class="game-area-container" style="display:none;">
+                <div class="game-panel">
+                    <div class="game-panel-head">
+                        <h2><i class="fas fa-images"></i> تحدي الذاكرة</h2>
+                        <div class="head-right">
+                            <span class="stat-pill"><i class="fas fa-shoe-prints"></i> المحاولات: <span id="memoryAttempts">0</span></span>
+                            <span class="stat-pill"><i class="fas fa-star"></i> متطابق: <span id="memoryMatchedCount">0</span>/8</span>
+                            <button class="close-btn" onclick="closeGame()"><i class="fas fa-times"></i> إغلاق</button>
+                        </div>
+                    </div>
+                    <div id="memoryBoard"></div>
+                    <div style="text-align:center; margin-top:20px;">
+                        <button class="solid-btn" onclick="initMemoryGame()"><i class="fas fa-redo"></i> لعبة جديدة</button>
+                    </div>
+                    <div id="memoryStatus" class="feedback-line neutral" aria-live="polite"></div>
+                </div>
+            </div>
+
+            <!-- ===== FLAGS GAME ===== -->
+            <div id="game-flags" class="game-area-container" style="display:none;">
+                <div class="game-panel">
+                    <div class="game-panel-head">
+                        <h2><i class="fas fa-flag"></i> أعلام الدول</h2>
+                        <div class="head-right">
+                            <span class="stat-pill"><i class="fas fa-fire"></i> السلسلة: <span id="flagStreak">0</span></span>
+                            <span class="stat-pill"><i class="fas fa-trophy"></i> النقاط: <span id="flagScore">0</span></span>
+                            <button class="close-btn" onclick="closeGame()"><i class="fas fa-times"></i> إغلاق</button>
+                        </div>
+                    </div>
+                    <div class="flag-display">
+                        <div id="flagImage"><img src="https://flagcdn.com/w320/sa.png" alt="علم الدولة" id="flagImg"></div>
+                        <div style="font-size:20px; color:var(--text-dim); margin:12px 0;">ما اسم هذه الدولة؟</div>
+                        <div class="flag-input-area">
+                            <input type="text" id="flagInput" class="text-input" placeholder="اكتب اسم الدولة..." style="width:280px;">
+                            <button class="solid-btn" onclick="checkFlagAnswer()"><i class="fas fa-check"></i> تحقق</button>
+                        </div>
+                        <div id="flagFeedback" class="feedback-line neutral" aria-live="polite"></div>
+                        <button class="ghost-btn" style="margin-top:12px;" onclick="nextFlagQuestion()"><i class="fas fa-forward"></i> سؤال جديد</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== GEOGRAPHY GAME ===== -->
+            <div id="game-geography" class="game-area-container" style="display:none;">
+                <div class="game-panel">
+                    <div class="game-panel-head">
+                        <h2><i class="fas fa-globe-americas"></i> جغرافيا الدول</h2>
+                        <div class="head-right">
+                            <span class="stat-pill"><i class="fas fa-fire"></i> السلسلة: <span id="geoStreak">0</span></span>
+                            <span class="stat-pill"><i class="fas fa-trophy"></i> النقاط: <span id="geoScore">0</span></span>
+                            <button class="close-btn" onclick="closeGame()"><i class="fas fa-times"></i> إغلاق</button>
+                        </div>
+                    </div>
+                    <div style="text-align:center; padding:10px 0;">
+                        <div style="font-size:20px; color:var(--text-dim); margin-bottom:10px;">اختر الدولة الصحيحة لهذا العلم:</div>
+                        <div id="geoFlagDisplay"><img src="https://flagcdn.com/w320/sa.png" alt="علم الدولة" style="width:200px; height:133px; border-radius:16px; border:2px solid var(--border); object-fit:cover;"></div>
+                        <div class="flag-options" id="geoOptions"></div>
+                        <div id="geoFeedback" class="feedback-line neutral" aria-live="polite"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== TRIVIA GAME ===== -->
+            <div id="game-trivia" class="game-area-container" style="display:none;">
+                <div class="game-panel">
+                    <div class="game-panel-head">
+                        <h2><i class="fas fa-question-circle"></i> ثقافة عامة</h2>
+                        <div class="head-right">
+                            <span class="stat-pill"><i class="fas fa-fire"></i> السلسلة: <span id="triviaStreak">0</span></span>
+                            <span class="stat-pill"><i class="fas fa-trophy"></i> النقاط: <span id="triviaScore">0</span></span>
+                            <button class="close-btn" onclick="closeGame()"><i class="fas fa-times"></i> إغلاق</button>
+                        </div>
+                    </div>
+                    <div style="text-align:center; padding:10px 0;">
+                        <div id="triviaQuestion" style="font-size:20px; font-weight:700; padding:20px; min-height:60px; color:var(--text);">ما هي عاصمة فرنسا؟</div>
+                        <div class="trivia-options" id="triviaOptions"></div>
+                        <div id="triviaFeedback" class="feedback-line neutral" aria-live="polite"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== TYPING GAME ===== -->
+            <div id="game-typing" class="game-area-container" style="display:none;">
+                <div class="game-panel">
+                    <div class="game-panel-head">
+                        <h2><i class="fas fa-keyboard"></i> سرعة الكتابة</h2>
+                        <div class="head-right">
+                            <span class="stat-pill"><i class="fas fa-stopwatch"></i> <span id="typingTimer">0</span> ث</span>
+                            <span class="stat-pill"><i class="fas fa-tachometer-alt"></i> سرعة: <span id="typingSpeed">0</span> ك/د</span>
+                            <button class="close-btn" onclick="closeGame()"><i class="fas fa-times"></i> إغلاق</button>
+                        </div>
+                    </div>
+                    <div style="text-align:center; padding:10px 0;">
+                        <div id="typingText"></div>
+                        <input type="text" id="typingInput" class="text-input" style="width:100%; max-width:500px; font-size:22px;" placeholder="ابدأ الكتابة هنا..." autofocus>
+                        <div id="typingFeedback" class="feedback-line neutral" aria-live="polite"></div>
+                        <button class="solid-btn" style="margin-top:12px;" onclick="initTypingGame()"><i class="fas fa-redo"></i> نص جديد</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== REACTION GAME ===== -->
+            <div id="game-reaction" class="game-area-container" style="display:none;">
+                <div class="game-panel">
+                    <div class="game-panel-head">
+                        <h2><i class="fas fa-bolt"></i> سرعة البديهة</h2>
+                        <div class="head-right">
+                            <span class="stat-pill"><i class="fas fa-clock"></i> أسرع: <span id="reactionBest">--</span> ث</span>
+                            <button class="close-btn" onclick="closeGame()"><i class="fas fa-times"></i> إغلاق</button>
+                        </div>
+                    </div>
+                    <div style="text-align:center; padding:20px 0;">
+                        <div id="reactionBox" onclick="reactionBoxClick()" role="button" tabindex="0">
+                            <div id="reactionStatus" style="font-size:26px; color:#8892b0;">اضغط "ابدأ"</div>
+                            <div id="reactionTime" style="font-size:44px; font-weight:800; color:var(--gold); margin-top:10px;"></div>
+                        </div>
+                        <button id="reactionStartBtn" class="solid-btn" style="margin-top:20px;" onclick="startReactionGame(event)"><i class="fas fa-play"></i> ابدأ</button>
+                        <div class="reaction-history" id="reactionHistory"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== SIMON GAME ===== -->
+            <div id="game-simon" class="game-area-container" style="display:none;">
+                <div class="game-panel">
+                    <div class="game-panel-head">
+                        <h2><i class="fas fa-th-large"></i> سلسلة الألوان</h2>
+                        <div class="head-right">
+                            <span class="stat-pill"><i class="fas fa-layer-group"></i> المستوى: <span id="simonLevel">0</span></span>
+                            <button class="close-btn" onclick="closeGame()"><i class="fas fa-times"></i> إغلاق</button>
+                        </div>
+                    </div>
+                    <div style="text-align:center;">
+                        <div class="simon-grid">
+                            <button class="simon-btn" id="simonTL" onclick="simonPlayerClick(0)"></button>
+                            <button class="simon-btn" id="simonTR" onclick="simonPlayerClick(1)"></button>
+                            <button class="simon-btn" id="simonBL" onclick="simonPlayerClick(2)"></button>
+                            <button class="simon-btn" id="simonBR" onclick="simonPlayerClick(3)"></button>
+                        </div>
+                        <div id="simonFeedback" class="feedback-line neutral" style="margin-top:18px;"></div>
+                        <button class="solid-btn" style="margin-top:6px;" onclick="startSimonGame()"><i class="fas fa-play"></i> ابدأ / أعد التشغيل</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== SEQUENCE GAME ===== -->
+            <div id="game-sequence" class="game-area-container" style="display:none;">
+                <div class="game-panel">
+                    <div class="game-panel-head">
+                        <h2><i class="fas fa-sort-numeric-up"></i> سلسلة الأرقام</h2>
+                        <div class="head-right">
+                            <span class="stat-pill"><i class="fas fa-star"></i> النقاط: <span id="seqScore">0</span></span>
+                            <button class="close-btn" onclick="closeGame()"><i class="fas fa-times"></i> إغلاق</button>
+                        </div>
+                    </div>
+                    <div style="text-align:center; padding:20px 0;">
+                        <div style="font-size:30px; font-weight:700; color:#f0f0f5; background:rgba(0,0,0,0.2); padding:20px; border-radius:28px; max-width:420px; margin:0 auto 22px; letter-spacing:6px;" id="sequenceDisplay">2, 5, 10, 17, ?</div>
+                        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+                            <input type="number" id="sequenceAnswer" placeholder="أدخل الرقم" class="text-input" style="width:180px;" inputmode="numeric">
+                            <button class="solid-btn" onclick="checkSequenceGame()"><i class="fas fa-check"></i> تحقق</button>
+                        </div>
+                        <div id="seqFeedback" class="feedback-line neutral" aria-live="polite"></div>
+                        <div style="display:flex; gap:10px; justify-content:center; margin-top:8px;">
+                            <button class="ghost-btn" onclick="toggleSeqHint()"><i class="fas fa-lightbulb"></i> تلميح</button>
+                            <button class="ghost-btn" onclick="nextSequence()"><i class="fas fa-forward"></i> التالي</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <div>
-          <h1>دحوم ستور</h1>
-          <p>نأسف للإزعاج — الموقع حاليًا تحت الصيانة لتحسين الأداء وإضافة ميزات جديدة.</p>
+
+        <section id="lessons">
+            <div class="section-title fade-up"><i class="fas fa-chalkboard-teacher"></i><span class="highlight">دروس</span> نموذجية</div>
+            <div class="section-sub fade-up delay-1">أفكار مبتكرة لحصص تعليمية ملهمة</div>
+
+            <div class="lesson-list">
+                <div class="lesson-item fade-up delay-1">
+                    <span class="lesson-icon"><i class="fas fa-flask"></i></span>
+                    <div class="lesson-content">
+                        <h3>مختبر الابتكار العلمي</h3>
+                        <p>حصة تفاعلية يجري فيها الطلاب تجارب بسيطة (كيمياء، فيزياء) ثم يحللون النتائج ويقترحون تطبيقات حياتية.</p>
+                    </div>
+                    <span class="lesson-tag">🔬 علوم</span>
+                </div>
+                <div class="lesson-item fade-up delay-2">
+                    <span class="lesson-icon"><i class="fas fa-robot"></i></span>
+                    <div class="lesson-content">
+                        <h3>الروبوتات والذكاء الاصطناعي</h3>
+                        <p>تعريف الطلاب بأساسيات الذكاء الاصطناعي عبر مشاريع عملية (تصنيف صور، محادثات بسيطة) باستخدام منصات سهلة.</p>
+                    </div>
+                    <span class="lesson-tag">🤖 تقنية</span>
+                </div>
+                <div class="lesson-item fade-up delay-3">
+                    <span class="lesson-icon"><i class="fas fa-book-open"></i></span>
+                    <div class="lesson-content">
+                        <h3>نادي القراءة النقدية</h3>
+                        <p>قراءة نصوص أدبية أو علمية ومناقشتها من زوايا متعددة، مع تدريب على كتابة مراجعات نقدية وتلخيص.</p>
+                    </div>
+                    <span class="lesson-tag">📚 أدب</span>
+                </div>
+                <div class="lesson-item fade-up delay-4">
+                    <span class="lesson-icon"><i class="fas fa-globe-americas"></i></span>
+                    <div class="lesson-content">
+                        <h3>حل مشكلات مجتمعية</h3>
+                        <p>يقترح الطلاب حلولاً مبتكرة لمشكلات محلية (بيئية، اجتماعية) ويعرضونها كخطة عمل قابلة للتنفيذ.</p>
+                    </div>
+                    <span class="lesson-tag">🌍 اجتماعي</span>
+                </div>
+                <div class="lesson-item fade-up delay-5">
+                    <span class="lesson-icon"><i class="fas fa-music"></i></span>
+                    <div class="lesson-content">
+                        <h3>الإيقاع والتركيز</h3>
+                        <p>استخدام الإيقاعات الموسيقية لتحسين التركيز وحل التمارين، مع تطبيقات على الربط بين الموسيقى والرياضيات.</p>
+                    </div>
+                    <span class="lesson-tag">🎵 إبداع</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="footer">
+            <i class="fas fa-graduation-cap"></i> ثانوية هوزان · برنامج موهبة
+            <i class="fas fa-star" style="color:var(--gold);"></i> 2026
+            <i class="fas fa-heart heart"></i>
+            <br />
+            <span style="font-size:14px; color:#4a5470;">صممناها بحب لتنمية العقول</span>
         </div>
-      </div>
 
-      <h2 class="title">رجوع أقرب وقت ممكن</h2>
-      <p class="desc">فريق دحوم يعمل على تحديث الموقع ليصبح أسرع وأسهل في الاستخدام. إذا عندك طلب مستعجل تقدر تراسلنا على البريد أو تتابعنا عبر حسابنا.</p>
+    </div>
 
-      <div class="actions">
-        <button class="btn primary" onclick="openMail()">راسلنا الآن</button>
-        <button class="btn ghost" onclick="goHome()">العودة للصفحة الرئيسية</button>
-      </div>
+    <script>
+        // =====================================================
+        // GLOBAL STAR COUNTER
+        // =====================================================
+        let totalStars = 0;
 
-      <div class="meta">
-        <div class="chip">مدة الصيانة: تقريبًا 42 ساعة</div>
-        <div class="chip">حالة: جاري العمل 🔧</div>
-      </div>
-    </section>
+        function addStars(n) {
+            totalStars += n;
+            const el = document.getElementById('starTotal');
+            const wrap = document.getElementById('starCounter');
+            el.textContent = totalStars;
+            wrap.classList.remove('pulse');
+            void wrap.offsetWidth;
+            wrap.classList.add('pulse');
+        }
 
-    <aside class="card">
-      <div style="text-align:center">
-        <div class="wrench" aria-hidden="true">
-          <!-- animated wrench SVG -->
-          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-            <path d="M48.4 15.6l.5-.5a6 6 0 10-8.5-8.4l-.6.7L27 19l8.9 8.9 12.5-12.3z" fill="#ffd166" opacity="0.95"/>
-            <path d="M21 42l-7 7 4 4 7-7 21-21-4-4L21 42z" fill="#0ea5a6" opacity="0.95"/>
-          </svg>
-        </div>
-        <h3>تاريخ انتهاء الصيانة المتوقع</h3>
-        <p style="margin:6px 0 14px;color:#bfe8ea">التاريخ: <strong id="eta">قريبًا</strong></p>
-      </div>
+        // =====================================================
+        // PARTICLES
+        // =====================================================
+        (function() {
+            const canvas = document.getElementById('particles-canvas');
+            const ctx = canvas.getContext('2d');
+            let w, h;
+            const particles = [];
+            const COUNT = 70;
 
-      <div class="countdown" role="timer" aria-live="polite">
-        <div class="time"><strong id="days">--</strong><small>أيام</small></div>
-        <div class="time"><strong id="hrs">--</strong><small>ساعات</small></div>
-        <div class="time"><strong id="mins">--</strong><small>دقائق</small></div>
-        <div class="time"><strong id="secs">--</strong><small>ثواني</small></div>
-      </div>
+            function resize() {
+                w = canvas.width = window.innerWidth;
+                h = canvas.height = window.innerHeight;
+            }
+            window.addEventListener('resize', resize);
+            resize();
 
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * w;
+                    this.y = Math.random() * h;
+                    this.size = Math.random() * 2 + 1.5;
+                    this.speedX = (Math.random() - 0.5) * 0.35;
+                    this.speedY = (Math.random() - 0.5) * 0.35;
+                    this.opacity = Math.random() * 0.4 + 0.15;
+                }
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    if (this.x < 0 || this.x > w) this.speedX *= -1;
+                    if (this.y < 0 || this.y > h) this.speedY *= -1;
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(249, 212, 35, ${this.opacity})`;
+                    ctx.fill();
+                }
+            }
 
+            for (let i = 0; i < COUNT; i++) particles.push(new Particle());
 
+            function drawLines() {
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 140) {
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.strokeStyle = `rgba(249, 212, 35, ${0.06 * (1 - dist / 140)})`;
+                            ctx.lineWidth = 0.7;
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
 
-  <script>
-    // Simple helpers
-    function openMail(){ window.location.href='mailto:support@dhoomstore.com?subject=استفسار%20حول%20الصيانة'; }
-    function goHome(){ window.location.href='/'; }
-    function subscribe(){
-      const email = document.getElementById('email').value.trim();
-      if(!email){ alert('دخل بريد إلكتروني صالح'); return; }
-      alert('شكرًا! تم تسجيل بريدك للاطلاع على التحديثات.');
-      document.getElementById('email').value = '';
-    }
+            function animate() {
+                ctx.clearRect(0, 0, w, h);
+                particles.forEach(p => { p.update();
+                    p.draw(); });
+                drawLines();
+                requestAnimationFrame(animate);
+            }
+            animate();
+        })();
 
-    // Countdown example (set to +24 hours by default)
-    const target = new Date(Date.now() + 42*60*60*1000);
-    document.getElementById('eta').textContent = target.toLocaleString('ar-EG',{weekday:'long',year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit'});
+        // =====================================================
+        // NAV
+        // =====================================================
+        const navLinks = document.querySelectorAll('.nav-links a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
 
-    function tick(){
-      const now = new Date();
-      const diff = Math.max(0, target - now);
-      const days = Math.floor(diff / (1000*60*60*24));
-      const hrs = Math.floor(diff / (1000*60*60)) % 24;
-      const mins = Math.floor(diff / (1000*60)) % 60;
-      const secs = Math.floor(diff / 1000) % 60;
-      document.getElementById('days').textContent = String(days).padStart(2,'0');
-      document.getElementById('hrs').textContent = String(hrs).padStart(2,'0');
-      document.getElementById('mins').textContent = String(mins).padStart(2,'0');
-      document.getElementById('secs').textContent = String(secs).padStart(2,'0');
-      if(diff<=0) clearInterval(timer);
-    }
-    tick();
-    const timer = setInterval(tick,1000);
-  </script>
+        const sections = ['home', 'ideas', 'games', 'lessons'].map(id => document.getElementById(id));
+        const spy = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    const match = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+                    if (match) match.classList.add('active');
+                }
+            });
+        }, { rootMargin: '-45% 0px -50% 0px' });
+        sections.forEach(s => s && spy.observe(s));
+
+        // =====================================================
+        // SHOW / CLOSE GAME
+        // =====================================================
+        function showGame(gameId) {
+            document.querySelectorAll('.game-area-container').forEach(el => el.style.display = 'none');
+            const target = document.getElementById('game-' + gameId);
+            if (target) {
+                target.style.display = 'block';
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            if (gameId === 'memory') initMemoryGame();
+            if (gameId === 'flags') initFlagsGame();
+            if (gameId === 'geography') initGeographyGame();
+            if (gameId === 'trivia') initTriviaGame();
+            if (gameId === 'typing') initTypingGame();
+            if (gameId === 'reaction') initReactionGame();
+            if (gameId === 'simon') initSimonGame();
+            if (gameId === 'sequence') initSequenceGame();
+        }
+
+        function closeGame() {
+            document.querySelectorAll('.game-area-container').forEach(el => el.style.display = 'none');
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeGame();
+        });
+
+        // =====================================================
+        // GAME 1: MEMORY (with images - using multiple sources)
+        // =====================================================
+        // Using a mix of reliable image sources
+        const imageSets = [
+            'https://picsum.photos/seed/animal1/200/200',
+            'https://picsum.photos/seed/nature2/200/200',
+            'https://picsum.photos/seed/city3/200/200',
+            'https://picsum.photos/seed/space4/200/200',
+            'https://picsum.photos/seed/flower5/200/200',
+            'https://picsum.photos/seed/mountain6/200/200',
+            'https://picsum.photos/seed/ocean7/200/200',
+            'https://picsum.photos/seed/forest8/200/200',
+            // Additional fallback images
+            'https://picsum.photos/200/200?random=10',
+            'https://picsum.photos/200/200?random=11',
+            'https://picsum.photos/200/200?random=12',
+            'https://picsum.photos/200/200?random=13',
+        ];
+
+        let memoryCards = [],
+            memoryFlipped = [],
+            memoryMatched = [],
+            memoryLock = false,
+            memoryAttempts = 0,
+            memoryStarsGiven = false;
+
+        function initMemoryGame() {
+            const status = document.getElementById('memoryStatus');
+            memoryAttempts = 0;
+            memoryStarsGiven = false;
+            document.getElementById('memoryAttempts').textContent = '0';
+            document.getElementById('memoryMatchedCount').textContent = '0';
+            status.textContent = 'اقلب بطاقتين متطابقتين';
+            status.className = 'feedback-line neutral';
+
+            // Choose 8 random images from the pool
+            const shuffledPool = [...imageSets].sort(() => Math.random() - 0.5);
+            const selected = shuffledPool.slice(0, 8);
+            let deck = [...selected, ...selected];
+            for (let i = deck.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [deck[i], deck[j]] = [deck[j], deck[i]];
+            }
+            memoryCards = deck;
+            memoryFlipped = [];
+            memoryMatched = [];
+            memoryLock = false;
+            renderMemoryBoard();
+        }
+
+        function renderMemoryBoard() {
+            const board = document.getElementById('memoryBoard');
+            board.innerHTML = '';
+            memoryCards.forEach((imgUrl, index) => {
+                const isFlipped = memoryFlipped.includes(index);
+                const isMatched = memoryMatched.includes(index);
+                const card = document.createElement('div');
+                card.className = 'mem-card' + (isFlipped ? ' flipped' : '') + (isMatched ? ' matched' : '');
+                card.setAttribute('tabindex', '0');
+                card.setAttribute('role', 'button');
+                card.innerHTML = `
+                        <div class="mem-inner">
+                            <div class="mem-face mem-back"><i class="fas fa-star"></i></div>
+                            <div class="mem-face mem-front"><img src="${imgUrl}" alt="صورة" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%23222%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%22 y=%22110%22 font-size=%2224%22 fill=%22%23f9d423%22 font-family=%22sans-serif%22%3E?%3C/text%3E%3C/svg%3E'"></div>
+                        </div>`;
+                card.addEventListener('click', () => flipMemoryCard(index));
+                card.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault();
+                        flipMemoryCard(index); } });
+                board.appendChild(card);
+            });
+            document.getElementById('memoryMatchedCount').textContent = memoryMatched.length / 2;
+        }
+
+        function flipMemoryCard(index) {
+            if (memoryLock || memoryMatched.includes(index) || memoryFlipped.includes(index) || memoryFlipped.length >= 2)
+                return;
+
+            memoryFlipped.push(index);
+            renderMemoryBoard();
+
+            if (memoryFlipped.length === 2) {
+                memoryLock = true;
+                memoryAttempts++;
+                document.getElementById('memoryAttempts').textContent = memoryAttempts;
+                const [i1, i2] = memoryFlipped;
+                if (memoryCards[i1] === memoryCards[i2]) {
+                    memoryMatched.push(i1, i2);
+                    memoryFlipped = [];
+                    memoryLock = false;
+                    renderMemoryBoard();
+                    document.getElementById('memoryMatchedCount').textContent = memoryMatched.length / 2;
+                    if (memoryMatched.length === memoryCards.length && !memoryStarsGiven) {
+                        memoryStarsGiven = true;
+                        const bonus = memoryAttempts <= 10 ? 8 : 5;
+                        const status = document.getElementById('memoryStatus');
+                        status.textContent = `🎉 أحسنت! أكملت اللعبة في ${memoryAttempts} محاولة (+${bonus} نجوم)`;
+                        status.className = 'feedback-line good';
+                        addStars(bonus);
+                    }
+                } else {
+                    setTimeout(() => {
+                        memoryFlipped = [];
+                        memoryLock = false;
+                        renderMemoryBoard();
+                    }, 800);
+                }
+            }
+        }
+
+        // =====================================================
+        // GAME 2: FLAGS (شاهد العلم واكتب اسم الدولة)
+        // =====================================================
+        const flagData = [
+            { code: 'sa', name: 'السعودية' },
+            { code: 'eg', name: 'مصر' },
+            { code: 'ae', name: 'الإمارات' },
+            { code: 'kw', name: 'الكويت' },
+            { code: 'qa', name: 'قطر' },
+            { code: 'om', name: 'عمان' },
+            { code: 'bh', name: 'البحرين' },
+            { code: 'jo', name: 'الأردن' },
+            { code: 'lb', name: 'لبنان' },
+            { code: 'ps', name: 'فلسطين' },
+            { code: 'dz', name: 'الجزائر' },
+            { code: 'ma', name: 'المغرب' },
+            { code: 'tn', name: 'تونس' },
+            { code: 'ly', name: 'ليبيا' },
+            { code: 'sd', name: 'السودان' },
+            { code: 'ye', name: 'اليمن' },
+            { code: 'sy', name: 'سوريا' },
+            { code: 'iq', name: 'العراق' },
+            { code: 'tr', name: 'تركيا' },
+            { code: 'ir', name: 'إيران' },
+            { code: 'pk', name: 'باكستان' },
+            { code: 'in', name: 'الهند' },
+            { code: 'cn', name: 'الصين' },
+            { code: 'jp', name: 'اليابان' },
+            { code: 'kr', name: 'كوريا الجنوبية' },
+            { code: 'us', name: 'الولايات المتحدة' },
+            { code: 'gb', name: 'بريطانيا' },
+            { code: 'fr', name: 'فرنسا' },
+            { code: 'de', name: 'ألمانيا' },
+            { code: 'it', name: 'إيطاليا' },
+            { code: 'es', name: 'إسبانيا' },
+            { code: 'ru', name: 'روسيا' },
+            { code: 'br', name: 'البرازيل' },
+            { code: 'ar', name: 'الأرجنتين' },
+            { code: 'ca', name: 'كندا' },
+            { code: 'au', name: 'أستراليا' },
+        ];
+
+        let flagScore = 0,
+            flagStreak = 0,
+            flagCurrent = null,
+            flagAnswered = false;
+
+        function initFlagsGame() {
+            flagScore = 0;
+            flagStreak = 0;
+            document.getElementById('flagScore').textContent = '0';
+            document.getElementById('flagStreak').textContent = '0';
+            document.getElementById('flagFeedback').textContent = '';
+            nextFlagQuestion();
+        }
+
+        function nextFlagQuestion() {
+            flagCurrent = flagData[Math.floor(Math.random() * flagData.length)];
+            document.getElementById('flagImg').src = `https://flagcdn.com/w320/${flagCurrent.code}.png`;
+            document.getElementById('flagImg').alt = `علم ${flagCurrent.name}`;
+            document.getElementById('flagInput').value = '';
+            document.getElementById('flagInput').focus();
+            document.getElementById('flagFeedback').textContent = '';
+            document.getElementById('flagFeedback').className = 'feedback-line neutral';
+            flagAnswered = false;
+        }
+
+        function checkFlagAnswer() {
+            if (flagAnswered) return;
+            const input = document.getElementById('flagInput');
+            const userAnswer = input.value.trim();
+            const fb = document.getElementById('flagFeedback');
+
+            if (!userAnswer) {
+                fb.textContent = '⚠️ اكتب اسم الدولة';
+                fb.className = 'feedback-line bad';
+                return;
+            }
+
+            flagAnswered = true;
+            const isCorrect = userAnswer === flagCurrent.name;
+
+            if (isCorrect) {
+                flagScore++;
+                flagStreak++;
+                document.getElementById('flagScore').textContent = flagScore;
+                document.getElementById('flagStreak').textContent = flagStreak;
+                fb.textContent = `✅ صحيح! 🎉 (${flagCurrent.name})`;
+                fb.className = 'feedback-line good';
+                addStars(2);
+            } else {
+                flagStreak = 0;
+                document.getElementById('flagStreak').textContent = '0';
+                fb.textContent = `❌ خطأ! الإجابة الصحيحة: ${flagCurrent.name}`;
+                fb.className = 'feedback-line bad';
+            }
+
+            setTimeout(() => {
+                nextFlagQuestion();
+            }, 1500);
+        }
+
+        document.getElementById('flagInput').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') checkFlagAnswer();
+        });
+
+        // =====================================================
+        // GAME 3: GEOGRAPHY
+        // =====================================================
+        let geoScore = 0,
+            geoStreak = 0,
+            geoAnswered = false,
+            geoCurrent = null;
+
+        function initGeographyGame() {
+            geoScore = 0;
+            geoStreak = 0;
+            document.getElementById('geoScore').textContent = '0';
+            document.getElementById('geoStreak').textContent = '0';
+            document.getElementById('geoFeedback').textContent = '';
+            nextGeoQuestion();
+        }
+
+        function nextGeoQuestion() {
+            geoCurrent = flagData[Math.floor(Math.random() * flagData.length)];
+            const others = flagData.filter(f => f.code !== geoCurrent.code);
+            const shuffled = others.sort(() => Math.random() - 0.5).slice(0, 3);
+            const options = [geoCurrent, ...shuffled].sort(() => Math.random() - 0.5);
+
+            document.querySelector('#geoFlagDisplay img').src = `https://flagcdn.com/w320/${geoCurrent.code}.png`;
+            document.querySelector('#geoFlagDisplay img').alt = `علم ${geoCurrent.name}`;
+
+            const container = document.getElementById('geoOptions');
+            container.innerHTML = '';
+            geoAnswered = false;
+
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'flag-opt';
+                btn.textContent = opt.name;
+                btn.dataset.correct = opt.code === geoCurrent.code;
+                btn.addEventListener('click', () => checkGeoAnswer(btn));
+                container.appendChild(btn);
+            });
+
+            document.getElementById('geoFeedback').textContent = '';
+            document.getElementById('geoFeedback').className = 'feedback-line neutral';
+        }
+
+        function checkGeoAnswer(btn) {
+            if (geoAnswered) return;
+            geoAnswered = true;
+            const allBtns = document.querySelectorAll('#geoOptions .flag-opt');
+            allBtns.forEach(b => b.disabled = true);
+
+            const isCorrect = btn.dataset.correct === 'true';
+            const fb = document.getElementById('geoFeedback');
+
+            if (isCorrect) {
+                geoScore++;
+                geoStreak++;
+                document.getElementById('geoScore').textContent = geoScore;
+                document.getElementById('geoStreak').textContent = geoStreak;
+                btn.classList.add('correct');
+                fb.textContent = `✅ صحيح! 🎉 (${geoCurrent.name})`;
+                fb.className = 'feedback-line good';
+                addStars(2);
+            } else {
+                geoStreak = 0;
+                document.getElementById('geoStreak').textContent = '0';
+                btn.classList.add('wrong');
+                allBtns.forEach(b => { if (b.dataset.correct === 'true') b.classList.add('correct'); });
+                fb.textContent = `❌ خطأ! الإجابة الصحيحة: ${geoCurrent.name}`;
+                fb.className = 'feedback-line bad';
+            }
+            setTimeout(nextGeoQuestion, 1500);
+        }
+
+        // =====================================================
+        // GAME 4: TRIVIA
+        // =====================================================
+        const triviaData = [{
+            q: 'ما هي عاصمة فرنسا؟',
+            options: ['لندن', 'باريس', 'برلين', 'مدريد'],
+            correct: 1
+        }, {
+            q: 'كم عدد الكواكب في المجموعة الشمسية؟',
+            options: ['7', '8', '9', '10'],
+            correct: 1
+        }, {
+            q: 'ما هو أكبر محيط في العالم؟',
+            options: ['الأطلسي', 'الهادئ', 'الهندي', 'المتجمد الجنوبي'],
+            correct: 1
+        }, {
+            q: 'من هو مؤلف رواية "مئة عام من العزلة"؟',
+            options: ['جبران خليل جبران', 'نجيب محفوظ', 'غابرييل غارسيا ماركيز', 'علي أحمد باكثير'],
+            correct: 2
+        }, {
+            q: 'ما هي أطول سلسلة جبال في العالم؟',
+            options: ['الهملايا', 'الأنديز', 'الروكي', 'جبال الألب'],
+            correct: 1
+        }, {
+            q: 'في أي عام هبط الإنسان على سطح القمر؟',
+            options: ['1967', '1969', '1971', '1973'],
+            correct: 1
+        }, {
+            q: 'ما هي عملة دولة اليابان؟',
+            options: ['الين', 'الوون', 'الدولار', 'اليورو'],
+            correct: 0
+        }, {
+            q: 'أين تقع مدينة الأقصر؟',
+            options: ['مصر', 'السعودية', 'الأردن', 'العراق'],
+            correct: 0
+        }, {
+            q: 'ما هي أصغر دولة في العالم من حيث المساحة؟',
+            options: ['موناكو', 'الفاتيكان', 'سان مارينو', 'ليختنشتاين'],
+            correct: 1
+        }, {
+            q: 'من هو مؤسس علم الاجتماع؟',
+            options: ['ابن خلدون', 'أوجست كونت', 'إميل دوركهايم', 'ماكس فيبر'],
+            correct: 0
+        }, {
+            q: 'كم عدد أضلاع المكعب؟',
+            options: ['8', '10', '12', '14'],
+            correct: 2
+        }, {
+            q: 'ما هي اللغة الأكثر انتشاراً في العالم؟',
+            options: ['الإنجليزية', 'الصينية', 'الإسبانية', 'العربية'],
+            correct: 1
+        }];
+
+        let triviaScore = 0,
+            triviaStreak = 0,
+            triviaAnswered = false;
+
+        function initTriviaGame() {
+            triviaScore = 0;
+            triviaStreak = 0;
+            document.getElementById('triviaScore').textContent = '0';
+            document.getElementById('triviaStreak').textContent = '0';
+            document.getElementById('triviaFeedback').textContent = '';
+            nextTriviaQuestion();
+        }
+
+        function nextTriviaQuestion() {
+            const q = triviaData[Math.floor(Math.random() * triviaData.length)];
+            document.getElementById('triviaQuestion').textContent = q.q;
+            const container = document.getElementById('triviaOptions');
+            container.innerHTML = '';
+            triviaAnswered = false;
+
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'trivia-opt';
+                btn.textContent = opt;
+                btn.dataset.correct = idx === q.correct;
+                btn.addEventListener('click', () => checkTriviaAnswer(btn, q.options[q.correct]));
+                container.appendChild(btn);
+            });
+
+            document.getElementById('triviaFeedback').textContent = '';
+            document.getElementById('triviaFeedback').className = 'feedback-line neutral';
+        }
+
+        function checkTriviaAnswer(btn, correctAnswer) {
+            if (triviaAnswered) return;
+            triviaAnswered = true;
+            const allBtns = document.querySelectorAll('#triviaOptions .trivia-opt');
+            allBtns.forEach(b => b.disabled = true);
+
+            const isCorrect = btn.dataset.correct === 'true';
+            const fb = document.getElementById('triviaFeedback');
+
+            if (isCorrect) {
+                triviaScore++;
+                triviaStreak++;
+                document.getElementById('triviaScore').textContent = triviaScore;
+                document.getElementById('triviaStreak').textContent = triviaStreak;
+                btn.classList.add('correct');
+                fb.textContent = '✅ صحيح! 🎉';
+                fb.className = 'feedback-line good';
+                addStars(2);
+            } else {
+                triviaStreak = 0;
+                document.getElementById('triviaStreak').textContent = '0';
+                btn.classList.add('wrong');
+                allBtns.forEach(b => { if (b.dataset.correct === 'true') b.classList.add('correct'); });
+                fb.textContent = `❌ خطأ! الإجابة الصحيحة: ${correctAnswer}`;
+                fb.className = 'feedback-line bad';
+            }
+            setTimeout(nextTriviaQuestion, 1500);
+        }
+
+        // =====================================================
+        // GAME 5: TYPING
+        // =====================================================
+        const typingTexts = [
+            'النجاح ليس محطة الوصول بل رحلة مستمرة من التعلم والتطور',
+            'العلم نور والجهل ظلام، فاطلب العلم من المهد إلى اللحد',
+            'القراءة هي غذاء الروح وطريق العقول إلى المعرفة',
+            'التحديات هي فرص تظهر في ثياب جديدة، اقبلها بكل شجاعة',
+            'الإبداع هو القدرة على رؤية الأشياء بشكل مختلف عن الآخرين',
+            'التعاون هو سر النجاح في أي فريق عمل ناجح',
+            'التفكير الناقد هو مفتاح حل المشكلات المعقدة',
+            'الذكاء العاطفي أهم من الذكاء المعرفي في بناء العلاقات',
+        ];
+
+        let typingTimerInterval = null,
+            typingSeconds = 0,
+            typingStarted = false,
+            typingDone = false,
+            typingTargetText = '';
+
+        function initTypingGame() {
+            if (typingTimerInterval) {
+                clearInterval(typingTimerInterval);
+                typingTimerInterval = null;
+            }
+            typingSeconds = 0;
+            typingStarted = false;
+            typingDone = false;
+            document.getElementById('typingTimer').textContent = '0';
+            document.getElementById('typingSpeed').textContent = '0';
+            document.getElementById('typingFeedback').textContent = 'اكتب النص المعروض بأسرع ما يمكن';
+            document.getElementById('typingFeedback').className = 'feedback-line neutral';
+            const input = document.getElementById('typingInput');
+            input.value = '';
+            input.disabled = false;
+
+            typingTargetText = typingTexts[Math.floor(Math.random() * typingTexts.length)];
+            renderTypingText();
+            input.focus();
+        }
+
+        function renderTypingText() {
+            const container = document.getElementById('typingText');
+            container.innerHTML = typingTargetText.split('').map((ch, idx) =>
+                `<span class="char-pending" data-idx="${idx}">${ch}</span>`
+            ).join('');
+        }
+
+        function updateTypingProgress() {
+            const input = document.getElementById('typingInput');
+            const typed = input.value;
+            const chars = document.querySelectorAll('#typingText span');
+
+            if (!typingStarted && typed.length > 0) {
+                typingStarted = true;
+                typingTimerInterval = setInterval(() => {
+                    typingSeconds++;
+                    document.getElementById('typingTimer').textContent = typingSeconds;
+                    updateTypingSpeed();
+                }, 1000);
+            }
+
+            let allCorrect = true;
+            chars.forEach((span, idx) => {
+                span.className = 'char-pending';
+                if (idx < typed.length) {
+                    if (typed[idx] === typingTargetText[idx]) {
+                        span.className = 'char-correct';
+                    } else {
+                        span.className = 'char-wrong';
+                        allCorrect = false;
+                    }
+                    if (idx === typed.length - 1) {
+                        span.classList.add('char-current');
+                    }
+                } else if (idx === typed.length) {
+                    span.className = 'char-current';
+                }
+            });
+
+            if (typed.length === typingTargetText.length && allCorrect && !typingDone) {
+                typingDone = true;
+                clearInterval(typingTimerInterval);
+                typingTimerInterval = null;
+                document.getElementById('typingInput').disabled = true;
+                const speed = Math.round((typingTargetText.length / typingSeconds) * 60);
+                document.getElementById('typingSpeed').textContent = speed;
+                const fb = document.getElementById('typingFeedback');
+                fb.textContent = `🎉 أحسنت! أكملت النص في ${typingSeconds} ثانية! (+5 نجوم)`;
+                fb.className = 'feedback-line good';
+                addStars(5);
+            } else if (typed.length === typingTargetText.length && !allCorrect) {
+                document.getElementById('typingInput').disabled = true;
+                const fb = document.getElementById('typingFeedback');
+                fb.textContent = '⚠️ هناك أخطاء في النص! اضغط "نص جديد" للمحاولة مجدداً.';
+                fb.className = 'feedback-line bad';
+                if (typingTimerInterval) {
+                    clearInterval(typingTimerInterval);
+                    typingTimerInterval = null;
+                }
+            }
+        }
+
+        function updateTypingSpeed() {
+            if (typingSeconds === 0) return;
+            const input = document.getElementById('typingInput');
+            const typed = input.value.length;
+            const speed = Math.round((typed / typingSeconds) * 60);
+            document.getElementById('typingSpeed').textContent = speed;
+        }
+
+        document.getElementById('typingInput').addEventListener('input', updateTypingProgress);
+
+        // =====================================================
+        // GAME 6: REACTION
+        // =====================================================
+        let reactionTimeout = null,
+            reactionStartTime = 0,
+            reactionWaiting = false,
+            reactionActive = false,
+            reactionBest = Infinity,
+            reactionHistory = [];
+
+        function initReactionGame() {
+            const status = document.getElementById('reactionStatus');
+            status.textContent = 'اضغط "ابدأ"';
+            document.getElementById('reactionTime').textContent = '';
+            const box = document.getElementById('reactionBox');
+            box.style.background = 'rgba(255,255,255,0.04)';
+            box.style.borderColor = 'rgba(249,212,35,0.06)';
+            document.getElementById('reactionStartBtn').innerHTML = '<i class="fas fa-play"></i> ابدأ';
+            reactionActive = false;
+            reactionWaiting = false;
+            if (reactionTimeout) clearTimeout(reactionTimeout);
+        }
+
+        function startReactionGame(e) {
+            if (e) e.stopPropagation();
+            beginReactionWait();
+        }
+
+        function beginReactionWait() {
+            const status = document.getElementById('reactionStatus');
+            const box = document.getElementById('reactionBox');
+            const btn = document.getElementById('reactionStartBtn');
+
+            status.textContent = '⏳ انتظر الإشارة الخضراء...';
+            document.getElementById('reactionTime').textContent = '';
+            box.style.background = 'rgba(255,215,0,0.05)';
+            box.style.borderColor = 'rgba(249,212,35,0.1)';
+            btn.innerHTML = '⏳ انتظر...';
+            reactionWaiting = true;
+            reactionActive = false;
+
+            const delay = 1000 + Math.random() * 3000;
+            reactionTimeout = setTimeout(() => {
+                reactionWaiting = false;
+                reactionActive = true;
+                status.textContent = '🔥 اضغط الآن!';
+                box.style.background = 'rgba(0,255,100,0.08)';
+                box.style.borderColor = 'rgba(0,255,100,0.3)';
+                btn.innerHTML = '⚡ اضغط!';
+                reactionStartTime = performance.now();
+            }, delay);
+        }
+
+        function reactionBoxClick() {
+            const status = document.getElementById('reactionStatus');
+            const box = document.getElementById('reactionBox');
+            const btn = document.getElementById('reactionStartBtn');
+
+            if (reactionWaiting) {
+                status.textContent = '😅 ضغطت مبكراً! حاول مجدداً';
+                box.style.background = 'rgba(255,70,70,0.08)';
+                box.style.borderColor = 'rgba(255,70,70,0.2)';
+                if (reactionTimeout) clearTimeout(reactionTimeout);
+                reactionWaiting = false;
+                reactionActive = false;
+                btn.innerHTML = '🔄 حاول مرة أخرى';
+                return;
+            }
+            if (!reactionActive) return;
+
+            const end = performance.now();
+            const diff = (end - reactionStartTime) / 1000;
+            document.getElementById('reactionTime').textContent = `${diff.toFixed(3)} ثانية`;
+            status.textContent = '✅ تم!';
+            box.style.background = 'rgba(0,255,100,0.05)';
+            if (diff < reactionBest) {
+                reactionBest = diff;
+                document.getElementById('reactionBest').textContent = diff.toFixed(3);
+                addStars(3);
+            } else {
+                addStars(1);
+            }
+            reactionHistory.unshift(diff);
+            reactionHistory = reactionHistory.slice(0, 5);
+            document.getElementById('reactionHistory').innerHTML = reactionHistory
+                .map(t => `<span class="reaction-chip">${t.toFixed(3)} ث</span>`).join('');
+            reactionActive = false;
+            btn.innerHTML = '🔄 العب مرة أخرى';
+        }
+
+        // =====================================================
+        // GAME 7: SIMON
+        // =====================================================
+        const simonIds = ['simonTL', 'simonTR', 'simonBL', 'simonBR'];
+        let simonSequence = [],
+            simonPlayerIndex = 0,
+            simonLevel = 0,
+            simonAccepting = false,
+            simonPlaying = false;
+
+        function initSimonGame() {
+            simonSequence = [];
+            simonLevel = 0;
+            simonAccepting = false;
+            simonPlaying = false;
+            document.getElementById('simonLevel').textContent = '0';
+            const fb = document.getElementById('simonFeedback');
+            fb.textContent = 'اضغط ابدأ لمشاهدة التسلسل';
+            fb.className = 'feedback-line neutral';
+            setSimonButtonsEnabled(false);
+        }
+
+        function setSimonButtonsEnabled(enabled) {
+            simonIds.forEach(id => document.getElementById(id).disabled = !enabled);
+        }
+
+        function startSimonGame() {
+            simonSequence = [];
+            simonLevel = 0;
+            document.getElementById('simonLevel').textContent = '0';
+            simonPlaying = true;
+            nextSimonRound();
+        }
+
+        function nextSimonRound() {
+            simonAccepting = false;
+            setSimonButtonsEnabled(false);
+            simonPlayerIndex = 0;
+            simonSequence.push(Math.floor(Math.random() * 4));
+            simonLevel = simonSequence.length;
+            document.getElementById('simonLevel').textContent = simonLevel;
+            const fb = document.getElementById('simonFeedback');
+            fb.textContent = '👀 راقب التسلسل...';
+            fb.className = 'feedback-line neutral';
+            playSimonSequence();
+        }
+
+        function playSimonSequence() {
+            let i = 0;
+            const interval = setInterval(() => {
+                if (i > 0) litSimon(simonSequence[i - 1], false);
+                if (i >= simonSequence.length) {
+                    clearInterval(interval);
+                    simonAccepting = true;
+                    setSimonButtonsEnabled(true);
+                    document.getElementById('simonFeedback').textContent = '🎯 كرر التسلسل الآن';
+                    return;
+                }
+                litSimon(simonSequence[i], true);
+                i++;
+            }, 700);
+        }
+
+        function litSimon(idx, on) {
+            const el = document.getElementById(simonIds[idx]);
+            el.classList.toggle('lit', on);
+        }
+
+        function simonPlayerClick(idx) {
+            if (!simonAccepting) return;
+            litSimon(idx, true);
+            setTimeout(() => litSimon(idx, false), 220);
+
+            const fb = document.getElementById('simonFeedback');
+            if (idx === simonSequence[simonPlayerIndex]) {
+                simonPlayerIndex++;
+                if (simonPlayerIndex === simonSequence.length) {
+                    simonAccepting = false;
+                    setSimonButtonsEnabled(false);
+                    fb.textContent = `✅ صحيح! المستوى ${simonLevel} (+2 نجوم)`;
+                    fb.className = 'feedback-line good';
+                    addStars(2);
+                    setTimeout(nextSimonRound, 900);
+                }
+            } else {
+                simonAccepting = false;
+                setSimonButtonsEnabled(false);
+                fb.textContent = `💔 خطأ! وصلت للمستوى ${simonLevel}. اضغط ابدأ للمحاولة من جديد`;
+                fb.className = 'feedback-line bad';
+                simonPlaying = false;
+            }
+        }
+
+        // =====================================================
+        // GAME 8: SEQUENCE
+        // =====================================================
+        let seqScore = 0,
+            seqIndex = 0,
+            seqHintShown = false;
+        const seqPatterns = [
+            { seq: '2, 5, 10, 17, ?', answer: 26, hint: 'الفرق يزيد بمقدار 2 (n² + 1)' },
+            { seq: '3, 6, 12, 24, ?', answer: 48, hint: 'كل رقم = الرقم السابق × 2' },
+            { seq: '1, 4, 9, 16, ?', answer: 25, hint: 'مربعات الأعداد (n²)' },
+            { seq: '2, 6, 12, 20, ?', answer: 30, hint: 'n × (n+1)' },
+            { seq: '5, 10, 20, 40, ?', answer: 80, hint: 'كل رقم = الرقم السابق × 2' },
+            { seq: '1, 1, 2, 3, 5, ?', answer: 8, hint: 'فيبوناتشي: مجموع آخر رقمين' },
+            { seq: '100, 90, 81, 73, ?', answer: 66, hint: 'الفرق يقل بمقدار 1' },
+            { seq: '4, 9, 16, 25, ?', answer: 36, hint: 'مربعات الأعداد من 2' },
+            { seq: '1, 2, 4, 8, ?', answer: 16, hint: 'كل رقم = السابق × 2' },
+            { seq: '3, 8, 15, 24, ?', answer: 35, hint: 'n² + 2n' },
+        ];
+
+        function initSequenceGame() {
+            seqScore = 0;
+            seqIndex = Math.floor(Math.random() * seqPatterns.length);
+            document.getElementById('seqScore').textContent = '0';
+            showSequence();
+        }
+
+        function showSequence() {
+            const data = seqPatterns[seqIndex % seqPatterns.length];
+            document.getElementById('sequenceDisplay').textContent = data.seq;
+            const fb = document.getElementById('seqFeedback');
+            fb.textContent = '';
+            fb.className = 'feedback-line neutral';
+            seqHintShown = false;
+            const input = document.getElementById('sequenceAnswer');
+            input.value = '';
+            input.focus();
+        }
+
+        function toggleSeqHint() {
+            const data = seqPatterns[seqIndex % seqPatterns.length];
+            const fb = document.getElementById('seqFeedback');
+            seqHintShown = !seqHintShown;
+            if (seqHintShown) {
+                fb.textContent = `💡 ${data.hint}`;
+                fb.className = 'feedback-line neutral';
+            } else {
+                fb.textContent = '';
+            }
+        }
+
+        function checkSequenceGame() {
+            const input = document.getElementById('sequenceAnswer');
+            const fb = document.getElementById('seqFeedback');
+            const userAns = parseInt(input.value);
+            const data = seqPatterns[seqIndex % seqPatterns.length];
+            if (isNaN(userAns)) {
+                fb.textContent = '⚠️ أدخل رقماً';
+                fb.className = 'feedback-line bad';
+                return;
+            }
+            if (userAns === data.answer) {
+                seqScore++;
+                document.getElementById('seqScore').textContent = seqScore;
+                fb.textContent = '✅ صحيح! 🎉';
+                fb.className = 'feedback-line good';
+                addStars(2);
+                setTimeout(() => { seqIndex = (seqIndex + 1) % seqPatterns.length;
+                    showSequence(); }, 900);
+            } else {
+                fb.textContent = `❌ خطأ! تلميح: ${data.hint}`;
+                fb.className = 'feedback-line bad';
+            }
+        }
+
+        function nextSequence() {
+            seqIndex = (seqIndex + 1) % seqPatterns.length;
+            showSequence();
+        }
+
+        document.getElementById('sequenceAnswer').addEventListener('keydown', e => { if (e.key === 'Enter') checkSequenceGame(); });
+
+        // =====================================================
+        // KEYBOARD SUPPORT
+        // =====================================================
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                if (document.getElementById('game-flags').style.display !== 'none') checkFlagAnswer();
+                if (document.getElementById('game-sequence').style.display !== 'none') checkSequenceGame();
+            }
+        });
+
+        console.log('🚀 موقع موهبة - ثانوية هوزان يعمل بكامل طاقته!');
+
+        // Auto-init first game preview
+        setTimeout(() => {
+            initMemoryGame();
+        }, 500);
+    </script>
+
 </body>
 </html>
