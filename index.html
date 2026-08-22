@@ -3,31 +3,19 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>موهبة - ثانوية هوزان</title>
+
+    <title>موهبة - ثانوية هوزان | الألعاب العقلية والاختبارات</title>
+    <meta name="description" content="منصة موهبة في ثانوية هوزان - ألعاب عقلية، اختبارات ذكاء، وتنمية المواهب" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
     <style>
-        /* ===== TOKENS ===== */
-        :root {
-            --bg: #070a13;
-            --bg-elevated: #10182a;
-            --gold: #eec168;
-            --gold-2: #c9922e;
-            --gold-soft: #fbeecb;
-            --pearl: #f3ecd9;
-            --teal: #3fddab;
-            --coral: #ff6b6b;
-            --text: #f2f0ea;
-            --text-dim: #9aa3c2;
-            --text-dimmer: #616a8c;
-            --border: rgba(238, 193, 104, 0.14);
-            --radius-lg: 32px;
-            --radius-md: 20px;
-            --radius-sm: 12px;
-            --theme-transition: 0.3s ease;
-        }
+        /* ============================================================
+                   CSS - التنسيقات الكاملة
+                   ============================================================ */
 
         /* ===== RESET & BASE ===== */
         * {
@@ -38,112 +26,90 @@
 
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 110px;
         }
 
         body {
-            font-family: 'Tajawal', 'Segoe UI', system-ui, sans-serif;
-            background:
-                radial-gradient(ellipse 900px 600px at 18% -8%, rgba(238, 193, 104, 0.09), transparent 60%),
-                radial-gradient(ellipse 700px 500px at 100% 30%, rgba(63, 221, 171, 0.045), transparent 65%),
-                radial-gradient(ellipse 900px 700px at 0% 100%, rgba(238, 193, 104, 0.05), transparent 65%),
-                url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='140'%20height='140'%3E%3Cg%20fill='none'%20stroke='%23eec168'%20stroke-width='1'%20opacity='0.05'%3E%3Crect%20x='35'%20y='35'%20width='70'%20height='70'/%3E%3Crect%20x='35'%20y='35'%20width='70'%20height='70'%20transform='rotate(45%2070%2070)'/%3E%3C/g%3E%3C/svg%3E") repeat,
-                var(--bg);
-            color: var(--text);
+            font-family: 'Tajawal', 'Segoe UI', sans-serif;
+            background: #0d0a1a;
+            color: #f2f0ea;
             min-height: 100vh;
-            overflow-x: hidden;
-            line-height: 1.6;
-            transition: background var(--theme-transition);
+            overflow: hidden;
+            height: 100vh;
         }
 
-        h1,
-        h2,
-        h3,
-        .logo,
-        .play-btn,
-        .section-title {
-            font-family: 'Cairo', 'Tajawal', sans-serif;
-        }
-
+        /* ===== SCROLLBAR ===== */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: var(--bg-elevated);
+            background: #1a1430;
         }
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, var(--gold), var(--gold-2));
+            background: linear-gradient(180deg, #b388ff, #7c4dff);
             border-radius: 10px;
         }
 
-        #particles-canvas {
-            position: fixed;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
+        /* ===== VARIABLES ===== */
+        :root {
+            --gold: #b388ff;
+            --gold-2: #7c4dff;
+            --gold-soft: #e8d5ff;
+            --border: rgba(179, 136, 255, 0.2);
+            --teal: #3fddab;
+            --coral: #ff6b6b;
+            --text-dim: #b3a8d4;
+            --text-dimmer: #7a6a9c;
+            --radius-lg: 32px;
+            --radius-md: 20px;
+            --shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
         }
 
+        /* ===== CONTAINER ===== */
         .container {
-            position: relative;
-            z-index: 1;
-            max-width: 1300px;
+            width: 100%;
+            height: 100vh;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 25px 30px;
+            padding: 0 25px 20px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
         }
 
-        /* ===== NAVBAR ===== */
+        /* ============================================================
+                   NAVBAR
+                   ============================================================ */
         .navbar {
-            position: sticky;
-            top: 16px;
-            z-index: 50;
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 16px;
             padding: 14px 30px;
-            margin: 20px 0 40px;
-            background: linear-gradient(180deg, rgba(19, 26, 44, 0.78), rgba(12, 17, 29, 0.72));
-            backdrop-filter: blur(20px) saturate(140%);
-            -webkit-backdrop-filter: blur(20px) saturate(140%);
+            margin: 20px 0 20px;
+            background: rgba(26, 20, 48, 0.85);
+            backdrop-filter: blur(20px);
             border-radius: 60px;
             border: 1px solid var(--border);
-            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(238, 193, 104, 0.12), inset 0 0 40px rgba(238, 193, 104, 0.03);
-            transition: 0.3s;
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
+            flex-shrink: 0;
             flex-wrap: wrap;
-        }
-
-        .navbar:hover {
-            border-color: rgba(238, 193, 104, 0.32);
-            box-shadow: 0 18px 55px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(238, 193, 104, 0.18), 0 0 0 1px rgba(238, 193, 104, 0.06);
+            z-index: 100;
         }
 
         .logo {
             font-size: 28px;
             font-weight: 900;
-            letter-spacing: 0.3px;
-            background: linear-gradient(135deg, var(--gold-soft), var(--gold) 45%, var(--gold-2));
+            background: linear-gradient(135deg, var(--gold-soft), var(--gold), var(--gold-2));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: flex;
             align-items: center;
             gap: 10px;
-            white-space: nowrap;
         }
-
         .logo i {
             -webkit-text-fill-color: var(--gold);
             font-size: 26px;
-            filter: drop-shadow(0 0 20px rgba(238, 193, 104, 0.35));
-            animation: logoTwinkle 3.2s ease-in-out infinite;
         }
-
-        @keyframes logoTwinkle {
-            0%, 100% { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(8deg) scale(1.08); }
-        }
-
         .logo .sub {
             font-size: 16px;
             -webkit-text-fill-color: var(--text-dimmer);
@@ -157,9 +123,10 @@
             align-items: center;
         }
 
-        .nav-links a {
+        .nav-links button {
+            background: none;
+            border: none;
             color: var(--text-dim);
-            text-decoration: none;
             padding: 9px 18px;
             border-radius: 40px;
             font-weight: 700;
@@ -168,258 +135,143 @@
             display: flex;
             align-items: center;
             gap: 7px;
+            cursor: pointer;
+            font-family: inherit;
         }
-
-        .nav-links a:hover {
-            background: rgba(238, 193, 104, 0.1);
+        .nav-links button:hover {
+            background: rgba(179, 136, 255, 0.12);
             color: var(--gold);
         }
-
-        .nav-links a.active {
-            background: linear-gradient(135deg, var(--gold-soft), var(--gold) 50%, var(--gold-2));
-            color: #14100a;
-            box-shadow: 0 8px 24px rgba(238, 193, 104, 0.28);
+        .nav-links button.active {
+            background: linear-gradient(135deg, var(--gold-soft), var(--gold), var(--gold-2));
+            color: #0d0a1a;
+            box-shadow: 0 8px 24px rgba(124, 77, 255, 0.3);
         }
 
         .star-counter {
             display: flex;
             align-items: center;
             gap: 8px;
-            background: linear-gradient(135deg, rgba(238, 193, 104, 0.12), rgba(238, 193, 104, 0.04));
-            border: 1px solid rgba(238, 193, 104, 0.28);
+            background: rgba(124, 77, 255, 0.15);
+            border: 1px solid rgba(179, 136, 255, 0.3);
             padding: 8px 18px;
             border-radius: 40px;
             font-weight: 800;
             font-size: 15px;
             color: var(--gold);
             white-space: nowrap;
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
-        }
-
-        .star-counter i {
-            font-size: 15px;
         }
         .star-counter.pulse {
             animation: starPulse 0.5s ease;
         }
-
         @keyframes starPulse {
             0% { transform: scale(1); }
-            35% { transform: scale(1.18); box-shadow: 0 0 0 8px rgba(238, 193, 104, 0); }
+            35% { transform: scale(1.18); }
             100% { transform: scale(1); }
         }
 
-        section {
-            padding: 50px 0 30px;
-            margin-bottom: 10px;
-            scroll-margin-top: 110px;
+        /* ============================================================
+                   PAGE SYSTEM
+                   ============================================================ */
+        .page {
+            display: none;
+            height: calc(100vh - 180px);
+            overflow-y: auto;
+            padding: 10px 5px 20px;
+            animation: fadePage 0.4s ease;
+            flex: 1;
+        }
+        .page.active {
+            display: block;
+        }
+        @keyframes fadePage {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .page::-webkit-scrollbar {
+            width: 6px;
+        }
+        .page::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .page::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--gold), var(--gold-2));
+            border-radius: 10px;
         }
 
+        /* ============================================================
+                   SECTION TITLES
+                   ============================================================ */
         .section-title {
-            font-size: clamp(30px, 4.5vw, 44px);
+            font-size: clamp(28px, 4vw, 40px);
             font-weight: 800;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
             gap: 16px;
         }
-
         .section-title i {
             color: var(--gold);
-            font-size: 0.85em;
-            filter: drop-shadow(0 0 30px rgba(238, 193, 104, 0.15));
         }
-
         .section-title .highlight {
-            background: linear-gradient(135deg, var(--gold-soft), var(--gold) 55%, var(--gold-2));
+            background: linear-gradient(135deg, var(--gold-soft), var(--gold), var(--gold-2));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
         .section-sub {
             color: var(--text-dim);
-            font-size: 18px;
-            margin-bottom: 36px;
+            font-size: 17px;
+            margin-bottom: 25px;
             border-right: 3px solid var(--gold);
             padding-right: 18px;
-            position: relative;
         }
 
-        .section-sub::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            right: -6.5px;
-            width: 9px;
-            height: 9px;
-            background: var(--gold);
-            transform: translateY(-50%) rotate(45deg);
-            box-shadow: 0 0 10px 2px rgba(238, 193, 104, 0.4);
-        }
-
+        /* ============================================================
+                   HOME PAGE
+                   ============================================================ */
         .hero {
-            text-align: center;
-            padding: clamp(56px, 8vw, 92px) 20px 68px;
-            background:
-                radial-gradient(ellipse 900px 500px at 50% 0%, rgba(238, 193, 104, 0.10), transparent 70%),
-                linear-gradient(180deg, rgba(238, 193, 104, 0.03), transparent 40%);
-            border-radius: 48px;
-            border: 1px solid rgba(238, 193, 104, 0.12);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 40px 100px -30px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(238, 193, 104, 0.08);
-            transition: background var(--theme-transition), border-color var(--theme-transition);
-        }
-
-        .hero::before,
-        .hero::after {
-            content: '';
-            position: absolute;
-            width: 42px;
-            height: 42px;
-            border-top: 2px solid rgba(238, 193, 104, 0.4);
-            border-inline-start: 2px solid rgba(238, 193, 104, 0.4);
-            top: 22px;
-            inset-inline-start: 22px;
-            border-radius: 6px 0 0 0;
-            pointer-events: none;
-        }
-
-        .hero::after {
-            inset-inline-start: auto;
-            inset-inline-end: 22px;
-            border-inline-start: none;
-            border-inline-end: 2px solid rgba(238, 193, 104, 0.4);
-            border-radius: 0 6px 0 0;
-        }
-
-        .orbit-wrap {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 640px;
-            height: 640px;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .orbit-wrap::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border: 1px dashed rgba(238, 193, 104, 0.1);
-            border-radius: 50%;
-        }
-
-        .orbit-ring {
-            position: absolute;
-            inset: 0;
-            border: 1px solid rgba(238, 193, 104, 0.1);
-            border-radius: 50%;
-        }
-        .orbit-ring.r2 {
-            inset: 60px;
-            border-style: dashed;
-            border-color: rgba(238, 193, 104, 0.16);
-            animation: spin 40s linear infinite;
-        }
-        .orbit-ring.r3 {
-            inset: 120px;
-            animation: spin 60s linear infinite reverse;
-        }
-        .orbit-ring .dot {
-            position: absolute;
-            top: -5px;
-            right: 50%;
-            width: 9px;
-            height: 9px;
-            background: linear-gradient(135deg, var(--gold-soft), var(--gold-2));
-            transform: rotate(45deg);
-            box-shadow: 0 0 14px 3px rgba(238, 193, 104, 0.45);
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        .hero-inner {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* ===== شعار موهبة في الهيرو ===== */
-        .hero-logo-img {
-            margin-bottom: 20px;
-        }
-
-        .hero-logo-img img {
-            max-width: 200px;
-            height: auto;
-            border-radius: 16px;
-            filter: drop-shadow(0 0 30px rgba(238, 193, 104, 0.2));
-            transition: 0.3s;
-        }
-
-        .hero-logo-img img:hover {
-            transform: scale(1.05);
-            filter: drop-shadow(0 0 50px rgba(238, 193, 104, 0.3));
-        }
-
-        .hero-eyebrow {
-            display: inline-flex;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--gold);
-            background: rgba(238, 193, 104, 0.09);
-            border: 1px solid var(--border);
-            padding: 7px 20px;
-            border-radius: 30px;
-            margin-bottom: 20px;
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            text-align: center;
+            height: 100%;
+            padding: 20px;
+            background: radial-gradient(ellipse 900px 500px at 50% 0%, rgba(124, 77, 255, 0.12), transparent 70%);
+            border-radius: 48px;
+            border: 1px solid rgba(179, 136, 255, 0.15);
+            box-shadow: 0 40px 100px -30px rgba(0, 0, 0, 0.7);
         }
-
         .hero h1 {
-            font-size: clamp(34px, 6vw, 70px);
-            font-weight: 900;
-            line-height: 1.18;
-            margin-bottom: 20px;
-            letter-spacing: -0.5px;
+            font-size: clamp(38px, 6.5vw, 68px);
+            line-height: 1.2;
+            margin-bottom: 16px;
         }
-
         .hero h1 .gold {
-            background: linear-gradient(100deg, var(--gold-2) 0%, var(--gold-soft) 25%, var(--gold) 50%, var(--gold-soft) 75%, var(--gold-2) 100%);
+            background: linear-gradient(100deg, var(--gold-2), var(--gold-soft), var(--gold), var(--gold-soft), var(--gold-2));
             background-size: 250% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: shimmerGold 6s linear infinite;
         }
-
         @keyframes shimmerGold {
             to { background-position: -250% center; }
         }
-
         .hero p {
             font-size: clamp(16px, 2vw, 21px);
-            color: #b7c0dd;
+            color: #c4b8e0;
             max-width: 700px;
             margin: 10px auto 30px;
             line-height: 1.95;
         }
-
         .hero-badges {
             display: flex;
             justify-content: center;
-            align-items: center;
             gap: 16px;
             flex-wrap: wrap;
-            margin-top: 20px;
         }
-
         .hero-badge {
-            background: linear-gradient(180deg, rgba(238, 193, 104, 0.08), rgba(238, 193, 104, 0.02));
+            background: rgba(124, 77, 255, 0.1);
             border: 1px solid var(--border);
             padding: 11px 26px;
             border-radius: 50px;
@@ -428,25 +280,21 @@
             display: flex;
             align-items: center;
             gap: 9px;
-            color: #e6e9f5;
+            color: #e6e0f5;
             transition: 0.3s;
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            cursor: default;
         }
-
+        .hero-badge:hover {
+            background: rgba(124, 77, 255, 0.2);
+            transform: translateY(-3px);
+        }
         .hero-badge i {
             color: var(--gold);
         }
 
-        .hero-badge:hover {
-            background: linear-gradient(180deg, rgba(238, 193, 104, 0.16), rgba(238, 193, 104, 0.04));
-            border-color: rgba(238, 193, 104, 0.35);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 24px rgba(238, 193, 104, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-        }
-
         .hero-student-btn {
-            background: linear-gradient(135deg, rgba(238, 193, 104, 0.25), rgba(238, 193, 104, 0.06));
-            border: 2px solid rgba(238, 193, 104, 0.35);
+            background: rgba(124, 77, 255, 0.25);
+            border: 2px solid rgba(179, 136, 255, 0.35);
             padding: 14px 32px;
             border-radius: 60px;
             font-weight: 700;
@@ -456,331 +304,162 @@
             align-items: center;
             gap: 14px;
             cursor: pointer;
-            transition: 0.35s cubic-bezier(.2,.8,.3,1);
-            box-shadow: 0 4px 25px rgba(238, 193, 104, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-            position: relative;
-            overflow: hidden;
+            transition: 0.3s;
+            font-family: inherit;
         }
-
-        .hero-student-btn::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(238, 193, 104, 0.2), transparent);
-            opacity: 0;
-            transition: 0.5s;
-        }
-
         .hero-student-btn:hover {
             transform: translateY(-4px) scale(1.04);
             border-color: var(--gold);
-            box-shadow: 0 15px 50px rgba(238, 193, 104, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.12);
-            background: linear-gradient(135deg, rgba(238, 193, 104, 0.35), rgba(238, 193, 104, 0.1));
+            box-shadow: 0 15px 50px rgba(124, 77, 255, 0.3);
         }
-
-        .hero-student-btn:hover::before {
-            opacity: 1;
-        }
-
-        .hero-student-btn:active {
-            transform: scale(0.96);
-        }
-
         .hero-student-btn .hs-number {
             font-size: 26px;
             font-weight: 900;
-            background: linear-gradient(135deg, var(--gold-soft), var(--gold) 40%, var(--gold-2));
+            background: linear-gradient(135deg, var(--gold-soft), var(--gold), var(--gold-2));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            line-height: 1;
         }
 
-        .hero-student-btn .hs-label {
-            -webkit-text-fill-color: var(--text-dim);
-            font-weight: 600;
-        }
-
-        .hero-student-btn .hs-icon {
-            font-size: 20px;
-            color: var(--gold);
-            -webkit-text-fill-color: var(--gold);
-            animation: pulseIcon 2.2s ease-in-out infinite;
-        }
-
-        .hero-student-btn .hs-arrow {
-            font-size: 15px;
-            color: var(--gold);
-            -webkit-text-fill-color: var(--gold);
-            transition: 0.3s;
-        }
-
-        .hero-student-btn:hover .hs-arrow {
-            transform: translateX(-5px);
-        }
-
-        @keyframes pulseIcon {
-            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.7; }
-            50% { transform: scale(1.2) rotate(5deg); opacity: 1; }
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            margin-top: 8px;
-        }
-
-        .card-idea {
-            background: linear-gradient(165deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.01));
-            border-radius: var(--radius-lg);
-            padding: 30px 26px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            transition: 0.4s cubic-bezier(.2,.8,.3,1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card-idea::before {
-            content: '';
-            position: absolute;
-            inset-inline: 0;
-            top: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-            opacity: 0;
-            transition: 0.35s;
-        }
-
-        .card-idea::after {
-            content: '';
-            position: absolute;
-            top: -60%;
-            inset-inline-start: -60%;
-            width: 60%;
-            height: 220%;
-            background: linear-gradient(115deg, transparent, rgba(238, 193, 104, 0.1), transparent);
-            transform: rotate(20deg);
-            transition: 0.7s ease;
-            pointer-events: none;
-        }
-
-        .card-idea:hover {
-            transform: translateY(-6px);
-            border-color: rgba(238, 193, 104, 0.22);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(238, 193, 104, 0.05);
-        }
-
-        .card-idea:hover::before {
-            opacity: 1;
-        }
-
-        .card-idea:hover::after {
-            inset-inline-start: 130%;
-        }
-
-        .card-idea .icon {
-            font-size: 34px;
-            color: var(--gold);
-            margin-bottom: 14px;
-            display: block;
-            filter: drop-shadow(0 0 16px rgba(238, 193, 104, 0.2));
-        }
-
-        .card-idea h3 {
-            font-size: 21px;
-            margin-bottom: 8px;
-            color: var(--text);
-        }
-        .card-idea p {
-            color: #9aa5c5;
-            line-height: 1.8;
-            font-size: 15.5px;
-        }
-
+        /* ============================================================
+                   GAMES PAGE
+                   ============================================================ */
         .game-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
             margin-top: 8px;
         }
 
         .game-card {
-            background: radial-gradient(ellipse at top, rgba(238, 193, 104, 0.07), transparent),
-                        linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+            background: rgba(124, 77, 255, 0.08);
             border-radius: var(--radius-lg);
-            padding: 30px 22px 24px;
-            border: 1px solid rgba(238, 193, 104, 0.1);
+            padding: 25px 20px 22px;
+            border: 1px solid rgba(179, 136, 255, 0.12);
             text-align: center;
-            transition: 0.4s cubic-bezier(.2,.8,.3,1);
-            cursor: pointer;
+            transition: 0.4s;
             position: relative;
-            overflow: hidden;
         }
-
-        .game-card::after {
-            content: '';
-            position: absolute;
-            top: -60%;
-            inset-inline-start: -60%;
-            width: 55%;
-            height: 220%;
-            background: linear-gradient(115deg, transparent, rgba(238, 193, 104, 0.09), transparent);
-            transform: rotate(20deg);
-            transition: 0.7s ease;
-            pointer-events: none;
-        }
-
         .game-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(238, 193, 104, 0.32);
-            box-shadow: 0 35px 80px rgba(0, 0, 0, 0.4), 0 0 40px rgba(238, 193, 104, 0.05);
+            transform: translateY(-6px);
+            border-color: rgba(179, 136, 255, 0.35);
+            box-shadow: var(--shadow);
         }
-
-        .game-card:hover::after {
-            inset-inline-start: 130%;
-        }
-
         .game-card .game-icon {
-            font-size: 50px;
+            font-size: 44px;
             color: var(--gold);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             display: block;
-            filter: drop-shadow(0 0 26px rgba(238, 193, 104, 0.18));
-            transition: transform 0.35s ease;
         }
-
-        .game-card:hover .game-icon {
-            transform: scale(1.08) rotate(-4deg);
-        }
-
         .game-card h3 {
-            font-size: 23px;
-            margin-bottom: 6px;
+            font-size: 20px;
+            margin-bottom: 4px;
         }
         .game-card p {
-            color: #9aa5c5;
-            font-size: 15px;
-            margin-bottom: 14px;
+            color: #b3a8c8;
+            font-size: 14px;
+            margin-bottom: 12px;
             line-height: 1.6;
-            min-height: 48px;
+        }
+        .game-card .difficulty {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(124, 77, 255, 0.15);
+            padding: 3px 14px;
+            border-radius: 30px;
+            font-size: 11.5px;
+            font-weight: 700;
+            color: var(--gold);
+            border: 1px solid var(--border);
         }
 
         .play-btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: linear-gradient(135deg, var(--gold-soft), var(--gold) 45%, var(--gold-2));
-            color: #14100a;
+            background: linear-gradient(135deg, var(--gold-soft), var(--gold), var(--gold-2));
+            color: #0d0a1a;
             font-weight: 700;
-            padding: 11px 34px;
+            padding: 10px 28px;
             border-radius: 60px;
-            font-size: 16px;
+            font-size: 15px;
             transition: 0.25s;
             border: none;
-            text-decoration: none;
             cursor: pointer;
+            font-family: inherit;
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
         }
-
         .play-btn:hover {
             transform: scale(1.05);
-            box-shadow: 0 10px 32px rgba(238, 193, 104, 0.35);
+            box-shadow: 0 10px 32px rgba(124, 77, 255, 0.35);
         }
 
-        .game-card .difficulty {
-            position: absolute;
-            top: 16px;
-            inset-inline-start: 16px;
-            background: rgba(238, 193, 104, 0.13);
-            padding: 4px 15px;
-            border-radius: 30px;
-            font-size: 12.5px;
-            font-weight: 700;
-            color: var(--gold);
-            border: 1px solid var(--border);
-        }
-
+        /* ===== GAME PANELS ===== */
         .game-panel {
-            background: linear-gradient(165deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.01));
+            background: rgba(255, 255, 255, 0.04);
             border-radius: 36px;
-            padding: 28px;
+            padding: 24px;
             border: 1px solid var(--border);
-            box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(238, 193, 104, 0.06);
+            box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.55);
+            margin-top: 16px;
         }
-
         .game-panel-head {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 14px;
-            margin-bottom: 22px;
+            gap: 12px;
+            margin-bottom: 18px;
         }
-
         .game-panel-head h2 {
             color: var(--gold);
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 24px;
+            font-size: 22px;
         }
-
         .head-right {
             display: flex;
             gap: 10px;
             align-items: center;
             flex-wrap: wrap;
         }
-
         .stat-pill {
-            background: rgba(238, 193, 104, 0.08);
-            padding: 8px 18px;
+            background: rgba(124, 77, 255, 0.1);
+            padding: 6px 16px;
             border-radius: 30px;
             font-weight: 700;
-            font-size: 14.5px;
+            font-size: 13.5px;
             border: 1px solid var(--border);
         }
 
-        .close-btn {
-            background: rgba(255, 70, 70, 0.12);
-            border: 1px solid rgba(255, 70, 70, 0.25);
-            color: var(--coral);
-            padding: 9px 22px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 700;
-            font-family: inherit;
-            font-size: 14.5px;
-            transition: 0.2s;
+        .game-area-container {
+            display: none;
         }
-        .close-btn:hover {
-            background: rgba(255, 70, 70, 0.2);
+        .game-area-container.active {
+            display: block;
+            animation: fadePage 0.3s ease;
         }
 
-        .ghost-btn {
-            background: rgba(238, 193, 104, 0.1);
-            border: 1px solid var(--border);
-            padding: 10px 26px;
-            border-radius: 40px;
-            color: var(--gold);
-            cursor: pointer;
-            font-family: inherit;
+        .feedback-line {
+            margin-top: 12px;
+            font-size: 16px;
+            min-height: 24px;
             font-weight: 700;
-            font-size: 15px;
-            transition: 0.2s;
+            text-align: center;
         }
-        .ghost-btn:hover {
-            background: rgba(238, 193, 104, 0.18);
-        }
+        .feedback-line.good { color: var(--teal); }
+        .feedback-line.bad { color: var(--coral); }
+        .feedback-line.neutral { color: var(--text-dim); }
 
         .solid-btn {
-            background: linear-gradient(135deg, var(--gold-soft), var(--gold) 45%, var(--gold-2));
+            background: linear-gradient(135deg, var(--gold-soft), var(--gold), var(--gold-2));
             border: none;
-            padding: 13px 36px;
+            padding: 12px 32px;
             border-radius: 60px;
             font-weight: 800;
-            font-size: 17px;
-            color: #14100a;
+            font-size: 16px;
+            color: #0d0a1a;
             cursor: pointer;
             font-family: inherit;
             transition: 0.2s;
@@ -788,191 +467,157 @@
         }
         .solid-btn:hover {
             transform: scale(1.04);
-            box-shadow: 0 10px 30px rgba(238, 193, 104, 0.32);
+            box-shadow: 0 10px 30px rgba(124, 77, 255, 0.35);
         }
         .solid-btn:disabled {
             opacity: 0.5;
             cursor: not-allowed;
             transform: none;
-            box-shadow: none;
         }
 
-        .feedback-line {
-            margin-top: 14px;
-            font-size: 17px;
-            min-height: 26px;
-            font-weight: 700;
-            text-align: center;
-        }
-        .feedback-line.good {
-            color: var(--teal);
-        }
-        .feedback-line.bad {
-            color: var(--coral);
-        }
-        .feedback-line.neutral {
-            color: var(--text-dim);
-        }
-
-        .text-input {
-            background: rgba(255, 255, 255, 0.06);
-            border: 2px solid var(--border);
-            color: #fff;
-            padding: 13px 22px;
-            border-radius: 50px;
-            font-size: 20px;
-            text-align: center;
-            outline: none;
+        .ghost-btn {
+            background: rgba(124, 77, 255, 0.12);
+            border: 1px solid var(--border);
+            padding: 9px 22px;
+            border-radius: 40px;
+            color: var(--gold);
+            cursor: pointer;
             font-family: inherit;
+            font-weight: 700;
+            font-size: 14px;
             transition: 0.2s;
         }
-        .text-input:focus {
-            border-color: var(--gold);
+        .ghost-btn:hover {
+            background: rgba(124, 77, 255, 0.2);
         }
 
-        /* ===== MEMORY GAME - with images ===== */
+        .close-btn {
+            background: rgba(255, 70, 70, 0.12);
+            border: 1px solid rgba(255, 70, 70, 0.25);
+            color: var(--coral);
+            padding: 8px 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 700;
+            font-family: inherit;
+            font-size: 13px;
+            transition: 0.2s;
+        }
+        .close-btn:hover {
+            background: rgba(255, 70, 70, 0.2);
+        }
+
+        /* ===== MEMORY GAME ===== */
         #memoryBoard {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 14px;
-            max-width: 520px;
+            gap: 12px;
+            max-width: 480px;
             margin: 0 auto;
-            perspective: 600px;
         }
-
         .mem-card {
             aspect-ratio: 1;
             cursor: pointer;
             position: relative;
-            border-radius: 16px;
-            min-height: 80px;
+            border-radius: 14px;
+            min-height: 70px;
         }
-
         .mem-card .mem-inner {
             position: absolute;
             inset: 0;
             transform-style: preserve-3d;
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.5s;
         }
-
         .mem-card.flipped .mem-inner,
         .mem-card.matched .mem-inner {
             transform: rotateY(180deg);
         }
-
         .mem-face {
             position: absolute;
             inset: 0;
-            border-radius: 16px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
             backface-visibility: hidden;
             border: 2px solid var(--border);
-            overflow: hidden;
             background: rgba(255, 255, 255, 0.03);
         }
-
         .mem-back {
-            background: linear-gradient(145deg, rgba(238, 193, 104, 0.12), rgba(238, 193, 104, 0.03));
-            font-size: 40px;
+            background: rgba(124, 77, 255, 0.15);
+            font-size: 36px;
             color: var(--gold);
         }
-
-        .mem-back i {
-            font-size: 48px;
-            opacity: 0.6;
-            animation: pulseStar 2s ease-in-out infinite;
-        }
-
-        @keyframes pulseStar {
-            0%, 100% { transform: scale(1); opacity: 0.6; }
-            50% { transform: scale(1.1); opacity: 1; }
-        }
-
         .mem-front {
             transform: rotateY(180deg);
             background: rgba(0, 0, 0, 0.3);
         }
-
         .mem-front img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 14px;
-            transition: 0.3s;
+            border-radius: 12px;
         }
 
-        .mem-card.matched .mem-front {
-            border-color: rgba(78, 225, 160, 0.5);
-            box-shadow: 0 0 25px rgba(78, 225, 160, 0.15);
-        }
-
-        .mem-card.matched .mem-front img {
-            transform: scale(0.92);
-            filter: brightness(1.1);
-        }
-
-        /* ===== FLAG GAME ===== */
+        /* ===== FLAGS ===== */
         .flag-display {
             text-align: center;
-            padding: 20px;
+            padding: 15px;
         }
-
         .flag-display img {
-            width: 220px;
-            height: 147px;
-            border-radius: 16px;
+            width: 200px;
+            height: 133px;
+            border-radius: 14px;
             border: 2px solid var(--border);
             object-fit: cover;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-            transition: 0.3s;
         }
-
-        .flag-display img:hover {
-            transform: scale(1.02);
-            border-color: var(--gold);
-        }
-
         .flag-input-area {
             display: flex;
             gap: 12px;
             justify-content: center;
             flex-wrap: wrap;
-            margin: 16px 0;
+            margin: 14px 0;
         }
-
         .flag-input-area input {
-            width: 280px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 2px solid var(--border);
+            color: #fff;
+            padding: 11px 20px;
+            border-radius: 50px;
             font-size: 18px;
+            text-align: center;
+            outline: none;
+            font-family: inherit;
+            width: 250px;
+        }
+        .flag-input-area input:focus {
+            border-color: var(--gold);
         }
 
         .flag-options {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            max-width: 400px;
-            margin: 10px auto;
+            gap: 10px;
+            max-width: 380px;
+            margin: 8px auto;
         }
-
         .flag-opt {
-            padding: 14px 12px;
-            border-radius: 18px;
+            padding: 12px 10px;
+            border-radius: 16px;
             border: 2px solid var(--border);
             background: rgba(255, 255, 255, 0.04);
             cursor: pointer;
             font-weight: 700;
-            font-size: 17px;
+            font-size: 16px;
             font-family: inherit;
             color: var(--text);
             transition: 0.15s;
         }
-
         .flag-opt:hover:not(:disabled) {
             transform: translateY(-3px);
             border-color: var(--gold);
         }
-
         .flag-opt.correct {
             border-color: var(--teal);
             background: rgba(78, 225, 160, 0.12);
@@ -985,123 +630,22 @@
             cursor: default;
         }
 
-        /* ===== OTHER GAMES ===== */
-        #wordDisplay {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 22px;
-        }
-        .word-slot {
-            background: rgba(255, 255, 255, 0.05);
-            width: 44px;
-            height: 54px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-            font-size: 26px;
-            font-weight: 800;
-            border-bottom: 3px solid var(--gold);
-            color: var(--text-dimmer);
-        }
-        .word-slot.filled {
-            color: var(--text);
-        }
-        #wordKeyboard {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            justify-content: center;
-            max-width: 480px;
-            margin: 0 auto;
-        }
-        .key-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border);
-            color: var(--text);
-            font-family: inherit;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.15s;
-        }
-        .key-btn:hover:not(:disabled) {
-            background: rgba(238, 193, 104, 0.15);
-            border-color: var(--gold);
-        }
-        .key-btn.correct {
-            background: rgba(78, 225, 160, 0.18);
-            border-color: var(--teal);
-            color: var(--teal);
-        }
-        .key-btn.wrong {
-            background: rgba(255, 70, 70, 0.14);
-            border-color: var(--coral);
-            color: var(--coral);
-            opacity: 0.6;
-        }
-        .key-btn:disabled {
-            cursor: not-allowed;
-        }
-        .lives-row {
-            display: flex;
-            gap: 6px;
-            justify-content: center;
-            margin-top: 16px;
-            font-size: 20px;
-        }
-        .lives-row .lost {
-            opacity: 0.2;
-        }
-
-        #reactionBox {
-            background: rgba(255, 255, 255, 0.04);
-            border-radius: 30px;
-            padding: 50px 20px;
-            min-height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            border: 2px solid rgba(238, 193, 104, 0.06);
-            transition: 0.25s;
-            cursor: pointer;
-        }
-        .reaction-history {
-            display: flex;
-            gap: 8px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 16px;
-        }
-        .reaction-chip {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 5px 14px;
-            border-radius: 20px;
-            font-size: 13.5px;
-            color: var(--text-dim);
-        }
-
+        /* ===== TRIVIA ===== */
         .trivia-options {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            max-width: 500px;
+            gap: 10px;
+            max-width: 480px;
             margin: 0 auto;
         }
         .trivia-opt {
-            padding: 16px;
-            border-radius: 18px;
+            padding: 14px;
+            border-radius: 16px;
             border: 2px solid var(--border);
             background: rgba(255, 255, 255, 0.04);
             cursor: pointer;
             font-weight: 700;
-            font-size: 16px;
+            font-size: 15px;
             font-family: inherit;
             color: var(--text);
             transition: 0.15s;
@@ -1122,16 +666,85 @@
             cursor: default;
         }
 
+        /* ===== TYPING ===== */
+        #typingText {
+            font-size: 24px;
+            font-weight: 700;
+            text-align: center;
+            padding: 18px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 18px;
+            margin: 8px 0 16px;
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 3px;
+            line-height: 1.8;
+        }
+        #typingText .char-correct { color: var(--teal); }
+        #typingText .char-wrong { color: var(--coral); text-decoration: underline; }
+        #typingText .char-current { background: rgba(124, 77, 255, 0.3); border-radius: 4px; padding: 0 3px; }
+        #typingText .char-pending { color: var(--text-dim); }
+
+        .text-input {
+            background: rgba(255, 255, 255, 0.06);
+            border: 2px solid var(--border);
+            color: #fff;
+            padding: 11px 20px;
+            border-radius: 50px;
+            font-size: 18px;
+            text-align: center;
+            outline: none;
+            font-family: inherit;
+            width: 100%;
+            max-width: 500px;
+        }
+        .text-input:focus {
+            border-color: var(--gold);
+        }
+
+        /* ===== REACTION ===== */
+        #reactionBox {
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 28px;
+            padding: 40px 20px;
+            min-height: 170px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border: 2px solid rgba(124, 77, 255, 0.08);
+            transition: 0.25s;
+            cursor: pointer;
+        }
+        .reaction-history {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 14px;
+        }
+        .reaction-chip {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-dim);
+        }
+
+        /* ===== SIMON ===== */
         .simon-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 14px;
-            max-width: 320px;
-            margin: 10px auto 0;
+            gap: 12px;
+            max-width: 280px;
+            margin: 8px auto 0;
         }
         .simon-btn {
             aspect-ratio: 1;
-            border-radius: 24px;
+            border-radius: 22px;
             border: none;
             cursor: pointer;
             opacity: 0.55;
@@ -1142,236 +755,310 @@
             box-shadow: 0 0 40px 6px currentColor;
             transform: scale(1.03);
         }
-        .simon-btn:disabled {
-            cursor: default;
-        }
-        #simonTL {
-            background: #f9d423;
-            color: #f9d423;
-        }
-        #simonTR {
-            background: #4ee1a0;
-            color: #4ee1a0;
-        }
-        #simonBL {
-            background: #6ea8ff;
-            color: #6ea8ff;
-        }
-        #simonBR {
-            background: #ff6b6b;
-            color: #ff6b6b;
-        }
+        .simon-btn:disabled { cursor: default; }
+        #simonTL { background: #b388ff; color: #b388ff; }
+        #simonTR { background: #3fddab; color: #3fddab; }
+        #simonBL { background: #6ea8ff; color: #6ea8ff; }
+        #simonBR { background: #ff6b6b; color: #ff6b6b; }
 
-        #typingText {
+        /* ===== SEQUENCE ===== */
+        #sequenceDisplay {
             font-size: 28px;
             font-weight: 700;
-            text-align: center;
-            padding: 20px;
+            color: #f0f0f5;
             background: rgba(0, 0, 0, 0.2);
-            border-radius: 20px;
-            margin: 10px 0 20px;
-            min-height: 80px;
+            padding: 18px;
+            border-radius: 24px;
+            max-width: 400px;
+            margin: 0 auto 18px;
+            letter-spacing: 4px;
+            text-align: center;
+        }
+
+        /* ============================================================
+                   QUIZ PAGE
+                   ============================================================ */
+        .quiz-start-screen {
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
-            flex-wrap: wrap;
-            gap: 4px;
+            align-items: center;
+            text-align: center;
+            height: 100%;
+            min-height: 350px;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 48px;
+            border: 1px solid var(--border);
+        }
+        .quiz-start-screen .big-icon {
+            font-size: 70px;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .quiz-start-screen h2 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        .quiz-start-screen p {
+            color: var(--text-dim);
+            font-size: 17px;
+            max-width: 480px;
+            margin-bottom: 25px;
             line-height: 1.8;
         }
-        #typingText .char-correct {
-            color: var(--teal);
+        .quiz-start-screen .quiz-info {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 25px;
         }
-        #typingText .char-wrong {
-            color: var(--coral);
-            text-decoration: underline;
-        }
-        #typingText .char-current {
-            background: rgba(238, 193, 104, 0.25);
-            border-radius: 4px;
-            padding: 0 3px;
-        }
-        #typingText .char-pending {
+        .quiz-start-screen .quiz-info span {
+            background: rgba(124, 77, 255, 0.1);
+            padding: 6px 20px;
+            border-radius: 30px;
+            border: 1px solid var(--border);
+            font-weight: 600;
             color: var(--text-dim);
+            font-size: 14px;
+        }
+        .quiz-start-screen .quiz-info span i {
+            color: var(--gold);
+            margin-left: 6px;
         }
 
-        .lesson-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
+        .start-quiz-btn {
+            background: linear-gradient(135deg, var(--gold-soft), var(--gold), var(--gold-2));
+            border: none;
+            padding: 16px 50px;
+            border-radius: 60px;
+            font-weight: 800;
+            font-size: 20px;
+            color: #0d0a1a;
+            cursor: pointer;
+            font-family: inherit;
+            transition: 0.3s;
+            box-shadow: 0 6px 30px rgba(124, 77, 255, 0.3);
         }
-        .lesson-item {
-            background: linear-gradient(165deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.005));
-            border-radius: 26px;
-            padding: 22px 28px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-right: 3px solid var(--gold);
-            transition: 0.3s cubic-bezier(.2,.8,.3,1);
+        .start-quiz-btn:hover {
+            transform: scale(1.06);
+            box-shadow: 0 12px 40px rgba(124, 77, 255, 0.5);
+        }
+
+        .quiz-container {
+            display: none;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 32px;
+            padding: 25px;
+            border: 1px solid var(--border);
+        }
+        .quiz-container.active {
+            display: block;
+            animation: fadePage 0.4s ease;
+        }
+
+        .quiz-header {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 20px;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .quiz-header .quiz-info {
+            display: flex;
+            gap: 16px;
             flex-wrap: wrap;
         }
-        .lesson-item:hover {
-            background: rgba(238, 193, 104, 0.045);
-            border-color: rgba(238, 193, 104, 0.18);
-            border-right-color: var(--gold);
-            transform: translateX(-4px);
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
-        }
-        .lesson-item .lesson-icon {
-            font-size: 22px;
-            color: var(--gold);
-            width: 56px;
-            height: 56px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            border-radius: 50%;
-            border: 1px solid rgba(238, 193, 104, 0.25);
-            background: radial-gradient(ellipse at center, rgba(238, 193, 104, 0.1), transparent 70%);
-        }
-        .lesson-item .lesson-content {
-            flex: 1;
-            min-width: 200px;
-        }
-        .lesson-item .lesson-content h3 {
-            font-size: 20px;
-            color: var(--text);
-        }
-        .lesson-item .lesson-content p {
-            color: #9aa5c5;
-            margin-top: 4px;
-            font-size: 15px;
-        }
-        .lesson-item .lesson-tag {
-            background: rgba(238, 193, 104, 0.08);
-            padding: 4px 16px;
+        .quiz-header .quiz-info span {
+            background: rgba(124, 77, 255, 0.1);
+            padding: 5px 16px;
             border-radius: 30px;
-            font-size: 13.5px;
-            color: var(--gold);
+            font-weight: 600;
+            font-size: 13px;
             border: 1px solid var(--border);
-            white-space: nowrap;
+            color: var(--text-dim);
         }
-
-        .footer {
-            text-align: center;
-            padding: 44px 20px 16px;
-            position: relative;
-            margin-top: 50px;
-            color: var(--text-dimmer);
-        }
-
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: min(500px, 80%);
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(238, 193, 104, 0.35), transparent);
-        }
-        .footer i {
+        .quiz-header .quiz-info span i {
             color: var(--gold);
-            margin: 0 5px;
-        }
-        .footer .heart {
-            color: var(--coral);
+            margin-left: 5px;
         }
 
-        /* ===== THEME SWITCHER ===== */
-        .theme-switcher {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            z-index: 999;
+        .quiz-progress {
+            width: 100%;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 18px;
+        }
+        .quiz-progress .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-soft), var(--gold), var(--gold-2));
+            border-radius: 10px;
+            transition: width 0.5s ease;
+            width: 0%;
         }
 
-        .theme-toggle-btn {
-            width: 52px;
-            height: 52px;
+        .quiz-question {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 18px;
+            padding: 18px 22px;
+            margin-bottom: 14px;
+            border-right: 4px solid var(--gold);
+            display: none;
+        }
+        .quiz-question.active {
+            display: block;
+            animation: fadePage 0.3s ease;
+        }
+        .quiz-question .q-text {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .quiz-question .q-text .q-num {
+            color: var(--gold);
+            background: rgba(124, 77, 255, 0.15);
             border-radius: 50%;
-            border: 2px solid var(--border);
-            background: rgba(19, 26, 44, 0.85);
-            backdrop-filter: blur(12px);
-            color: var(--gold);
-            font-size: 22px;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            width: 32px;
+            height: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .theme-toggle-btn:hover {
-            transform: scale(1.1) rotate(45deg);
-            border-color: var(--gold);
-        }
-
-        .theme-panel {
-            position: absolute;
-            bottom: 70px;
-            left: 0;
-            background: rgba(19, 26, 44, 0.92);
-            backdrop-filter: blur(16px);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 16px 20px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-            display: none;
-            flex-direction: column;
-            gap: 10px;
-            min-width: 170px;
-        }
-
-        .theme-panel.open {
-            display: flex;
-        }
-
-        .theme-panel .panel-title {
             font-size: 14px;
-            font-weight: 700;
-            color: var(--text-dim);
-            text-align: center;
-            margin-bottom: 4px;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 8px;
+            font-weight: 800;
+            flex-shrink: 0;
         }
 
-        .theme-option {
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            padding-right: 16px;
+        }
+        @media (max-width: 600px) {
+            .quiz-options {
+                grid-template-columns: 1fr;
+                padding-right: 0;
+            }
+        }
+        .quiz-options label {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 8px 14px;
+            gap: 10px;
+            padding: 10px 16px;
             border-radius: 12px;
-            border: 1px solid transparent;
+            border: 2px solid var(--border);
+            background: rgba(255, 255, 255, 0.02);
             cursor: pointer;
             transition: 0.2s;
-            color: var(--text);
+            font-weight: 500;
+            color: var(--text-dim);
+            font-size: 15px;
+        }
+        .quiz-options label:hover {
+            background: rgba(124, 77, 255, 0.08);
+            border-color: rgba(179, 136, 255, 0.3);
+        }
+        .quiz-options input[type="radio"] {
+            accent-color: var(--gold);
+            width: 17px;
+            height: 17px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .quiz-options input[type="radio"]:checked+span {
+            color: var(--gold);
+            font-weight: 700;
+        }
+        .quiz-options label:has(input:checked) {
+            border-color: var(--gold);
+            background: rgba(124, 77, 255, 0.1);
+        }
+
+        .quiz-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 16px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
+        }
+        .quiz-navigation .nav-buttons {
+            display: flex;
+            gap: 8px;
+        }
+        .quiz-navigation .question-counter {
+            color: var(--text-dim);
             font-weight: 600;
             font-size: 14px;
         }
-
-        .theme-option:hover {
-            background: rgba(238, 193, 104, 0.08);
-            border-color: var(--border);
+        .quiz-navigation .question-counter i {
+            color: var(--gold);
         }
 
-        .theme-option .color-dot {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            border: 2px solid rgba(255,255,255,0.15);
-            flex-shrink: 0;
+        .quiz-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 14px;
         }
 
-        /* ===== MODAL ===== */
+        /* ============================================================
+                   ABOUT PAGE
+                   ============================================================ */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 16px;
+        }
+        .about-card {
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: var(--radius-lg);
+            padding: 25px 22px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: 0.4s;
+        }
+        .about-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(179, 136, 255, 0.25);
+            box-shadow: var(--shadow);
+        }
+        .about-card .icon {
+            font-size: 30px;
+            color: var(--gold);
+            margin-bottom: 10px;
+            display: block;
+        }
+        .about-card h3 {
+            font-size: 19px;
+            margin-bottom: 6px;
+        }
+        .about-card p {
+            color: #b3a8c8;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        /* ============================================================
+                   MODALS
+                   ============================================================ */
         .modal-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.75);
+            background: rgba(0, 0, 0, 0.75);
             backdrop-filter: blur(10px);
             z-index: 1000;
             display: none;
@@ -1379,77 +1066,35 @@
             justify-content: center;
             padding: 20px;
         }
-
         .modal-overlay.open {
             display: flex;
         }
 
         .modal-box {
-            background: linear-gradient(165deg, rgba(19, 26, 44, 0.96), rgba(10, 14, 23, 0.98));
+            background: rgba(26, 20, 48, 0.97);
             border: 1px solid var(--border);
             border-radius: 32px;
-            padding: 36px 40px;
-            max-width: 680px;
+            padding: 30px 35px;
+            max-width: 600px;
             width: 100%;
             max-height: 85vh;
             overflow-y: auto;
-            box-shadow: 0 40px 80px rgba(0,0,0,0.7);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7);
         }
-
         .modal-box h2 {
             color: var(--gold);
-            font-size: 26px;
-            margin-bottom: 6px;
+            font-size: 24px;
+            margin-bottom: 4px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
-
         .modal-box .modal-sub {
             color: var(--text-dim);
-            font-size: 15px;
-            margin-bottom: 18px;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 14px;
-        }
-
-        .modal-box .close-modal {
-            background: rgba(255,70,70,0.1);
-            border: 1px solid rgba(255,70,70,0.2);
-            color: var(--coral);
-            padding: 8px 20px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 700;
-            font-family: inherit;
             font-size: 14px;
-            transition: 0.2s;
-            float: left;
-        }
-
-        .modal-box .close-modal:hover {
-            background: rgba(255,70,70,0.2);
-        }
-
-        /* ===== صورة الشعار في المودال ===== */
-        .modal-logo-img {
-            text-align: center;
-            margin: 0 auto 18px;
-        }
-
-        .modal-logo-img img {
-            max-width: 200px;
-            height: auto;
-            border-radius: 16px;
-            border: 2px solid var(--border);
-            padding: 8px;
-            background: rgba(255,255,255,0.03);
-            transition: 0.3s;
-        }
-
-        .modal-logo-img img:hover {
-            transform: scale(1.03);
-            border-color: var(--gold);
+            margin-bottom: 14px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 12px;
         }
 
         .modal-student-list {
@@ -1457,309 +1102,554 @@
             padding: 0;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 16px;
+            gap: 8px;
+            margin-top: 12px;
             clear: both;
         }
-
+        @media (max-width: 600px) {
+            .modal-student-list {
+                grid-template-columns: 1fr;
+            }
+        }
         .modal-student-list li {
-            background: rgba(238, 193, 104, 0.06);
-            border: 1px solid rgba(238, 193, 104, 0.1);
-            border-radius: 14px;
-            padding: 12px 18px;
+            background: rgba(124, 77, 255, 0.08);
+            border: 1px solid rgba(124, 77, 255, 0.12);
+            border-radius: 12px;
+            padding: 10px 14px;
             font-weight: 600;
             color: var(--text);
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 15px;
+            gap: 10px;
+            font-size: 14px;
             transition: 0.25s;
         }
-
         .modal-student-list li:hover {
-            background: rgba(238, 193, 104, 0.12);
-            border-color: rgba(238, 193, 104, 0.25);
-            transform: translateX(-3px);
+            background: rgba(124, 77, 255, 0.15);
+            border-color: rgba(179, 136, 255, 0.3);
         }
-
         .modal-student-list li .num {
             color: var(--gold);
             font-weight: 700;
-            font-size: 13px;
+            font-size: 12px;
             opacity: 0.7;
-            min-width: 28px;
+            min-width: 24px;
             text-align: center;
-            background: rgba(238, 193, 104, 0.1);
-            border-radius: 8px;
-            padding: 2px 6px;
+            background: rgba(124, 77, 255, 0.12);
+            border-radius: 6px;
+            padding: 2px 5px;
         }
-
         .modal-student-list li i {
             color: var(--gold);
-            font-size: 13px;
+            font-size: 12px;
             opacity: 0.6;
+        }
+
+        .modal-logo-img {
+            text-align: center;
+            margin: 0 auto 14px;
+        }
+        .modal-logo-img img {
+            max-width: 140px;
+            height: auto;
+            border-radius: 14px;
+            border: 2px solid var(--border);
+            padding: 6px;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .close-modal-btn {
+            background: rgba(255, 70, 70, 0.1);
+            border: 1px solid rgba(255, 70, 70, 0.2);
+            color: var(--coral);
+            padding: 7px 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 700;
+            font-family: inherit;
+            font-size: 13px;
+            transition: 0.2s;
+            float: left;
+        }
+        .close-modal-btn:hover {
+            background: rgba(255, 70, 70, 0.2);
         }
 
         .modal-footer {
             color: var(--text-dimmer);
-            margin-top: 20px;
-            font-size: 14px;
+            margin-top: 16px;
+            font-size: 13px;
             text-align: center;
             border-top: 1px solid var(--border);
-            padding-top: 16px;
+            padding-top: 12px;
             clear: both;
         }
-
         .modal-footer i {
             color: var(--gold);
         }
 
+        /* ===== RESULT MODAL ===== */
+        .result-modal .modal-box {
+            text-align: center;
+            max-width: 520px;
+        }
+        .result-score {
+            font-size: 60px;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--gold-soft), var(--gold), var(--gold-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 8px 0;
+        }
+        .result-label {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+        .result-desc {
+            color: var(--text-dim);
+            font-size: 17px;
+            margin-bottom: 16px;
+        }
+        .result-stats {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 12px 0 18px;
+            flex-wrap: wrap;
+        }
+        .result-stats span {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 6px 20px;
+            border-radius: 30px;
+            border: 1px solid var(--border);
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .result-stats i {
+            color: var(--gold);
+        }
+        .result-details {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 12px 16px;
+            margin: 12px 0;
+            text-align: right;
+            max-height: 160px;
+            overflow-y: auto;
+        }
+        .result-details .detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            font-size: 13px;
+        }
+        .result-details .detail-item .correct-answer { color: var(--teal); }
+        .result-details .detail-item .wrong-answer { color: var(--coral); }
+
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        /* ============================================================
+                   FOOTER
+                   ============================================================ */
+        .footer {
+            text-align: center;
+            padding: 12px 20px 8px;
+            color: var(--text-dimmer);
+            font-size: 13px;
+            flex-shrink: 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 6px;
+        }
+        .footer i {
+            color: var(--gold);
+            margin: 0 4px;
+        }
+        .footer .heart {
+            color: var(--coral);
+        }
+
+        /* ============================================================
+                   THEME SWITCHER
+                   ============================================================ */
+        .theme-switcher {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            z-index: 999;
+        }
+        .theme-toggle-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid var(--border);
+            background: rgba(26, 20, 48, 0.85);
+            backdrop-filter: blur(12px);
+            color: var(--gold);
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .theme-toggle-btn:hover {
+            transform: scale(1.1) rotate(45deg);
+            border-color: var(--gold);
+        }
+        .theme-panel {
+            position: absolute;
+            bottom: 62px;
+            left: 0;
+            background: rgba(26, 20, 48, 0.95);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 14px 18px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            display: none;
+            flex-direction: column;
+            gap: 8px;
+            min-width: 160px;
+        }
+        .theme-panel.open {
+            display: flex;
+        }
+        .theme-panel .panel-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-dim);
+            text-align: center;
+            margin-bottom: 2px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 6px;
+        }
+        .theme-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 12px;
+            border-radius: 10px;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: 0.2s;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 13px;
+        }
+        .theme-option:hover {
+            background: rgba(124, 77, 255, 0.1);
+            border-color: var(--border);
+        }
+        .theme-option .color-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            flex-shrink: 0;
+        }
+
+        /* ============================================================
+                   RESPONSIVE
+                   ============================================================ */
         @media (max-width: 992px) {
             .navbar {
                 flex-direction: column;
-                gap: 14px;
-                padding: 18px;
+                gap: 12px;
+                padding: 14px 20px;
                 border-radius: 30px;
             }
             .nav-links {
                 justify-content: center;
             }
         }
+
         @media (max-width: 600px) {
-            .game-grid,
-            .cards-grid {
-                grid-template-columns: 1fr;
+            .navbar {
+                padding: 12px 14px;
+                margin: 10px 0 12px;
+                border-radius: 24px;
             }
-            .lesson-item {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 18px;
+            .logo {
+                font-size: 20px;
+            }
+            .logo .sub {
+                font-size: 12px;
+            }
+            .nav-links button {
+                padding: 5px 10px;
+                font-size: 12px;
+            }
+            .nav-links button i {
+                font-size: 12px;
+            }
+            .star-counter {
+                padding: 4px 10px;
+                font-size: 12px;
+            }
+            .hero h1 {
+                font-size: 28px;
             }
             .hero-badges {
                 flex-direction: column;
                 align-items: center;
             }
+            .game-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .game-card {
+                padding: 16px 12px 14px;
+            }
+            .game-card .game-icon {
+                font-size: 32px;
+            }
+            .game-card h3 {
+                font-size: 16px;
+            }
+            .game-card p {
+                font-size: 12px;
+                min-height: 32px;
+            }
+            .game-card .difficulty {
+                font-size: 10px;
+                padding: 2px 10px;
+                top: 8px;
+                left: 8px;
+            }
+            .play-btn {
+                padding: 8px 18px;
+                font-size: 13px;
+            }
+            .game-panel {
+                padding: 16px;
+            }
+            .game-panel-head h2 {
+                font-size: 18px;
+            }
+            .stat-pill {
+                font-size: 11px;
+                padding: 4px 12px;
+            }
             #memoryBoard {
-                max-width: 340px;
+                max-width: 300px;
                 gap: 8px;
             }
             .mem-card {
-                min-height: 60px;
+                min-height: 55px;
             }
             .flag-display img {
-                width: 160px;
-                height: 107px;
+                width: 150px;
+                height: 100px;
+            }
+            .flag-input-area input {
+                width: 180px;
+                font-size: 16px;
+                padding: 8px 14px;
             }
             .flag-options,
             .trivia-options {
                 grid-template-columns: 1fr;
             }
-            #typingText {
-                font-size: 20px;
-                padding: 14px;
+            .quiz-start-screen .big-icon {
+                font-size: 50px;
             }
-            .flag-input-area input {
-                width: 200px;
+            .quiz-start-screen h2 {
+                font-size: 24px;
             }
-            .theme-switcher {
-                bottom: 16px;
-                left: 16px;
+            .start-quiz-btn {
+                padding: 12px 32px;
+                font-size: 17px;
             }
-            .theme-toggle-btn {
-                width: 44px;
-                height: 44px;
-                font-size: 18px;
-            }
-            .modal-student-list {
+            .quiz-options {
                 grid-template-columns: 1fr;
+                padding-right: 0;
+            }
+            .quiz-question .q-text {
+                font-size: 16px;
+            }
+            .result-score {
+                font-size: 44px;
             }
             .modal-box {
-                padding: 24px 18px;
-                max-width: 100%;
+                padding: 20px 16px;
+            }
+            .theme-switcher {
+                bottom: 14px;
+                left: 14px;
+            }
+            .theme-toggle-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .quiz-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .quiz-header .quiz-info {
+                justify-content: center;
+            }
+            .quiz-navigation {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .quiz-navigation .nav-buttons {
+                justify-content: center;
+            }
+            .quiz-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            .page {
+                height: calc(100vh - 200px);
+            }
+            .container {
+                padding: 0 12px 12px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .game-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 24px;
+            }
+            .hero p {
+                font-size: 14px;
             }
             .hero-student-btn {
-                padding: 10px 20px;
+                padding: 10px 18px;
                 font-size: 14px;
-                gap: 10px;
             }
             .hero-student-btn .hs-number {
                 font-size: 20px;
             }
-            .hero-logo-img img {
-                max-width: 140px;
+            .quiz-start-screen .quiz-info {
+                gap: 10px;
             }
-            .modal-logo-img img {
-                max-width: 140px;
-            }
-            .modal-student-list li {
-                font-size: 14px;
-                padding: 10px 14px;
+            .quiz-start-screen .quiz-info span {
+                font-size: 12px;
+                padding: 4px 12px;
             }
         }
-
-        .fade-up {
-            opacity: 0;
-            transform: translateY(32px);
-            animation: fadeUp 0.7s ease forwards;
-        }
-        @keyframes fadeUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .delay-1 { animation-delay: 0.06s; }
-        .delay-2 { animation-delay: 0.12s; }
-        .delay-3 { animation-delay: 0.18s; }
-        .delay-4 { animation-delay: 0.24s; }
-        .delay-5 { animation-delay: 0.3s; }
     </style>
 </head>
 <body>
 
-    <canvas id="particles-canvas"></canvas>
-
     <div class="container">
 
+        <!-- ============================================================
+        NAVBAR
+        ============================================================ -->
         <nav class="navbar">
             <div class="logo">
                 <i class="fas fa-star"></i> موهبة <span class="sub">| هوزان</span>
             </div>
             <div class="nav-links">
-                <a href="#home" class="active"><i class="fas fa-home"></i> الرئيسية</a>
-                <a href="#ideas"><i class="fas fa-lightbulb"></i> أفكار</a>
-                <a href="#games"><i class="fas fa-gamepad"></i> الألعاب</a>
-                <a href="#lessons"><i class="fas fa-chalkboard"></i> دروس</a>
+                <button class="active" onclick="navigateTo('home')"><i class="fas fa-home"></i> الرئيسية</button>
+                <button onclick="navigateTo('games')"><i class="fas fa-gamepad"></i> الألعاب</button>
+                <button onclick="navigateTo('quiz')"><i class="fas fa-pencil-alt"></i> الاختبارات</button>
+                <button onclick="navigateTo('about')"><i class="fas fa-info-circle"></i> عن الموقع</button>
             </div>
-            <div class="star-counter" id="starCounter" aria-live="polite">
+            <div class="star-counter" id="starCounter">
                 <i class="fas fa-star"></i> نجومك: <span id="starTotal">0</span>
             </div>
         </nav>
 
-        <section id="home">
-            <div class="hero fade-up">
-                <div class="orbit-wrap" aria-hidden="true">
-                    <div class="orbit-ring r2"><span class="dot"></span></div>
-                    <div class="orbit-ring r3"><span class="dot"></span></div>
-                </div>
-                <div class="hero-inner">
-
-                    <!-- ===== شعار موهبة في الهيرو ===== -->
-                    <div class="hero-logo-img">
-                        <img src="https://i.postimg.cc/59mJ0nH7/shʿar-mwhbt-aljdyd-bdqt-ʿalyt-SVG-PNG.png" alt="شعار موهبة" loading="lazy" />
-                    </div>
-
-                    <span class="hero-eyebrow"><i class="fas fa-sparkles"></i> برنامج رعاية الموهوبين</span>
-                    <h1>اكتشف <span class="gold">موهبتك</span><br />في ثانوية هوزان</h1>
-                    <p>
-                        منصة متكاملة لاكتشاف وتطوير القدرات العقلية والإبداعية لدى طلابنا،
-                        عبر أدوات تفاعلية وألعاب ذهنية ودروس نموذجية تصقل المواهب وتحفّز التفكير النقدي.
-                    </p>
-                    <div class="hero-badges">
-                        <button class="hero-student-btn" onclick="openModal()">
-                            <i class="fas fa-users hs-icon"></i>
-                            <span class="hs-number">20</span>
-                            <span class="hs-label">طالب موهوب</span>
-                            <i class="fas fa-chevron-left hs-arrow"></i>
-                        </button>
-                        <span class="hero-badge"><i class="fas fa-trophy"></i> 18 جائزة</span>
-                        <span class="hero-badge"><i class="fas fa-brain"></i> 8 ألعاب عقلية</span>
-                        <span class="hero-badge"><i class="fas fa-rocket"></i> برامج مبتكرة</span>
-                    </div>
+        <!-- ============================================================
+        الصفحة الرئيسية
+        ============================================================ -->
+        <div id="page-home" class="page active">
+            <div class="hero">
+                <h1>اكتشف <span class="gold">موهبتك</span><br />في ثانوية هوزان</h1>
+                <p>
+                    منصة متكاملة لاكتشاف وتطوير القدرات العقلية والإبداعية لدى طلابنا،
+                    عبر أدوات تفاعلية وألعاب ذهنية ودروس نموذجية.
+                </p>
+                <div class="hero-badges">
+                    <button class="hero-student-btn" onclick="openStudentModal()">
+                        <i class="fas fa-users"></i>
+                        <span class="hs-number">20</span> طالب موهوب
+                    </button>
+                    <span class="hero-badge"><i class="fas fa-trophy"></i> 18 جائزة</span>
+                    <span class="hero-badge"><i class="fas fa-brain"></i> 8 ألعاب عقلية</span>
+                    <span class="hero-badge"><i class="fas fa-rocket"></i> برامج مبتكرة</span>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <section id="ideas">
-            <div class="section-title fade-up"><i class="fas fa-lightbulb"></i><span class="highlight">أفكار</span> لتنمية العقل</div>
-            <div class="section-sub fade-up delay-1">استراتيجيات عملية لتحفيز التفكير والإبداع</div>
-
-            <div class="cards-grid">
-                <div class="card-idea fade-up delay-1">
-                    <span class="icon"><i class="fas fa-puzzle-piece"></i></span>
-                    <h3>التفكير التصميمي</h3>
-                    <p>حل المشكلات الواقعية عبر منهجية التفكير التصميمي: تعاطف، تعريف، أفكار، نموذج، اختبار.</p>
-                </div>
-                <div class="card-idea fade-up delay-2">
-                    <span class="icon"><i class="fas fa-chess-queen"></i></span>
-                    <h3>ألعاب استراتيجية</h3>
-                    <p>الشطرنج، كوتشينة، وألعاب إدارة الموارد تنمي التخطيط طويل المدى والمرونة الذهنية.</p>
-                </div>
-                <div class="card-idea fade-up delay-3">
-                    <span class="icon"><i class="fas fa-code"></i></span>
-                    <h3>برمجة ولغات</h3>
-                    <p>تعليم البرمجة (Python، Scratch) واللغات الأجنبية ينشط مناطق التعلم والذاكرة.</p>
-                </div>
-                <div class="card-idea fade-up delay-1">
-                    <span class="icon"><i class="fas fa-microphone-alt"></i></span>
-                    <h3>مناظرات ووعي</h3>
-                    <p>جلسات مناظرة حول مواضيع علمية وفلسفية تنمي المنطق والحجاج وسرعة البديهة.</p>
-                </div>
-                <div class="card-idea fade-up delay-2">
-                    <span class="icon"><i class="fas fa-drafting-compass"></i></span>
-                    <h3>مشاريع بحثية</h3>
-                    <p>تشجيع الطلاب على تقديم أبحاث مصغرة في مجالات العلوم والتكنولوجيا والابتكار.</p>
-                </div>
-                <div class="card-idea fade-up delay-3">
-                    <span class="icon"><i class="fas fa-heartbeat"></i></span>
-                    <h3>العقل والجسد</h3>
-                    <p>تمارين التنفس، التأمل، والرياضة اليومية تحسن التركيز وتقلل التوتر وتعزز الأداء العقلي.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="games">
-            <div class="section-title fade-up"><i class="fas fa-gamepad"></i><span class="highlight">ألعاب</span> تفاعلية ممتعة</div>
-            <div class="section-sub fade-up delay-1">كل إجابة صحيحة تمنحك نجومًا تُضاف إلى رصيدك</div>
+        <!-- ============================================================
+        صفحة الألعاب
+        ============================================================ -->
+        <div id="page-games" class="page">
+            <div class="section-title"><i class="fas fa-gamepad"></i><span class="highlight">ألعاب</span> تفاعلية ممتعة</div>
+            <div class="section-sub">كل إجابة صحيحة تمنحك نجومًا تُضاف إلى رصيدك</div>
 
             <div class="game-grid">
-                <div class="game-card fade-up delay-1">
+                <div class="game-card">
                     <span class="difficulty">⭐ سهل</span>
                     <span class="game-icon"><i class="fas fa-images"></i></span>
                     <h3>تحدي الذاكرة</h3>
                     <p>اختبر ذاكرتك البصرية وتذكر أماكن الصور المتطابقة.</p>
                     <button class="play-btn" onclick="showGame('memory')"><i class="fas fa-play"></i> العب الآن</button>
                 </div>
-                <div class="game-card fade-up delay-2">
+                <div class="game-card">
                     <span class="difficulty">⭐⭐ متوسط</span>
                     <span class="game-icon"><i class="fas fa-flag"></i></span>
                     <h3>أعلام الدول</h3>
                     <p>شاهد العلم واكتب اسم الدولة الصحيح.</p>
                     <button class="play-btn" onclick="showGame('flags')"><i class="fas fa-play"></i> العب الآن</button>
                 </div>
-                <div class="game-card fade-up delay-3">
-                    <span class="difficulty">⭐⭐⭐ صعب</span>
+                <div class="game-card">
+                    <span class="difficulty">⭐⭐ متوسط</span>
                     <span class="game-icon"><i class="fas fa-globe-americas"></i></span>
                     <h3>جغرافيا الدول</h3>
                     <p>اختر الدولة الصحيحة من خلال مشاهدة العلم.</p>
                     <button class="play-btn" onclick="showGame('geography')"><i class="fas fa-play"></i> العب الآن</button>
                 </div>
-                <div class="game-card fade-up delay-4">
+                <div class="game-card">
                     <span class="difficulty">⭐⭐ متوسط</span>
                     <span class="game-icon"><i class="fas fa-question-circle"></i></span>
                     <h3>ثقافة عامة</h3>
                     <p>أسئلة متنوعة في الثقافة والعلوم والتاريخ.</p>
                     <button class="play-btn" onclick="showGame('trivia')"><i class="fas fa-play"></i> العب الآن</button>
                 </div>
-                <div class="game-card fade-up delay-5">
+                <div class="game-card">
                     <span class="difficulty">⭐ سهل</span>
                     <span class="game-icon"><i class="fas fa-keyboard"></i></span>
                     <h3>سرعة الكتابة</h3>
                     <p>اكتب النص المعروض بأسرع ما يمكن مع أقل أخطاء.</p>
                     <button class="play-btn" onclick="showGame('typing')"><i class="fas fa-play"></i> العب الآن</button>
                 </div>
-                <div class="game-card fade-up delay-1">
+                <div class="game-card">
                     <span class="difficulty">⭐⭐ متوسط</span>
                     <span class="game-icon"><i class="fas fa-bolt"></i></span>
                     <h3>سرعة البديهة</h3>
                     <p>اختبر زمن رد فعلك واضغط عند ظهور الإشارة.</p>
                     <button class="play-btn" onclick="showGame('reaction')"><i class="fas fa-play"></i> العب الآن</button>
                 </div>
-                <div class="game-card fade-up delay-2">
+                <div class="game-card">
                     <span class="difficulty">⭐⭐⭐ صعب</span>
                     <span class="game-icon"><i class="fas fa-th-large"></i></span>
                     <h3>سلسلة الألوان</h3>
                     <p>احفظ التسلسل المتزايد للأضواء وكرره بالترتيب.</p>
                     <button class="play-btn" onclick="showGame('simon')"><i class="fas fa-play"></i> العب الآن</button>
                 </div>
-                <div class="game-card fade-up delay-3">
+                <div class="game-card">
                     <span class="difficulty">⭐⭐ متوسط</span>
                     <span class="game-icon"><i class="fas fa-sort-numeric-up"></i></span>
                     <h3>سلسلة الأرقام</h3>
@@ -1767,269 +1657,360 @@
                     <button class="play-btn" onclick="showGame('sequence')"><i class="fas fa-play"></i> العب الآن</button>
                 </div>
             </div>
-        </section>
 
-        <div id="game-areas" style="margin: 10px 0 30px;">
+            <!-- ===== GAME AREAS ===== -->
+            <div id="game-areas">
 
-            <!-- ===== MEMORY GAME ===== -->
-            <div id="game-memory" class="game-area-container" style="display:none;">
-                <div class="game-panel">
-                    <div class="game-panel-head">
-                        <h2><i class="fas fa-images"></i> تحدي الذاكرة</h2>
-                        <div class="head-right">
-                            <span class="stat-pill"><i class="fas fa-shoe-prints"></i> المحاولات: <span id="memoryAttempts">0</span></span>
-                            <span class="stat-pill"><i class="fas fa-star"></i> متطابق: <span id="memoryMatchedCount">0</span>/8</span>
-                            <button class="close-btn" onclick="closeGame()"><i class="fas fa-times"></i> إغلاق</button>
+                <!-- MEMORY -->
+                <div id="game-memory" class="game-area-container">
+                    <div class="game-panel">
+                        <div class="game-panel-head">
+                            <h2><i class="fas fa-images"></i> تحدي الذاكرة</h2>
+                            <div class="head-right">
+                                <span class="stat-pill"><i class="fas fa-shoe-prints"></i> المحاولات: <span id="memoryAttempts">0</span></span>
+                                <span class="stat-pill"><i class="fas fa-star"></i> متطابق: <span id="memoryMatchedCount">0</span>/8</span>
+                                <button class="close-btn" onclick="closeGame('memory')"><i class="fas fa-times"></i> إغلاق</button>
+                            </div>
                         </div>
-                    </div>
-                    <div id="memoryBoard"></div>
-                    <div style="text-align:center; margin-top:20px;">
-                        <button class="solid-btn" onclick="initMemoryGame()"><i class="fas fa-redo"></i> لعبة جديدة</button>
-                    </div>
-                    <div id="memoryStatus" class="feedback-line neutral" aria-live="polite"></div>
-                </div>
-            </div>
-
-            <!-- ===== FLAGS GAME ===== -->
-            <div id="game-flags" class="game-area-container" style="display:none;">
-                <div class="game-panel">
-                    <div class="game-panel-head">
-                        <h2><i class="fas fa-flag"></i> أعلام الدول</h2>
-                        <div class="head-right">
-                            <span class="stat-pill"><i class="fas fa-fire"></i> السلسلة: <span id="flagStreak">0</span></span>
-                            <span class="stat-pill"><i class="fas fa-trophy"></i> النقاط: <span id="flagScore">0</span></span>
-                            <button class="close-btn" onclick="closeGame()"><i class="fas fa-times"></i> إغلاق</button>
+                        <div id="memoryBoard"></div>
+                        <div style="text-align:center; margin-top:16px;">
+                            <button class="solid-btn" onclick="initMemoryGame()"><i class="fas fa-redo"></i> لعبة جديدة</button>
                         </div>
-                    </div>
-                    <div class="flag-display">
-                        <div id="flagImage"><img src="https://flagcdn.com/w320/sa.png" alt="علم الدولة" id="flagImg"></div>
-                        <div style="font-size:20px; color:var(--text-dim); margin:12px 0;">ما اسم هذه الدولة؟</div>
-                        <div class="flag-input-area">
-                            <input type="text" id="flagInput" class="text-input" placeholder="اكتب اسم الدولة..." style="width:280px;">
-                            <button class="solid-btn" onclick="checkFlagAnswer()"><i class="fas fa-check"></i> تحقق</button>
-                        </div>
-                        <div id="flagFeedback" class="feedback-line neutral" aria-live="polite"></div>
-                        <button class="ghost-btn" style="margin-top:12px;" onclick="nextFlagQuestion()"><i class="fas fa-forward"></i> سؤال جديد</button>
+                        <div id="memoryStatus" class="feedback-line neutral"></div>
                     </div>
                 </div>
-            </div>
 
-            <!-- ===== GEOGRAPHY GAME ===== -->
-            <div id="game-geography" class="game-area-container" style="display:none;">
-                <div class="game-panel">
-                    <div class="game-panel-head">
-                        <h2><i class="fas fa-globe-americas"></i> جغرافيا الدول</h2>
-                        <div class="head-right">
-                            <span class="stat-pill"><i class="fas fa-fire"></i> السلسلة: <span id="geoStreak">0</span></span>
-                            <span class="stat-pill"><i class="fas fa-trophy"></i> النقاط: <span id="geoScore">0</span></span>
-                            <button class="close-btn" onclick="closeGame()"><i class="fas fa-times"></i> إغلاق</button>
+                <!-- FLAGS -->
+                <div id="game-flags" class="game-area-container">
+                    <div class="game-panel">
+                        <div class="game-panel-head">
+                            <h2><i class="fas fa-flag"></i> أعلام الدول</h2>
+                            <div class="head-right">
+                                <span class="stat-pill"><i class="fas fa-fire"></i> السلسلة: <span id="flagStreak">0</span></span>
+                                <span class="stat-pill"><i class="fas fa-trophy"></i> النقاط: <span id="flagScore">0</span></span>
+                                <button class="close-btn" onclick="closeGame('flags')"><i class="fas fa-times"></i> إغلاق</button>
+                            </div>
                         </div>
-                    </div>
-                    <div style="text-align:center; padding:10px 0;">
-                        <div style="font-size:20px; color:var(--text-dim); margin-bottom:10px;">اختر الدولة الصحيحة لهذا العلم:</div>
-                        <div id="geoFlagDisplay"><img src="https://flagcdn.com/w320/sa.png" alt="علم الدولة" style="width:200px; height:133px; border-radius:16px; border:2px solid var(--border); object-fit:cover;"></div>
-                        <div class="flag-options" id="geoOptions"></div>
-                        <div id="geoFeedback" class="feedback-line neutral" aria-live="polite"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ===== TRIVIA GAME ===== -->
-            <div id="game-trivia" class="game-area-container" style="display:none;">
-                <div class="game-panel">
-                    <div class="game-panel-head">
-                        <h2><i class="fas fa-question-circle"></i> ثقافة عامة</h2>
-                        <div class="head-right">
-                            <span class="stat-pill"><i class="fas fa-fire"></i> السلسلة: <span id="triviaStreak">0</span></span>
-                            <span class="stat-pill"><i class="fas fa-trophy"></i> النقاط: <span id="triviaScore">0</span></span>
-                            <button class="close-btn" onclick="closeGame()"><i class="fas fa-times"></i> إغلاق</button>
-                        </div>
-                    </div>
-                    <div style="text-align:center; padding:10px 0;">
-                        <div id="triviaQuestion" style="font-size:20px; font-weight:700; padding:20px; min-height:60px; color:var(--text);">ما هي عاصمة فرنسا؟</div>
-                        <div class="trivia-options" id="triviaOptions"></div>
-                        <div id="triviaFeedback" class="feedback-line neutral" aria-live="polite"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ===== TYPING GAME ===== -->
-            <div id="game-typing" class="game-area-container" style="display:none;">
-                <div class="game-panel">
-                    <div class="game-panel-head">
-                        <h2><i class="fas fa-keyboard"></i> سرعة الكتابة</h2>
-                        <div class="head-right">
-                            <span class="stat-pill"><i class="fas fa-stopwatch"></i> <span id="typingTimer">0</span> ث</span>
-                            <span class="stat-pill"><i class="fas fa-tachometer-alt"></i> سرعة: <span id="typingSpeed">0</span> ك/د</span>
-                            <button class="close-btn" onclick="closeGame()"><i class="fas fa-times"></i> إغلاق</button>
-                        </div>
-                    </div>
-                    <div style="text-align:center; padding:10px 0;">
-                        <div id="typingText"></div>
-                        <input type="text" id="typingInput" class="text-input" style="width:100%; max-width:500px; font-size:22px;" placeholder="ابدأ الكتابة هنا..." autofocus>
-                        <div id="typingFeedback" class="feedback-line neutral" aria-live="polite"></div>
-                        <button class="solid-btn" style="margin-top:12px;" onclick="initTypingGame()"><i class="fas fa-redo"></i> نص جديد</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ===== REACTION GAME ===== -->
-            <div id="game-reaction" class="game-area-container" style="display:none;">
-                <div class="game-panel">
-                    <div class="game-panel-head">
-                        <h2><i class="fas fa-bolt"></i> سرعة البديهة</h2>
-                        <div class="head-right">
-                            <span class="stat-pill"><i class="fas fa-clock"></i> أسرع: <span id="reactionBest">--</span> ث</span>
-                            <button class="close-btn" onclick="closeGame()"><i class="fas fa-times"></i> إغلاق</button>
-                        </div>
-                    </div>
-                    <div style="text-align:center; padding:20px 0;">
-                        <div id="reactionBox" onclick="reactionBoxClick()" role="button" tabindex="0">
-                            <div id="reactionStatus" style="font-size:26px; color:#8892b0;">اضغط "ابدأ"</div>
-                            <div id="reactionTime" style="font-size:44px; font-weight:800; color:var(--gold); margin-top:10px;"></div>
-                        </div>
-                        <button id="reactionStartBtn" class="solid-btn" style="margin-top:20px;" onclick="startReactionGame(event)"><i class="fas fa-play"></i> ابدأ</button>
-                        <div class="reaction-history" id="reactionHistory"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ===== SIMON GAME ===== -->
-            <div id="game-simon" class="game-area-container" style="display:none;">
-                <div class="game-panel">
-                    <div class="game-panel-head">
-                        <h2><i class="fas fa-th-large"></i> سلسلة الألوان</h2>
-                        <div class="head-right">
-                            <span class="stat-pill"><i class="fas fa-layer-group"></i> المستوى: <span id="simonLevel">0</span></span>
-                            <button class="close-btn" onclick="closeGame()"><i class="fas fa-times"></i> إغلاق</button>
-                        </div>
-                    </div>
-                    <div style="text-align:center;">
-                        <div class="simon-grid">
-                            <button class="simon-btn" id="simonTL" onclick="simonPlayerClick(0)"></button>
-                            <button class="simon-btn" id="simonTR" onclick="simonPlayerClick(1)"></button>
-                            <button class="simon-btn" id="simonBL" onclick="simonPlayerClick(2)"></button>
-                            <button class="simon-btn" id="simonBR" onclick="simonPlayerClick(3)"></button>
-                        </div>
-                        <div id="simonFeedback" class="feedback-line neutral" style="margin-top:18px;"></div>
-                        <button class="solid-btn" style="margin-top:6px;" onclick="startSimonGame()"><i class="fas fa-play"></i> ابدأ / أعد التشغيل</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ===== SEQUENCE GAME ===== -->
-            <div id="game-sequence" class="game-area-container" style="display:none;">
-                <div class="game-panel">
-                    <div class="game-panel-head">
-                        <h2><i class="fas fa-sort-numeric-up"></i> سلسلة الأرقام</h2>
-                        <div class="head-right">
-                            <span class="stat-pill"><i class="fas fa-star"></i> النقاط: <span id="seqScore">0</span></span>
-                            <button class="close-btn" onclick="closeGame()"><i class="fas fa-times"></i> إغلاق</button>
-                        </div>
-                    </div>
-                    <div style="text-align:center; padding:20px 0;">
-                        <div style="font-size:30px; font-weight:700; color:#f0f0f5; background:rgba(0,0,0,0.2); padding:20px; border-radius:28px; max-width:420px; margin:0 auto 22px; letter-spacing:6px;" id="sequenceDisplay">2, 5, 10, 17, ?</div>
-                        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-                            <input type="number" id="sequenceAnswer" placeholder="أدخل الرقم" class="text-input" style="width:180px;" inputmode="numeric">
-                            <button class="solid-btn" onclick="checkSequenceGame()"><i class="fas fa-check"></i> تحقق</button>
-                        </div>
-                        <div id="seqFeedback" class="feedback-line neutral" aria-live="polite"></div>
-                        <div style="display:flex; gap:10px; justify-content:center; margin-top:8px;">
-                            <button class="ghost-btn" onclick="toggleSeqHint()"><i class="fas fa-lightbulb"></i> تلميح</button>
-                            <button class="ghost-btn" onclick="nextSequence()"><i class="fas fa-forward"></i> التالي</button>
+                        <div class="flag-display">
+                            <div><img src="https://flagcdn.com/w320/sa.png" alt="علم الدولة" id="flagImg"></div>
+                            <div style="font-size:18px; color:var(--text-dim); margin:10px 0;">ما اسم هذه الدولة؟</div>
+                            <div class="flag-input-area">
+                                <input type="text" id="flagInput" placeholder="اكتب اسم الدولة...">
+                                <button class="solid-btn" onclick="checkFlagAnswer()"><i class="fas fa-check"></i> تحقق</button>
+                            </div>
+                            <div id="flagFeedback" class="feedback-line neutral"></div>
+                            <button class="ghost-btn" style="margin-top:10px;" onclick="nextFlagQuestion()"><i class="fas fa-forward"></i> سؤال جديد</button>
                         </div>
                     </div>
                 </div>
-            </div>
 
+                <!-- GEOGRAPHY -->
+                <div id="game-geography" class="game-area-container">
+                    <div class="game-panel">
+                        <div class="game-panel-head">
+                            <h2><i class="fas fa-globe-americas"></i> جغرافيا الدول</h2>
+                            <div class="head-right">
+                                <span class="stat-pill"><i class="fas fa-fire"></i> السلسلة: <span id="geoStreak">0</span></span>
+                                <span class="stat-pill"><i class="fas fa-trophy"></i> النقاط: <span id="geoScore">0</span></span>
+                                <button class="close-btn" onclick="closeGame('geography')"><i class="fas fa-times"></i> إغلاق</button>
+                            </div>
+                        </div>
+                        <div style="text-align:center; padding:6px 0;">
+                            <div style="font-size:18px; color:var(--text-dim); margin-bottom:8px;">اختر الدولة الصحيحة لهذا العلم:</div>
+                            <div><img src="https://flagcdn.com/w320/sa.png" alt="علم الدولة" id="geoFlagImg" style="width:180px; height:120px; border-radius:14px; border:2px solid var(--border); object-fit:cover;"></div>
+                            <div class="flag-options" id="geoOptions"></div>
+                            <div id="geoFeedback" class="feedback-line neutral"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TRIVIA -->
+                <div id="game-trivia" class="game-area-container">
+                    <div class="game-panel">
+                        <div class="game-panel-head">
+                            <h2><i class="fas fa-question-circle"></i> ثقافة عامة</h2>
+                            <div class="head-right">
+                                <span class="stat-pill"><i class="fas fa-fire"></i> السلسلة: <span id="triviaStreak">0</span></span>
+                                <span class="stat-pill"><i class="fas fa-trophy"></i> النقاط: <span id="triviaScore">0</span></span>
+                                <button class="close-btn" onclick="closeGame('trivia')"><i class="fas fa-times"></i> إغلاق</button>
+                            </div>
+                        </div>
+                        <div style="text-align:center; padding:6px 0;">
+                            <div id="triviaQuestion" style="font-size:18px; font-weight:700; padding:16px; min-height:50px; color:var(--text);">ما هي عاصمة فرنسا؟</div>
+                            <div class="trivia-options" id="triviaOptions"></div>
+                            <div id="triviaFeedback" class="feedback-line neutral"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TYPING -->
+                <div id="game-typing" class="game-area-container">
+                    <div class="game-panel">
+                        <div class="game-panel-head">
+                            <h2><i class="fas fa-keyboard"></i> سرعة الكتابة</h2>
+                            <div class="head-right">
+                                <span class="stat-pill"><i class="fas fa-stopwatch"></i> <span id="typingTimer">0</span> ث</span>
+                                <span class="stat-pill"><i class="fas fa-tachometer-alt"></i> سرعة: <span id="typingSpeed">0</span> ك/د</span>
+                                <button class="close-btn" onclick="closeGame('typing')"><i class="fas fa-times"></i> إغلاق</button>
+                            </div>
+                        </div>
+                        <div style="text-align:center; padding:6px 0;">
+                            <div id="typingText"></div>
+                            <input type="text" id="typingInput" class="text-input" placeholder="ابدأ الكتابة هنا...">
+                            <div id="typingFeedback" class="feedback-line neutral"></div>
+                            <button class="solid-btn" style="margin-top:10px;" onclick="initTypingGame()"><i class="fas fa-redo"></i> نص جديد</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- REACTION -->
+                <div id="game-reaction" class="game-area-container">
+                    <div class="game-panel">
+                        <div class="game-panel-head">
+                            <h2><i class="fas fa-bolt"></i> سرعة البديهة</h2>
+                            <div class="head-right">
+                                <span class="stat-pill"><i class="fas fa-clock"></i> أسرع: <span id="reactionBest">--</span> ث</span>
+                                <button class="close-btn" onclick="closeGame('reaction')"><i class="fas fa-times"></i> إغلاق</button>
+                            </div>
+                        </div>
+                        <div style="text-align:center; padding:14px 0;">
+                            <div id="reactionBox" onclick="reactionBoxClick()">
+                                <div id="reactionStatus" style="font-size:22px; color:#8892b0;">اضغط "ابدأ"</div>
+                                <div id="reactionTime" style="font-size:36px; font-weight:800; color:var(--gold); margin-top:8px;"></div>
+                            </div>
+                            <button id="reactionStartBtn" class="solid-btn" style="margin-top:16px;" onclick="startReactionGame(event)"><i class="fas fa-play"></i> ابدأ</button>
+                            <div class="reaction-history" id="reactionHistory"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SIMON -->
+                <div id="game-simon" class="game-area-container">
+                    <div class="game-panel">
+                        <div class="game-panel-head">
+                            <h2><i class="fas fa-th-large"></i> سلسلة الألوان</h2>
+                            <div class="head-right">
+                                <span class="stat-pill"><i class="fas fa-layer-group"></i> المستوى: <span id="simonLevel">0</span></span>
+                                <button class="close-btn" onclick="closeGame('simon')"><i class="fas fa-times"></i> إغلاق</button>
+                            </div>
+                        </div>
+                        <div style="text-align:center;">
+                            <div class="simon-grid">
+                                <button class="simon-btn" id="simonTL" onclick="simonPlayerClick(0)"></button>
+                                <button class="simon-btn" id="simonTR" onclick="simonPlayerClick(1)"></button>
+                                <button class="simon-btn" id="simonBL" onclick="simonPlayerClick(2)"></button>
+                                <button class="simon-btn" id="simonBR" onclick="simonPlayerClick(3)"></button>
+                            </div>
+                            <div id="simonFeedback" class="feedback-line neutral" style="margin-top:14px;"></div>
+                            <button class="solid-btn" style="margin-top:4px;" onclick="startSimonGame()"><i class="fas fa-play"></i> ابدأ / أعد التشغيل</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SEQUENCE -->
+                <div id="game-sequence" class="game-area-container">
+                    <div class="game-panel">
+                        <div class="game-panel-head">
+                            <h2><i class="fas fa-sort-numeric-up"></i> سلسلة الأرقام</h2>
+                            <div class="head-right">
+                                <span class="stat-pill"><i class="fas fa-star"></i> النقاط: <span id="seqScore">0</span></span>
+                                <button class="close-btn" onclick="closeGame('sequence')"><i class="fas fa-times"></i> إغلاق</button>
+                            </div>
+                        </div>
+                        <div style="text-align:center; padding:14px 0;">
+                            <div id="sequenceDisplay">2, 5, 10, 17, ?</div>
+                            <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+                                <input type="number" id="sequenceAnswer" placeholder="أدخل الرقم" class="text-input" style="width:160px;">
+                                <button class="solid-btn" onclick="checkSequenceGame()"><i class="fas fa-check"></i> تحقق</button>
+                            </div>
+                            <div id="seqFeedback" class="feedback-line neutral"></div>
+                            <div style="display:flex; gap:8px; justify-content:center; margin-top:6px;">
+                                <button class="ghost-btn" onclick="toggleSeqHint()"><i class="fas fa-lightbulb"></i> تلميح</button>
+                                <button class="ghost-btn" onclick="nextSequence()"><i class="fas fa-forward"></i> التالي</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
 
-        <section id="lessons">
-            <div class="section-title fade-up"><i class="fas fa-chalkboard-teacher"></i><span class="highlight">دروس</span> نموذجية</div>
-            <div class="section-sub fade-up delay-1">أفكار مبتكرة لحصص تعليمية ملهمة</div>
+        <!-- ============================================================
+        صفحة الاختبارات
+        ============================================================ -->
+        <div id="page-quiz" class="page">
 
-            <div class="lesson-list">
-                <div class="lesson-item fade-up delay-1">
-                    <span class="lesson-icon"><i class="fas fa-flask"></i></span>
-                    <div class="lesson-content">
-                        <h3>مختبر الابتكار العلمي</h3>
-                        <p>حصة تفاعلية يجري فيها الطلاب تجارب بسيطة (كيمياء، فيزياء) ثم يحللون النتائج ويقترحون تطبيقات حياتية.</p>
-                    </div>
-                    <span class="lesson-tag">🔬 علوم</span>
+            <!-- ===== شاشة البداية ===== -->
+            <div id="quizStartScreen" class="quiz-start-screen">
+                <div class="big-icon"><i class="fas fa-brain"></i></div>
+                <h2>اختبار الموهبة</h2>
+                <p>
+                    اكتشف مستوى قدراتك الذهنية من خلال 20 سؤالاً متنوعاً في
+                    التفكير المنطقي، الرياضيات، الثقافة العامة، والمعلومات.
+                </p>
+                <div class="quiz-info">
+                    <span><i class="fas fa-list"></i> 20 سؤال</span>
+                    <span><i class="fas fa-clock"></i> ~15 دقيقة</span>
+                    <span><i class="fas fa-star"></i> تحصل على نجوم عند الإكمال</span>
                 </div>
-                <div class="lesson-item fade-up delay-2">
-                    <span class="lesson-icon"><i class="fas fa-robot"></i></span>
-                    <div class="lesson-content">
-                        <h3>الروبوتات والذكاء الاصطناعي</h3>
-                        <p>تعريف الطلاب بأساسيات الذكاء الاصطناعي عبر مشاريع عملية (تصنيف صور، محادثات بسيطة) باستخدام منصات سهلة.</p>
+                <button class="start-quiz-btn" onclick="startQuiz()">
+                    <i class="fas fa-play"></i> ابدأ الاختبار
+                </button>
+            </div>
+
+            <!-- ===== واجهة الاختبار ===== -->
+            <div id="quizContainer" class="quiz-container">
+                <div class="quiz-header">
+                    <div class="quiz-info">
+                        <span><i class="fas fa-list"></i> 20 سؤال</span>
+                        <span><i class="fas fa-clock"></i> <span id="quizTimer">0:00</span></span>
+                        <span><i class="fas fa-star"></i> <span id="quizStarReward">0</span> نجمة</span>
                     </div>
-                    <span class="lesson-tag">🤖 تقنية</span>
+                    <button class="ghost-btn" onclick="resetQuiz()" style="color:var(--coral);">
+                        <i class="fas fa-times"></i> إنهاء
+                    </button>
                 </div>
-                <div class="lesson-item fade-up delay-3">
-                    <span class="lesson-icon"><i class="fas fa-book-open"></i></span>
-                    <div class="lesson-content">
-                        <h3>نادي القراءة النقدية</h3>
-                        <p>قراءة نصوص أدبية أو علمية ومناقشتها من زوايا متعددة، مع تدريب على كتابة مراجعات نقدية وتلخيص.</p>
-                    </div>
-                    <span class="lesson-tag">📚 أدب</span>
+
+                <div class="quiz-progress">
+                    <div class="progress-bar" id="progressBar"></div>
                 </div>
-                <div class="lesson-item fade-up delay-4">
-                    <span class="lesson-icon"><i class="fas fa-globe-americas"></i></span>
-                    <div class="lesson-content">
-                        <h3>حل مشكلات مجتمعية</h3>
-                        <p>يقترح الطلاب حلولاً مبتكرة لمشكلات محلية (بيئية، اجتماعية) ويعرضونها كخطة عمل قابلة للتنفيذ.</p>
+
+                <form id="quizForm">
+                    <div id="quizQuestions"></div>
+                </form>
+
+                <div class="quiz-navigation">
+                    <div class="question-counter">
+                        <i class="fas fa-question-circle"></i> السؤال <span id="currentQNum">1</span> من <span id="totalQNum">20</span>
                     </div>
-                    <span class="lesson-tag">🌍 اجتماعي</span>
+                    <div class="nav-buttons">
+                        <button class="ghost-btn" id="prevBtn" onclick="changeQuestion(-1)">
+                            <i class="fas fa-chevron-right"></i> السابق
+                        </button>
+                        <button class="solid-btn" id="nextBtn" onclick="changeQuestion(1)">
+                            التالي <i class="fas fa-chevron-left"></i>
+                        </button>
+                    </div>
                 </div>
-                <div class="lesson-item fade-up delay-5">
-                    <span class="lesson-icon"><i class="fas fa-music"></i></span>
-                    <div class="lesson-content">
-                        <h3>الإيقاع والتركيز</h3>
-                        <p>استخدام الإيقاعات الموسيقية لتحسين التركيز وحل التمارين، مع تطبيقات على الربط بين الموسيقى والرياضيات.</p>
-                    </div>
-                    <span class="lesson-tag">🎵 إبداع</span>
+
+                <div class="quiz-actions">
+                    <button type="button" class="solid-btn" onclick="submitQuiz()" style="background:linear-gradient(135deg,var(--coral),#cc4444);">
+                        <i class="fas fa-check-circle"></i> إنهاء الاختبار
+                    </button>
+                </div>
+
+                <div id="quizStatus" class="feedback-line neutral" style="text-align:center; margin-top:10px;"></div>
+            </div>
+        </div>
+
+        <!-- ============================================================
+        صفحة عن الموقع
+        ============================================================ -->
+        <div id="page-about" class="page">
+            <div class="section-title"><i class="fas fa-info-circle"></i><span class="highlight">عن</span> الموقع</div>
+            <div class="section-sub">تعرف على رؤيتنا ورسالتنا</div>
+
+            <div class="about-grid">
+                <div class="about-card">
+                    <span class="icon"><i class="fas fa-bullseye"></i></span>
+                    <h3>رؤيتنا</h3>
+                    <p>نسعى لاكتشاف المواهب الخفية لدى طلاب ثانوية هوزان وتطويرها عبر وسائل تعليمية مبتكرة.</p>
+                </div>
+                <div class="about-card">
+                    <span class="icon"><i class="fas fa-hand-holding-heart"></i></span>
+                    <h3>رسالتنا</h3>
+                    <p>توفير بيئة تفاعلية تحفز الإبداع والتفكير النقدي، وتمنح الطلاب أدوات لتنمية قدراتهم الذهنية.</p>
+                </div>
+                <div class="about-card">
+                    <span class="icon"><i class="fas fa-users-cog"></i></span>
+                    <h3>فريق العمل</h3>
+                    <p>معلمون ومرشدون متخصصون في رعاية الموهوبين، يعملون على تصميم برامج تناسب كل طالب.</p>
+                </div>
+                <div class="about-card">
+                    <span class="icon"><i class="fas fa-star"></i></span>
+                    <h3>برنامج موهبة</h3>
+                    <p>برنامج متكامل يشمل ألعاباً ذهنية، اختبارات قدرات، ودروساً تفاعلية لصقل المواهب.</p>
+                </div>
+                <div class="about-card">
+                    <span class="icon"><i class="fas fa-trophy"></i></span>
+                    <h3>الإنجازات</h3>
+                    <p>حقق طلابنا 18 جائزة في مسابقات محلية وإقليمية، ونفخر بمسيرتهم المتميزة.</p>
+                </div>
+                <div class="about-card">
+                    <span class="icon"><i class="fas fa-rocket"></i></span>
+                    <h3>المستقبل</h3>
+                    <p>نعمل على توسيع البرنامج ليشمل مجالات جديدة مثل الذكاء الاصطناعي والبرمجة الإبداعية.</p>
                 </div>
             </div>
-        </section>
+        </div>
 
+        <!-- ===== FOOTER ===== -->
         <div class="footer">
             <i class="fas fa-graduation-cap"></i> ثانوية هوزان · برنامج موهبة
             <i class="fas fa-star" style="color:var(--gold);"></i> 2026
             <i class="fas fa-heart heart"></i>
-            <br />
-            <span style="font-size:14px; color:#4a5470;">صممناها بحب لتنمية العقول</span>
+            <span style="font-size:12px; color:#4a5470; margin-right:8px;">جميع الألعاب تعمل بكامل طاقتها</span>
         </div>
 
     </div>
 
-    <!-- ===== MODAL ===== -->
+    <!-- ============================================================
+    مودال قائمة الطلاب
+    ============================================================ -->
     <div class="modal-overlay" id="studentModal">
         <div class="modal-box">
-            <h2><i class="fas fa-crown" style="color:var(--gold);"></i> قائمة الموهوبين</h2>
+            <h2><i class="fas fa-crown"></i> قائمة الموهوبين</h2>
             <div class="modal-sub">🌟 طلاب برنامج موهبة - دفعة 2026</div>
-
-            <!-- ===== شعار موهبة في المودال ===== -->
             <div class="modal-logo-img">
-                <img src="https://i.postimg.cc/59mJ0nH7/shʿar-mwhbt-aljdyd-bdqt-ʿalyt-SVG-PNG.png" alt="شعار موهبة" loading="lazy" />
+                <img src="https://i.postimg.cc/59mJ0nH7/shʿar-mwhbt-aljdyd-bdqt-ʿalyt-SVG-PNG.png" alt="شعار موهبة">
             </div>
-
-            <button class="close-modal" onclick="closeModal()"><i class="fas fa-times"></i> إغلاق</button>
-            <ul class="modal-student-list" id="studentList">
-                <!-- يتم تعبئتها بواسطة JS -->
-            </ul>
+            <button class="close-modal-btn" onclick="closeStudentModal()"><i class="fas fa-times"></i> إغلاق</button>
+            <ul class="modal-student-list" id="studentList"></ul>
             <div class="modal-footer">
                 <i class="fas fa-star"></i> العدد الإجمالي: <span id="totalCount">20</span> طالب موهوب
             </div>
         </div>
     </div>
 
-    <!-- ===== THEME SWITCHER ===== -->
+    <!-- ============================================================
+    مودال نتيجة الاختبار
+    ============================================================ -->
+    <div class="modal-overlay result-modal" id="resultModal">
+        <div class="modal-box">
+            <h2 style="justify-content:center;"><i class="fas fa-chart-line"></i> نتيجة الاختبار</h2>
+            <div class="modal-sub" style="text-align:center;">شكراً لإتمامك الاختبار! إليك تقييمك:</div>
+
+            <div class="result-score" id="resultScore">0/20</div>
+            <div class="result-label" id="resultLabel">ممتاز</div>
+            <div class="result-desc" id="resultDesc">أنت مبدع ولديك قدرات استثنائية!</div>
+
+            <div class="result-stats">
+                <span><i class="fas fa-check-circle" style="color:var(--teal);"></i> الصحيح: <span id="resultCorrect">0</span></span>
+                <span><i class="fas fa-times-circle" style="color:var(--coral);"></i> الخطأ: <span id="resultWrong">0</span></span>
+                <span><i class="fas fa-percentage" style="color:var(--gold);"></i> النسبة: <span id="resultPercent">0%</span></span>
+            </div>
+
+            <div class="result-details" id="resultDetails"></div>
+
+            <div class="modal-actions">
+                <button class="solid-btn" onclick="closeResultModal()"><i class="fas fa-thumbs-up"></i> رائع!</button>
+                <button class="ghost-btn" onclick="closeResultModal(); resetQuiz();"><i class="fas fa-redo"></i> إعادة الاختبار</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    محوّل الألوان
+    ============================================================ -->
     <div class="theme-switcher">
         <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleThemePanel()">
             <i class="fas fa-palette"></i>
         </button>
         <div class="theme-panel" id="themePanel">
             <div class="panel-title">🎨 اختر لون الموقع</div>
+            <div class="theme-option" onclick="applyTheme('purple')">
+                <span class="color-dot" style="background:linear-gradient(135deg,#e8d5ff,#b388ff,#7c4dff);"></span> بنفسجي
+            </div>
             <div class="theme-option" onclick="applyTheme('gold')">
                 <span class="color-dot" style="background:linear-gradient(135deg,#fbeecb,#eec168,#c9922e);"></span> ذهبي
             </div>
@@ -2042,132 +2023,102 @@
             <div class="theme-option" onclick="applyTheme('blue')">
                 <span class="color-dot" style="background:linear-gradient(135deg,#b0c4ff,#6ea8ff,#3d7bd8);"></span> أزرق
             </div>
-            <div class="theme-option" onclick="applyTheme('purple')">
-                <span class="color-dot" style="background:linear-gradient(135deg,#d4b8ff,#9b6bff,#6a3dcc);"></span> بنفسجي
-            </div>
-            <div class="theme-option" onclick="applyTheme('reset')">
-                <span class="color-dot" style="background:linear-gradient(135deg,#fbeecb,#eec168,#c9922e); border-color:var(--gold);"></span> إعادة تعيين
-            </div>
         </div>
     </div>
 
     <script>
-        // =====================================================
-        // GLOBAL STAR COUNTER
-        // =====================================================
+        // =========================================================
+        // 1. STARS SYSTEM
+        // =========================================================
         let totalStars = 0;
 
-        function addStars(n) {
-            totalStars += n;
-            const el = document.getElementById('starTotal');
+        function loadStars() {
+            const saved = localStorage.getItem('mawhiba_stars');
+            totalStars = saved ? parseInt(saved, 10) || 0 : 0;
+            updateStarDisplay();
+        }
+
+        function saveStars() {
+            localStorage.setItem('mawhiba_stars', totalStars.toString());
+        }
+
+        function updateStarDisplay() {
+            document.getElementById('starTotal').textContent = totalStars;
             const wrap = document.getElementById('starCounter');
-            el.textContent = totalStars;
             wrap.classList.remove('pulse');
             void wrap.offsetWidth;
             wrap.classList.add('pulse');
         }
 
-        // =====================================================
-        // PARTICLES
-        // =====================================================
-        (function() {
-            const canvas = document.getElementById('particles-canvas');
-            const ctx = canvas.getContext('2d');
-            let w, h;
-            const particles = [];
-            const COUNT = 70;
+        function addStars(n) {
+            totalStars += n;
+            saveStars();
+            updateStarDisplay();
+        }
 
-            function resize() {
-                w = canvas.width = window.innerWidth;
-                h = canvas.height = window.innerHeight;
-            }
-            window.addEventListener('resize', resize);
-            resize();
+        // =========================================================
+        // 2. NAVIGATION
+        // =========================================================
+        function navigateTo(page) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            const target = document.getElementById('page-' + page);
+            if (target) target.classList.add('active');
 
-            class Particle {
-                constructor() {
-                    this.x = Math.random() * w;
-                    this.y = Math.random() * h;
-                    this.size = Math.random() * 2 + 1.5;
-                    this.speedX = (Math.random() - 0.5) * 0.35;
-                    this.speedY = (Math.random() - 0.5) * 0.35;
-                    this.opacity = Math.random() * 0.4 + 0.15;
-                }
-                update() {
-                    this.x += this.speedX;
-                    this.y += this.speedY;
-                    if (this.x < 0 || this.x > w) this.speedX *= -1;
-                    if (this.y < 0 || this.y > h) this.speedY *= -1;
-                }
-                draw() {
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(238, 193, 104, ${this.opacity})`;
-                    ctx.fill();
-                }
-            }
-
-            for (let i = 0; i < COUNT; i++) particles.push(new Particle());
-
-            function drawLines() {
-                for (let i = 0; i < particles.length; i++) {
-                    for (let j = i + 1; j < particles.length; j++) {
-                        const dx = particles[i].x - particles[j].x;
-                        const dy = particles[i].y - particles[j].y;
-                        const dist = Math.sqrt(dx * dx + dy * dy);
-                        if (dist < 140) {
-                            ctx.beginPath();
-                            ctx.moveTo(particles[i].x, particles[i].y);
-                            ctx.lineTo(particles[j].x, particles[j].y);
-                            ctx.strokeStyle = `rgba(238, 193, 104, ${0.06 * (1 - dist / 140)})`;
-                            ctx.lineWidth = 0.7;
-                            ctx.stroke();
-                        }
+            document.querySelectorAll('.nav-links button').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.nav-links button').forEach(btn => {
+                const text = btn.textContent.trim();
+                const pages = { 'الرئيسية': 'home', 'الألعاب': 'games', 'الاختبارات': 'quiz', 'عن الموقع': 'about' };
+                for (let key in pages) {
+                    if (text.includes(key) && pages[key] === page) {
+                        btn.classList.add('active');
                     }
                 }
-            }
-
-            function animate() {
-                ctx.clearRect(0, 0, w, h);
-                particles.forEach(p => { p.update();
-                    p.draw(); });
-                drawLines();
-                requestAnimationFrame(animate);
-            }
-            animate();
-        })();
-
-        // =====================================================
-        // NAV
-        // =====================================================
-        const navLinks = document.querySelectorAll('.nav-links a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                navLinks.forEach(l => l.classList.remove('active'));
-                this.classList.add('active');
             });
+        }
+
+        // =========================================================
+        // 3. STUDENT MODAL
+        // =========================================================
+        const studentNames = [
+            'أحمد البلادي', 'أحمد المبارك', 'أحمد العميشي', 'الحسن المبارك',
+            'حسن الشهاب', 'حيدر الصباح', 'عبدالعزيز الرشيدان', 'عبدالله عقيل العوض',
+            'علي بندر المبارك', 'علي حسين الصالح', 'علي حسين الزيد', 'علي الخميس',
+            'علي السلطان', 'علي زكريا المبارك', 'قاسم العبد رب الرضا',
+            'محمد زكريا المبارك', 'محمد سعيد العباد', 'محمد ماهر المبارك',
+            'وسام الملاك', 'محمد نضال الشخص'
+        ];
+
+        function openStudentModal() {
+            const modal = document.getElementById('studentModal');
+            const list = document.getElementById('studentList');
+            list.innerHTML = '';
+            studentNames.forEach((name, idx) => {
+                const li = document.createElement('li');
+                li.innerHTML = `<span class="num">${String(idx + 1).padStart(2, '0')}</span><i class="fas fa-star"></i> ${name}`;
+                list.appendChild(li);
+            });
+            document.getElementById('totalCount').textContent = studentNames.length;
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeStudentModal() {
+            document.getElementById('studentModal').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('studentModal').addEventListener('click', function(e) {
+            if (e.target === this) closeStudentModal();
         });
 
-        const sections = ['home', 'ideas', 'games', 'lessons'].map(id => document.getElementById(id));
-        const spy = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    navLinks.forEach(l => l.classList.remove('active'));
-                    const match = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
-                    if (match) match.classList.add('active');
-                }
-            });
-        }, { rootMargin: '-45% 0px -50% 0px' });
-        sections.forEach(s => s && spy.observe(s));
-
-        // =====================================================
-        // SHOW / CLOSE GAME
-        // =====================================================
+        // =========================================================
+        // 4. SHOW / CLOSE GAME
+        // =========================================================
         function showGame(gameId) {
-            document.querySelectorAll('.game-area-container').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.game-area-container').forEach(el => el.classList.remove('active'));
             const target = document.getElementById('game-' + gameId);
             if (target) {
-                target.style.display = 'block';
+                target.classList.add('active');
                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
             if (gameId === 'memory') initMemoryGame();
@@ -2180,30 +2131,23 @@
             if (gameId === 'sequence') initSequenceGame();
         }
 
-        function closeGame() {
-            document.querySelectorAll('.game-area-container').forEach(el => el.style.display = 'none');
+        function closeGame(gameId) {
+            const target = document.getElementById('game-' + gameId);
+            if (target) target.classList.remove('active');
         }
 
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeGame();
-        });
-
-        // =====================================================
-        // GAME 1: MEMORY
-        // =====================================================
+        // =========================================================
+        // 5. MEMORY GAME
+        // =========================================================
         const imageSets = [
-            'https://picsum.photos/seed/animal1/200/200',
-            'https://picsum.photos/seed/nature2/200/200',
-            'https://picsum.photos/seed/city3/200/200',
-            'https://picsum.photos/seed/space4/200/200',
-            'https://picsum.photos/seed/flower5/200/200',
-            'https://picsum.photos/seed/mountain6/200/200',
-            'https://picsum.photos/seed/ocean7/200/200',
-            'https://picsum.photos/seed/forest8/200/200',
-            'https://picsum.photos/200/200?random=10',
-            'https://picsum.photos/200/200?random=11',
-            'https://picsum.photos/200/200?random=12',
-            'https://picsum.photos/200/200?random=13',
+            'https://picsum.photos/seed/a1/200/200', 'https://picsum.photos/seed/b2/200/200',
+            'https://picsum.photos/seed/c3/200/200', 'https://picsum.photos/seed/d4/200/200',
+            'https://picsum.photos/seed/e5/200/200', 'https://picsum.photos/seed/f6/200/200',
+            'https://picsum.photos/seed/g7/200/200', 'https://picsum.photos/seed/h8/200/200',
+            'https://picsum.photos/seed/i9/200/200', 'https://picsum.photos/seed/j10/200/200',
+            'https://picsum.photos/seed/k11/200/200', 'https://picsum.photos/seed/l12/200/200',
+            'https://picsum.photos/seed/m13/200/200', 'https://picsum.photos/seed/n14/200/200',
+            'https://picsum.photos/seed/o15/200/200', 'https://picsum.photos/seed/p16/200/200',
         ];
 
         let memoryCards = [],
@@ -2214,13 +2158,12 @@
             memoryStarsGiven = false;
 
         function initMemoryGame() {
-            const status = document.getElementById('memoryStatus');
             memoryAttempts = 0;
             memoryStarsGiven = false;
             document.getElementById('memoryAttempts').textContent = '0';
             document.getElementById('memoryMatchedCount').textContent = '0';
-            status.textContent = 'اقلب بطاقتين متطابقتين';
-            status.className = 'feedback-line neutral';
+            document.getElementById('memoryStatus').textContent = 'اقلب بطاقتين متطابقتين';
+            document.getElementById('memoryStatus').className = 'feedback-line neutral';
 
             const shuffledPool = [...imageSets].sort(() => Math.random() - 0.5);
             const selected = shuffledPool.slice(0, 8);
@@ -2244,16 +2187,12 @@
                 const isMatched = memoryMatched.includes(index);
                 const card = document.createElement('div');
                 card.className = 'mem-card' + (isFlipped ? ' flipped' : '') + (isMatched ? ' matched' : '');
-                card.setAttribute('tabindex', '0');
-                card.setAttribute('role', 'button');
                 card.innerHTML = `
                         <div class="mem-inner">
                             <div class="mem-face mem-back"><i class="fas fa-star"></i></div>
-                            <div class="mem-face mem-front"><img src="${imgUrl}" alt="صورة" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%23222%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%22 y=%22110%22 font-size=%2224%22 fill=%22%23f9d423%22 font-family=%22sans-serif%22%3E?%3C/text%3E%3C/svg%3E'"></div>
+                            <div class="mem-face mem-front"><img src="${imgUrl}" alt="صورة" loading="lazy"></div>
                         </div>`;
                 card.addEventListener('click', () => flipMemoryCard(index));
-                card.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault();
-                        flipMemoryCard(index); } });
                 board.appendChild(card);
             });
             document.getElementById('memoryMatchedCount').textContent = memoryMatched.length / 2;
@@ -2262,10 +2201,8 @@
         function flipMemoryCard(index) {
             if (memoryLock || memoryMatched.includes(index) || memoryFlipped.includes(index) || memoryFlipped.length >= 2)
                 return;
-
             memoryFlipped.push(index);
             renderMemoryBoard();
-
             if (memoryFlipped.length === 2) {
                 memoryLock = true;
                 memoryAttempts++;
@@ -2280,9 +2217,8 @@
                     if (memoryMatched.length === memoryCards.length && !memoryStarsGiven) {
                         memoryStarsGiven = true;
                         const bonus = memoryAttempts <= 10 ? 8 : 5;
-                        const status = document.getElementById('memoryStatus');
-                        status.textContent = `🎉 أحسنت! أكملت اللعبة في ${memoryAttempts} محاولة (+${bonus} نجوم)`;
-                        status.className = 'feedback-line good';
+                        document.getElementById('memoryStatus').textContent = `🎉 أحسنت! (+${bonus} نجوم)`;
+                        document.getElementById('memoryStatus').className = 'feedback-line good';
                         addStars(bonus);
                     }
                 } else {
@@ -2290,57 +2226,59 @@
                         memoryFlipped = [];
                         memoryLock = false;
                         renderMemoryBoard();
-                    }, 800);
+                    }, 700);
                 }
             }
         }
 
-        // =====================================================
-        // GAME 2: FLAGS
-        // =====================================================
+        // =========================================================
+        // 6. FLAGS GAME
+        // =========================================================
         const flagData = [
-            { code: 'sa', name: 'السعودية' },
-            { code: 'eg', name: 'مصر' },
-            { code: 'ae', name: 'الإمارات' },
-            { code: 'kw', name: 'الكويت' },
-            { code: 'qa', name: 'قطر' },
-            { code: 'om', name: 'عمان' },
-            { code: 'bh', name: 'البحرين' },
-            { code: 'jo', name: 'الأردن' },
-            { code: 'lb', name: 'لبنان' },
-            { code: 'ps', name: 'فلسطين' },
-            { code: 'dz', name: 'الجزائر' },
-            { code: 'ma', name: 'المغرب' },
-            { code: 'tn', name: 'تونس' },
-            { code: 'ly', name: 'ليبيا' },
-            { code: 'sd', name: 'السودان' },
-            { code: 'ye', name: 'اليمن' },
-            { code: 'sy', name: 'سوريا' },
-            { code: 'iq', name: 'العراق' },
-            { code: 'tr', name: 'تركيا' },
-            { code: 'ir', name: 'إيران' },
-            { code: 'pk', name: 'باكستان' },
-            { code: 'in', name: 'الهند' },
-            { code: 'cn', name: 'الصين' },
-            { code: 'jp', name: 'اليابان' },
-            { code: 'kr', name: 'كوريا الجنوبية' },
-            { code: 'us', name: 'الولايات المتحدة' },
-            { code: 'gb', name: 'بريطانيا' },
-            { code: 'fr', name: 'فرنسا' },
-            { code: 'de', name: 'ألمانيا' },
-            { code: 'it', name: 'إيطاليا' },
-            { code: 'es', name: 'إسبانيا' },
-            { code: 'ru', name: 'روسيا' },
-            { code: 'br', name: 'البرازيل' },
-            { code: 'ar', name: 'الأرجنتين' },
-            { code: 'ca', name: 'كندا' },
-            { code: 'au', name: 'أستراليا' },
+            { code: 'sa', name: 'السعودية' }, { code: 'eg', name: 'مصر' },
+            { code: 'ae', name: 'الإمارات' }, { code: 'kw', name: 'الكويت' },
+            { code: 'qa', name: 'قطر' }, { code: 'om', name: 'عمان' },
+            { code: 'bh', name: 'البحرين' }, { code: 'jo', name: 'الأردن' },
+            { code: 'lb', name: 'لبنان' }, { code: 'ps', name: 'فلسطين' },
+            { code: 'dz', name: 'الجزائر' }, { code: 'ma', name: 'المغرب' },
+            { code: 'tn', name: 'تونس' }, { code: 'ly', name: 'ليبيا' },
+            { code: 'sd', name: 'السودان' }, { code: 'ye', name: 'اليمن' },
+            { code: 'sy', name: 'سوريا' }, { code: 'iq', name: 'العراق' },
+            { code: 'tr', name: 'تركيا' }, { code: 'ir', name: 'إيران' },
+            { code: 'pk', name: 'باكستان' }, { code: 'in', name: 'الهند' },
+            { code: 'cn', name: 'الصين' }, { code: 'jp', name: 'اليابان' },
+            { code: 'kr', name: 'كوريا الجنوبية' }, { code: 'us', name: 'الولايات المتحدة' },
+            { code: 'gb', name: 'بريطانيا' }, { code: 'fr', name: 'فرنسا' },
+            { code: 'de', name: 'ألمانيا' }, { code: 'it', name: 'إيطاليا' },
+            { code: 'es', name: 'إسبانيا' }, { code: 'ru', name: 'روسيا' },
+            { code: 'br', name: 'البرازيل' }, { code: 'ar', name: 'الأرجنتين' },
+            { code: 'ca', name: 'كندا' }, { code: 'au', name: 'أستراليا' },
+            { code: 'mx', name: 'المكسيك' }, { code: 'za', name: 'جنوب أفريقيا' },
+            { code: 'ng', name: 'نيجيريا' }, { code: 'ke', name: 'كينيا' },
+            { code: 'no', name: 'النرويج' }, { code: 'se', name: 'السويد' },
+            { code: 'fi', name: 'فنلندا' }, { code: 'dk', name: 'الدنمارك' },
+            { code: 'nl', name: 'هولندا' }, { code: 'be', name: 'بلجيكا' },
+            { code: 'ch', name: 'سويسرا' }, { code: 'at', name: 'النمسا' },
+            { code: 'gr', name: 'اليونان' }, { code: 'pt', name: 'البرتغال' },
+            { code: 'pl', name: 'بولندا' }, { code: 'ua', name: 'أوكرانيا' },
+            { code: 'ro', name: 'رومانيا' }, { code: 'hu', name: 'المجر' },
+            { code: 'cz', name: 'التشيك' }, { code: 'sk', name: 'سلوفاكيا' },
+            { code: 'bg', name: 'بلغاريا' }, { code: 'hr', name: 'كرواتيا' },
+            { code: 'rs', name: 'صربيا' }, { code: 'si', name: 'سلوفينيا' },
+            { code: 'lt', name: 'ليتوانيا' }, { code: 'lv', name: 'لاتفيا' },
+            { code: 'ee', name: 'إستونيا' }, { code: 'ie', name: 'أيرلندا' },
+            { code: 'nz', name: 'نيوزيلندا' }, { code: 'id', name: 'إندونيسيا' },
+            { code: 'my', name: 'ماليزيا' }, { code: 'th', name: 'تايلاند' },
+            { code: 'vn', name: 'فيتنام' }, { code: 'ph', name: 'الفلبين' },
+            { code: 'sg', name: 'سنغافورة' }, { code: 'hk', name: 'هونغ كونغ' },
+            { code: 'tw', name: 'تايوان' }, { code: 'il', name: 'إسرائيل' }
         ];
 
         let flagScore = 0,
             flagStreak = 0,
             flagCurrent = null,
-            flagAnswered = false;
+            flagAnswered = false,
+            flagLastIndex = -1;
 
         function initFlagsGame() {
             flagScore = 0;
@@ -2348,18 +2286,24 @@
             document.getElementById('flagScore').textContent = '0';
             document.getElementById('flagStreak').textContent = '0';
             document.getElementById('flagFeedback').textContent = '';
+            flagLastIndex = -1;
             nextFlagQuestion();
         }
 
         function nextFlagQuestion() {
-            flagCurrent = flagData[Math.floor(Math.random() * flagData.length)];
+            let index;
+            do {
+                index = Math.floor(Math.random() * flagData.length);
+            } while (index === flagLastIndex && flagData.length > 1);
+            flagLastIndex = index;
+            flagCurrent = flagData[index];
             document.getElementById('flagImg').src = `https://flagcdn.com/w320/${flagCurrent.code}.png`;
             document.getElementById('flagImg').alt = `علم ${flagCurrent.name}`;
             document.getElementById('flagInput').value = '';
-            document.getElementById('flagInput').focus();
             document.getElementById('flagFeedback').textContent = '';
             document.getElementById('flagFeedback').className = 'feedback-line neutral';
             flagAnswered = false;
+            document.getElementById('flagInput').focus();
         }
 
         function checkFlagAnswer() {
@@ -2367,16 +2311,13 @@
             const input = document.getElementById('flagInput');
             const userAnswer = input.value.trim();
             const fb = document.getElementById('flagFeedback');
-
             if (!userAnswer) {
                 fb.textContent = '⚠️ اكتب اسم الدولة';
                 fb.className = 'feedback-line bad';
                 return;
             }
-
             flagAnswered = true;
             const isCorrect = userAnswer === flagCurrent.name;
-
             if (isCorrect) {
                 flagScore++;
                 flagStreak++;
@@ -2388,26 +2329,24 @@
             } else {
                 flagStreak = 0;
                 document.getElementById('flagStreak').textContent = '0';
-                fb.textContent = `❌ خطأ! الإجابة الصحيحة: ${flagCurrent.name}`;
+                fb.textContent = `❌ خطأ! الإجابة: ${flagCurrent.name}`;
                 fb.className = 'feedback-line bad';
             }
-
-            setTimeout(() => {
-                nextFlagQuestion();
-            }, 1500);
+            setTimeout(nextFlagQuestion, 1500);
         }
 
         document.getElementById('flagInput').addEventListener('keydown', function(e) {
             if (e.key === 'Enter') checkFlagAnswer();
         });
 
-        // =====================================================
-        // GAME 3: GEOGRAPHY
-        // =====================================================
+        // =========================================================
+        // 7. GEOGRAPHY GAME
+        // =========================================================
         let geoScore = 0,
             geoStreak = 0,
             geoAnswered = false,
-            geoCurrent = null;
+            geoCurrent = null,
+            geoLastIndex = -1;
 
         function initGeographyGame() {
             geoScore = 0;
@@ -2415,18 +2354,22 @@
             document.getElementById('geoScore').textContent = '0';
             document.getElementById('geoStreak').textContent = '0';
             document.getElementById('geoFeedback').textContent = '';
+            geoLastIndex = -1;
             nextGeoQuestion();
         }
 
         function nextGeoQuestion() {
-            geoCurrent = flagData[Math.floor(Math.random() * flagData.length)];
-            const others = flagData.filter(f => f.code !== geoCurrent.code);
+            let index;
+            do {
+                index = Math.floor(Math.random() * flagData.length);
+            } while (index === geoLastIndex && flagData.length > 1);
+            geoLastIndex = index;
+            geoCurrent = flagData[index];
+            const others = flagData.filter((f, i) => i !== index);
             const shuffled = others.sort(() => Math.random() - 0.5).slice(0, 3);
             const options = [geoCurrent, ...shuffled].sort(() => Math.random() - 0.5);
 
-            document.querySelector('#geoFlagDisplay img').src = `https://flagcdn.com/w320/${geoCurrent.code}.png`;
-            document.querySelector('#geoFlagDisplay img').alt = `علم ${geoCurrent.name}`;
-
+            document.getElementById('geoFlagImg').src = `https://flagcdn.com/w320/${geoCurrent.code}.png`;
             const container = document.getElementById('geoOptions');
             container.innerHTML = '';
             geoAnswered = false;
@@ -2439,7 +2382,6 @@
                 btn.addEventListener('click', () => checkGeoAnswer(btn));
                 container.appendChild(btn);
             });
-
             document.getElementById('geoFeedback').textContent = '';
             document.getElementById('geoFeedback').className = 'feedback-line neutral';
         }
@@ -2449,10 +2391,8 @@
             geoAnswered = true;
             const allBtns = document.querySelectorAll('#geoOptions .flag-opt');
             allBtns.forEach(b => b.disabled = true);
-
             const isCorrect = btn.dataset.correct === 'true';
             const fb = document.getElementById('geoFeedback');
-
             if (isCorrect) {
                 geoScore++;
                 geoStreak++;
@@ -2467,68 +2407,42 @@
                 document.getElementById('geoStreak').textContent = '0';
                 btn.classList.add('wrong');
                 allBtns.forEach(b => { if (b.dataset.correct === 'true') b.classList.add('correct'); });
-                fb.textContent = `❌ خطأ! الإجابة الصحيحة: ${geoCurrent.name}`;
+                fb.textContent = `❌ خطأ! الإجابة: ${geoCurrent.name}`;
                 fb.className = 'feedback-line bad';
             }
             setTimeout(nextGeoQuestion, 1500);
         }
 
-        // =====================================================
-        // GAME 4: TRIVIA
-        // =====================================================
-        const triviaData = [{
-            q: 'ما هي عاصمة فرنسا؟',
-            options: ['لندن', 'باريس', 'برلين', 'مدريد'],
-            correct: 1
-        }, {
-            q: 'كم عدد الكواكب في المجموعة الشمسية؟',
-            options: ['7', '8', '9', '10'],
-            correct: 1
-        }, {
-            q: 'ما هو أكبر محيط في العالم؟',
-            options: ['الأطلسي', 'الهادئ', 'الهندي', 'المتجمد الجنوبي'],
-            correct: 1
-        }, {
-            q: 'من هو مؤلف رواية "مئة عام من العزلة"؟',
-            options: ['جبران خليل جبران', 'نجيب محفوظ', 'غابرييل غارسيا ماركيز', 'علي أحمد باكثير'],
-            correct: 2
-        }, {
-            q: 'ما هي أطول سلسلة جبال في العالم؟',
-            options: ['الهملايا', 'الأنديز', 'الروكي', 'جبال الألب'],
-            correct: 1
-        }, {
-            q: 'في أي عام هبط الإنسان على سطح القمر؟',
-            options: ['1967', '1969', '1971', '1973'],
-            correct: 1
-        }, {
-            q: 'ما هي عملة دولة اليابان؟',
-            options: ['الين', 'الوون', 'الدولار', 'اليورو'],
-            correct: 0
-        }, {
-            q: 'أين تقع مدينة الأقصر؟',
-            options: ['مصر', 'السعودية', 'الأردن', 'العراق'],
-            correct: 0
-        }, {
-            q: 'ما هي أصغر دولة في العالم من حيث المساحة؟',
-            options: ['موناكو', 'الفاتيكان', 'سان مارينو', 'ليختنشتاين'],
-            correct: 1
-        }, {
-            q: 'من هو مؤسس علم الاجتماع؟',
-            options: ['ابن خلدون', 'أوجست كونت', 'إميل دوركهايم', 'ماكس فيبر'],
-            correct: 0
-        }, {
-            q: 'كم عدد أضلاع المكعب؟',
-            options: ['8', '10', '12', '14'],
-            correct: 2
-        }, {
-            q: 'ما هي اللغة الأكثر انتشاراً في العالم؟',
-            options: ['الإنجليزية', 'الصينية', 'الإسبانية', 'العربية'],
-            correct: 1
-        }];
+        // =========================================================
+        // 8. TRIVIA GAME
+        // =========================================================
+        const triviaData = [
+            { q: 'ما هي عاصمة فرنسا؟', options: ['لندن', 'باريس', 'برلين', 'مدريد'], correct: 1 },
+            { q: 'كم عدد الكواكب في المجموعة الشمسية؟', options: ['7', '8', '9', '10'], correct: 1 },
+            { q: 'ما هو أكبر محيط في العالم؟', options: ['الأطلسي', 'الهادئ', 'الهندي', 'المتجمد الجنوبي'], correct: 1 },
+            { q: 'من هو مؤلف "مئة عام من العزلة"؟', options: ['جبران', 'نجيب محفوظ', 'ماركيز', 'باكثير'], correct: 2 },
+            { q: 'ما هي أطول سلسلة جبال؟', options: ['الهملايا', 'الأنديز', 'الروكي', 'الألب'], correct: 1 },
+            { q: 'عام هبوط الإنسان على القمر؟', options: ['1967', '1969', '1971', '1973'], correct: 1 },
+            { q: 'عملة اليابان؟', options: ['الين', 'الوون', 'الدولار', 'اليورو'], correct: 0 },
+            { q: 'أين تقع الأقصر؟', options: ['مصر', 'السعودية', 'الأردن', 'العراق'], correct: 0 },
+            { q: 'أصغر دولة في العالم؟', options: ['موناكو', 'الفاتيكان', 'سان مارينو', 'ليختنشتاين'], correct: 1 },
+            { q: 'مؤسس علم الاجتماع؟', options: ['ابن خلدون', 'أوجست كونت', 'دوركهايم', 'فيبر'], correct: 0 },
+            { q: 'عدد أضلاع المكعب؟', options: ['8', '10', '12', '14'], correct: 2 },
+            { q: 'اللغة الأكثر انتشاراً؟', options: ['الإنجليزية', 'الصينية', 'الإسبانية', 'العربية'], correct: 1 },
+            { q: 'عاصمة أستراليا؟', options: ['سيدني', 'كانبرا', 'ملبورن', 'برث'], correct: 1 },
+            { q: 'عدد سكان العالم تقريباً؟', options: ['5 مليار', '6 مليار', '7 مليار', '8 مليار'], correct: 3 },
+            { q: 'أسرع حيوان بري؟', options: ['الأسد', 'الفهد', 'النمر', 'الغزال'], correct: 1 },
+            { q: 'مخترع المصباح الكهربائي؟', options: ['أديسون', 'تيسلا', 'أينشتاين', 'بل'], correct: 0 },
+            { q: 'عاصمة البرازيل؟', options: ['ريو', 'برازيليا', 'ساو باولو', 'بيلو'], correct: 1 },
+            { q: 'عدد أسنان الإنسان البالغ؟', options: ['28', '30', '32', '34'], correct: 2 },
+            { q: 'أكبر كوكب في المجموعة الشمسية؟', options: ['زحل', 'المشتري', 'نبتون', 'أورانوس'], correct: 1 },
+            { q: 'النبي الذي ابتلعه الحوت؟', options: ['موسى', 'يونس', 'إبراهيم', 'نوح'], correct: 1 },
+        ];
 
         let triviaScore = 0,
             triviaStreak = 0,
-            triviaAnswered = false;
+            triviaAnswered = false,
+            triviaLastIndex = -1;
 
         function initTriviaGame() {
             triviaScore = 0;
@@ -2536,16 +2450,21 @@
             document.getElementById('triviaScore').textContent = '0';
             document.getElementById('triviaStreak').textContent = '0';
             document.getElementById('triviaFeedback').textContent = '';
+            triviaLastIndex = -1;
             nextTriviaQuestion();
         }
 
         function nextTriviaQuestion() {
-            const q = triviaData[Math.floor(Math.random() * triviaData.length)];
+            let index;
+            do {
+                index = Math.floor(Math.random() * triviaData.length);
+            } while (index === triviaLastIndex && triviaData.length > 1);
+            triviaLastIndex = index;
+            const q = triviaData[index];
             document.getElementById('triviaQuestion').textContent = q.q;
             const container = document.getElementById('triviaOptions');
             container.innerHTML = '';
             triviaAnswered = false;
-
             q.options.forEach((opt, idx) => {
                 const btn = document.createElement('button');
                 btn.className = 'trivia-opt';
@@ -2554,7 +2473,6 @@
                 btn.addEventListener('click', () => checkTriviaAnswer(btn, q.options[q.correct]));
                 container.appendChild(btn);
             });
-
             document.getElementById('triviaFeedback').textContent = '';
             document.getElementById('triviaFeedback').className = 'feedback-line neutral';
         }
@@ -2564,10 +2482,8 @@
             triviaAnswered = true;
             const allBtns = document.querySelectorAll('#triviaOptions .trivia-opt');
             allBtns.forEach(b => b.disabled = true);
-
             const isCorrect = btn.dataset.correct === 'true';
             const fb = document.getElementById('triviaFeedback');
-
             if (isCorrect) {
                 triviaScore++;
                 triviaStreak++;
@@ -2582,15 +2498,15 @@
                 document.getElementById('triviaStreak').textContent = '0';
                 btn.classList.add('wrong');
                 allBtns.forEach(b => { if (b.dataset.correct === 'true') b.classList.add('correct'); });
-                fb.textContent = `❌ خطأ! الإجابة الصحيحة: ${correctAnswer}`;
+                fb.textContent = `❌ خطأ! الإجابة: ${correctAnswer}`;
                 fb.className = 'feedback-line bad';
             }
             setTimeout(nextTriviaQuestion, 1500);
         }
 
-        // =====================================================
-        // GAME 5: TYPING
-        // =====================================================
+        // =========================================================
+        // 9. TYPING GAME
+        // =========================================================
         const typingTexts = [
             'النجاح ليس محطة الوصول بل رحلة مستمرة من التعلم والتطور',
             'العلم نور والجهل ظلام، فاطلب العلم من المهد إلى اللحد',
@@ -2599,14 +2515,22 @@
             'الإبداع هو القدرة على رؤية الأشياء بشكل مختلف عن الآخرين',
             'التعاون هو سر النجاح في أي فريق عمل ناجح',
             'التفكير الناقد هو مفتاح حل المشكلات المعقدة',
-            'الذكاء العاطفي أهم من الذكاء المعرفي في بناء العلاقات',
+            'الصبر مفتاح الفرج، ولا يأس مع الحياة ولا حياة مع اليأس',
+            'من جد وجد ومن زرع حصد، ومن سار على الدرب وصل',
+            'العلم في الصغر كالنقش على الحجر، والعلم في الكبر كالنقش على الماء',
+            'خير الناس أنفعهم للناس، وخير الكلام ما قل ودل',
+            'الحكمة ضالة المؤمن، أنى وجدها فهو أحق بها',
+            'لا تحقرن من المعروف شيئاً، ولو أن تلقى أخاك بوجه طلق',
+            'الأخلاق الحسنة تبقى، والمال يذهب، فاختر لنفسك ما يبقى',
+            'التواضع من شيم الكرام، والتكبر من صفات اللئام',
         ];
 
         let typingTimerInterval = null,
             typingSeconds = 0,
             typingStarted = false,
             typingDone = false,
-            typingTargetText = '';
+            typingTargetText = '',
+            typingLastIndex = -1;
 
         function initTypingGame() {
             if (typingTimerInterval) {
@@ -2623,8 +2547,12 @@
             const input = document.getElementById('typingInput');
             input.value = '';
             input.disabled = false;
-
-            typingTargetText = typingTexts[Math.floor(Math.random() * typingTexts.length)];
+            let index;
+            do {
+                index = Math.floor(Math.random() * typingTexts.length);
+            } while (index === typingLastIndex && typingTexts.length > 1);
+            typingLastIndex = index;
+            typingTargetText = typingTexts[index];
             renderTypingText();
             input.focus();
         }
@@ -2660,9 +2588,7 @@
                         span.className = 'char-wrong';
                         allCorrect = false;
                     }
-                    if (idx === typed.length - 1) {
-                        span.classList.add('char-current');
-                    }
+                    if (idx === typed.length - 1) span.classList.add('char-current');
                 } else if (idx === typed.length) {
                     span.className = 'char-current';
                 }
@@ -2676,13 +2602,13 @@
                 const speed = Math.round((typingTargetText.length / typingSeconds) * 60);
                 document.getElementById('typingSpeed').textContent = speed;
                 const fb = document.getElementById('typingFeedback');
-                fb.textContent = `🎉 أحسنت! أكملت النص في ${typingSeconds} ثانية! (+5 نجوم)`;
+                fb.textContent = `🎉 أحسنت! (+5 نجوم)`;
                 fb.className = 'feedback-line good';
                 addStars(5);
             } else if (typed.length === typingTargetText.length && !allCorrect) {
                 document.getElementById('typingInput').disabled = true;
                 const fb = document.getElementById('typingFeedback');
-                fb.textContent = '⚠️ هناك أخطاء في النص! اضغط "نص جديد" للمحاولة مجدداً.';
+                fb.textContent = '⚠️ هناك أخطاء! اضغط "نص جديد" للمحاولة مجدداً.';
                 fb.className = 'feedback-line bad';
                 if (typingTimerInterval) {
                     clearInterval(typingTimerInterval);
@@ -2701,9 +2627,9 @@
 
         document.getElementById('typingInput').addEventListener('input', updateTypingProgress);
 
-        // =====================================================
-        // GAME 6: REACTION
-        // =====================================================
+        // =========================================================
+        // 10. REACTION GAME
+        // =========================================================
         let reactionTimeout = null,
             reactionStartTime = 0,
             reactionWaiting = false,
@@ -2717,7 +2643,7 @@
             document.getElementById('reactionTime').textContent = '';
             const box = document.getElementById('reactionBox');
             box.style.background = 'rgba(255,255,255,0.04)';
-            box.style.borderColor = 'rgba(249,212,35,0.06)';
+            box.style.borderColor = 'rgba(179,136,255,0.08)';
             document.getElementById('reactionStartBtn').innerHTML = '<i class="fas fa-play"></i> ابدأ';
             reactionActive = false;
             reactionWaiting = false;
@@ -2733,15 +2659,13 @@
             const status = document.getElementById('reactionStatus');
             const box = document.getElementById('reactionBox');
             const btn = document.getElementById('reactionStartBtn');
-
             status.textContent = '⏳ انتظر الإشارة الخضراء...';
             document.getElementById('reactionTime').textContent = '';
-            box.style.background = 'rgba(255,215,0,0.05)';
-            box.style.borderColor = 'rgba(249,212,35,0.1)';
+            box.style.background = 'rgba(179,136,255,0.05)';
+            box.style.borderColor = 'rgba(179,136,255,0.1)';
             btn.innerHTML = '⏳ انتظر...';
             reactionWaiting = true;
             reactionActive = false;
-
             const delay = 1000 + Math.random() * 3000;
             reactionTimeout = setTimeout(() => {
                 reactionWaiting = false;
@@ -2791,9 +2715,9 @@
             btn.innerHTML = '🔄 العب مرة أخرى';
         }
 
-        // =====================================================
-        // GAME 7: SIMON
-        // =====================================================
+        // =========================================================
+        // 11. SIMON GAME
+        // =========================================================
         const simonIds = ['simonTL', 'simonTR', 'simonBL', 'simonBR'];
         let simonSequence = [],
             simonPlayerIndex = 0,
@@ -2851,7 +2775,7 @@
                 }
                 litSimon(simonSequence[i], true);
                 i++;
-            }, 700);
+            }, 650);
         }
 
         function litSimon(idx, on) {
@@ -2862,7 +2786,7 @@
         function simonPlayerClick(idx) {
             if (!simonAccepting) return;
             litSimon(idx, true);
-            setTimeout(() => litSimon(idx, false), 220);
+            setTimeout(() => litSimon(idx, false), 200);
 
             const fb = document.getElementById('simonFeedback');
             if (idx === simonSequence[simonPlayerIndex]) {
@@ -2873,7 +2797,7 @@
                     fb.textContent = `✅ صحيح! المستوى ${simonLevel} (+2 نجوم)`;
                     fb.className = 'feedback-line good';
                     addStars(2);
-                    setTimeout(nextSimonRound, 900);
+                    setTimeout(nextSimonRound, 800);
                 }
             } else {
                 simonAccepting = false;
@@ -2884,30 +2808,46 @@
             }
         }
 
-        // =====================================================
-        // GAME 8: SEQUENCE
-        // =====================================================
+        // =========================================================
+        // 12. SEQUENCE GAME
+        // =========================================================
         let seqScore = 0,
             seqIndex = 0,
-            seqHintShown = false;
+            seqHintShown = false,
+            seqLastIndex = -1;
         const seqPatterns = [
             { seq: '2, 5, 10, 17, ?', answer: 26, hint: 'الفرق يزيد بمقدار 2 (n² + 1)' },
-            { seq: '3, 6, 12, 24, ?', answer: 48, hint: 'كل رقم = الرقم السابق × 2' },
+            { seq: '3, 6, 12, 24, ?', answer: 48, hint: 'كل رقم = السابق × 2' },
             { seq: '1, 4, 9, 16, ?', answer: 25, hint: 'مربعات الأعداد (n²)' },
             { seq: '2, 6, 12, 20, ?', answer: 30, hint: 'n × (n+1)' },
-            { seq: '5, 10, 20, 40, ?', answer: 80, hint: 'كل رقم = الرقم السابق × 2' },
+            { seq: '5, 10, 20, 40, ?', answer: 80, hint: 'كل رقم = السابق × 2' },
             { seq: '1, 1, 2, 3, 5, ?', answer: 8, hint: 'فيبوناتشي: مجموع آخر رقمين' },
             { seq: '100, 90, 81, 73, ?', answer: 66, hint: 'الفرق يقل بمقدار 1' },
             { seq: '4, 9, 16, 25, ?', answer: 36, hint: 'مربعات الأعداد من 2' },
             { seq: '1, 2, 4, 8, ?', answer: 16, hint: 'كل رقم = السابق × 2' },
             { seq: '3, 8, 15, 24, ?', answer: 35, hint: 'n² + 2n' },
+            { seq: '2, 4, 8, 16, ?', answer: 32, hint: 'كل رقم = السابق × 2' },
+            { seq: '10, 15, 21, 28, ?', answer: 36, hint: 'الفرق يزيد بمقدار 1' },
+            { seq: '1, 8, 27, 64, ?', answer: 125, hint: 'مكعبات الأعداد (n³)' },
+            { seq: '5, 11, 23, 47, ?', answer: 95, hint: 'كل رقم = السابق × 2 + 1' },
+            { seq: '6, 12, 20, 30, ?', answer: 42, hint: 'n × (n+1)' },
+            { seq: '2, 7, 17, 37, ?', answer: 77, hint: 'كل رقم = السابق × 2 + 3' },
+            { seq: '3, 9, 27, 81, ?', answer: 243, hint: 'كل رقم = السابق × 3' },
+            { seq: '4, 12, 36, 108, ?', answer: 324, hint: 'كل رقم = السابق × 3' },
+            { seq: '2, 5, 11, 23, ?', answer: 47, hint: 'كل رقم = السابق × 2 + 1' },
+            { seq: '7, 13, 21, 31, ?', answer: 43, hint: 'الفرق يزيد بمقدار 2' },
+            { seq: '8, 27, 64, 125, ?', answer: 216, hint: 'مكعبات الأعداد من 2' },
+            { seq: '1, 3, 7, 15, ?', answer: 31, hint: 'كل رقم = السابق × 2 + 1' },
+            { seq: '9, 16, 25, 36, ?', answer: 49, hint: 'مربعات الأعداد من 3' },
+            { seq: '2, 8, 32, 128, ?', answer: 512, hint: 'كل رقم = السابق × 4' },
+            { seq: '3, 13, 23, 33, ?', answer: 43, hint: 'الفرق 10' },
         ];
 
         function initSequenceGame() {
             seqScore = 0;
-            seqIndex = Math.floor(Math.random() * seqPatterns.length);
+            seqLastIndex = -1;
             document.getElementById('seqScore').textContent = '0';
-            showSequence();
+            nextSequence();
         }
 
         function showSequence() {
@@ -2917,9 +2857,8 @@
             fb.textContent = '';
             fb.className = 'feedback-line neutral';
             seqHintShown = false;
-            const input = document.getElementById('sequenceAnswer');
-            input.value = '';
-            input.focus();
+            document.getElementById('sequenceAnswer').value = '';
+            document.getElementById('sequenceAnswer').focus();
         }
 
         function toggleSeqHint() {
@@ -2950,8 +2889,15 @@
                 fb.textContent = '✅ صحيح! 🎉';
                 fb.className = 'feedback-line good';
                 addStars(2);
-                setTimeout(() => { seqIndex = (seqIndex + 1) % seqPatterns.length;
-                    showSequence(); }, 900);
+                setTimeout(() => {
+                    let newIndex;
+                    do {
+                        newIndex = Math.floor(Math.random() * seqPatterns.length);
+                    } while (newIndex === seqLastIndex && seqPatterns.length > 1);
+                    seqLastIndex = newIndex;
+                    seqIndex = newIndex;
+                    showSequence();
+                }, 900);
             } else {
                 fb.textContent = `❌ خطأ! تلميح: ${data.hint}`;
                 fb.className = 'feedback-line bad';
@@ -2959,80 +2905,280 @@
         }
 
         function nextSequence() {
-            seqIndex = (seqIndex + 1) % seqPatterns.length;
+            let newIndex;
+            do {
+                newIndex = Math.floor(Math.random() * seqPatterns.length);
+            } while (newIndex === seqLastIndex && seqPatterns.length > 1);
+            seqLastIndex = newIndex;
+            seqIndex = newIndex;
             showSequence();
         }
 
-        document.getElementById('sequenceAnswer').addEventListener('keydown', e => { if (e.key === 'Enter') checkSequenceGame(); });
-
-        // =====================================================
-        // KEYBOARD SUPPORT
-        // =====================================================
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                if (document.getElementById('game-flags').style.display !== 'none') checkFlagAnswer();
-                if (document.getElementById('game-sequence').style.display !== 'none') checkSequenceGame();
-            }
+        document.getElementById('sequenceAnswer').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') checkSequenceGame();
         });
 
-        // =====================================================
-        // MODAL - Student List
-        // =====================================================
-        const studentNames = [
-            'أحمد البلادي',
-            'أحمد المبارك',
-            'أحمد العميشي',
-            'الحسن المبارك',
-            'حسن الشهاب',
-            'حيدر الصباح',
-            'عبدالعزيز الرشيدان',
-            'عبدالله عقيل العوض',
-            'علي بندر المبارك',
-            'علي حسين الصالح',
-            'علي حسين الزيد',
-            'علي الخميس',
-            'علي السلطان',
-            'علي زكريا المبارك',
-            'قاسم العبد رب الرضا',
-            'محمد زكريا المبارك',
-            'محمد سعيد العباد',
-            'محمد ماهر المبارك',
-            'وسام الملاك',
-            'محمد نضال الشخص'
+        // =========================================================
+        // 13. QUIZ (20 Questions)
+        // =========================================================
+        const quizQuestions = [
+            { q: 'ما هو الرقم التالي: 2, 6, 12, 20, ?', options: ['28', '30', '32', '34'], correct: 1 },
+            { q: 'سعر 3 أقلام ودفتر = 12 ريال، القلم = 2 ريال، سعر الدفتر؟', options: ['4', '5', '6', '7'],
+            correct: 2 },
+            { q: 'أي لا تنتمي للمجموعة؟ (تفاح، برتقال، موز، خيار)', options: ['تفاح', 'برتقال', 'موز', 'خيار'],
+                correct: 3 },
+            { q: 'يمشي بلا أرجل ويطير بلا أجنحة؟', options: ['الرياح', 'السحاب', 'الزمن', 'النجوم'], correct: 2 },
+            { q: '5 × 5 = 25، 6 × 6 = 36، 7 × 7 = ؟', options: ['42', '47', '49', '51'], correct: 2 },
+            { q: 'عاصمة السعودية؟', options: ['جدة', 'مكة', 'الرياض', 'الدمام'], correct: 2 },
+            { q: 'أي من هذه الحيوانات ثديي؟', options: ['التمساح', 'الحوت', 'الضفدع', 'النسر'], correct: 1 },
+            { q: 'أكبر كوكب في المجموعة الشمسية؟', options: ['زحل', 'المشتري', 'نبتون', 'أورانوس'], correct: 1 },
+            { q: 'عدد أضلاع المكعب؟', options: ['8', '10', '12', '14'], correct: 2 },
+            { q: 'مؤسس علم الاجتماع؟', options: ['ابن خلدون', 'أوجست كونت', 'دوركهايم', 'فيبر'], correct: 0 },
+            { q: 'عملة الإمارات؟', options: ['الريال', 'الدينار', 'الدرهم', 'الجنيه'], correct: 2 },
+            { q: 'عدد قارات العالم؟', options: ['5', '6', '7', '8'], correct: 2 },
+            { q: 'النبي الذي ابتلعه الحوت؟', options: ['موسى', 'يونس', 'إبراهيم', 'نوح'], correct: 1 },
+            { q: 'أطول سلسلة جبال؟', options: ['الهملايا', 'الأنديز', 'الروكي', 'الألب'], correct: 1 },
+            { q: 'عام هبوط الإنسان على القمر؟', options: ['1967', '1969', '1971', '1973'], correct: 1 },
+            { q: 'عاصمة كندا؟', options: ['تورنتو', 'أوتاوا', 'فانكوفر', 'مونتريال'], correct: 1 },
+            { q: 'مخترع المصباح الكهربائي؟', options: ['أديسون', 'تيسلا', 'أينشتاين', 'بل'], correct: 0 },
+            { q: 'أكبر محيط في العالم؟', options: ['الأطلسي', 'الهادئ', 'الهندي', 'المتجمد الجنوبي'], correct: 1 },
+            { q: 'عدد أسنان الإنسان البالغ؟', options: ['28', '30', '32', '34'], correct: 2 },
+            { q: 'اللغة الأكثر انتشاراً؟', options: ['الإنجليزية', 'الصينية', 'الإسبانية', 'العربية'], correct: 1 },
         ];
 
-        function openModal() {
-            const modal = document.getElementById('studentModal');
-            const list = document.getElementById('studentList');
-            const count = document.getElementById('totalCount');
-            list.innerHTML = '';
-            studentNames.forEach((name, idx) => {
-                const li = document.createElement('li');
-                li.innerHTML = `<span class="num">${String(idx + 1).padStart(2, '0')}</span><i class="fas fa-star"></i> ${name}`;
-                list.appendChild(li);
-            });
-            count.textContent = studentNames.length;
-            modal.classList.add('open');
-            document.body.style.overflow = 'hidden';
+        let currentQuestion = 0;
+        const totalQuestions = quizQuestions.length;
+        let userAnswers = new Array(totalQuestions).fill(null);
+        let quizStarted = false;
+        let quizTimerInterval = null;
+        let quizSeconds = 0;
+
+        function startQuiz() {
+            if (quizStarted) return;
+            quizStarted = true;
+
+            document.getElementById('quizStartScreen').style.display = 'none';
+            document.getElementById('quizContainer').classList.add('active');
+
+            renderQuizQuestions();
+
+            quizSeconds = 0;
+            updateQuizTimer();
+            quizTimerInterval = setInterval(() => {
+                quizSeconds++;
+                updateQuizTimer();
+            }, 1000);
+
+            updateStarReward();
         }
 
-        function closeModal() {
-            const modal = document.getElementById('studentModal');
-            modal.classList.remove('open');
+        function updateQuizTimer() {
+            const mins = Math.floor(quizSeconds / 60);
+            const secs = quizSeconds % 60;
+            document.getElementById('quizTimer').textContent =
+                `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function updateStarReward() {
+            const answered = userAnswers.filter(a => a !== null).length;
+            document.getElementById('quizStarReward').textContent = Math.floor(answered / 2);
+        }
+
+        function renderQuizQuestions() {
+            const container = document.getElementById('quizQuestions');
+            container.innerHTML = '';
+            quizQuestions.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'quiz-question';
+                if (index === 0) div.classList.add('active');
+                div.dataset.index = index;
+                div.innerHTML = `
+                        <div class="q-text">
+                            <span class="q-num">${index + 1}</span>
+                            ${item.q}
+                        </div>
+                        <div class="quiz-options">
+                            ${item.options.map((opt, optIdx) => `
+                                <label>
+                                    <input type="radio" name="q${index}" value="${optIdx}" ${userAnswers[index] === optIdx ? 'checked' : ''} />
+                                    <span>${opt}</span>
+                                </label>
+                            `).join('')}
+                        </div>
+                    `;
+                container.appendChild(div);
+            });
+
+            document.getElementById('totalQNum').textContent = totalQuestions;
+            updateQuestionCounter();
+            updateProgress();
+
+            document.querySelectorAll('#quizQuestions input[type="radio"]').forEach(input => {
+                input.addEventListener('change', function() {
+                    const index = parseInt(this.name.replace('q', ''));
+                    userAnswers[index] = parseInt(this.value);
+                    updateProgress();
+                    updateStarReward();
+                });
+            });
+        }
+
+        function updateQuestionCounter() {
+            document.getElementById('currentQNum').textContent = currentQuestion + 1;
+            document.getElementById('prevBtn').disabled = currentQuestion === 0;
+            document.getElementById('nextBtn').textContent = currentQuestion === totalQuestions - 1 ? 'إنهاء' : 'التالي';
+        }
+
+        function updateProgress() {
+            const answered = userAnswers.filter(a => a !== null).length;
+            document.getElementById('progressBar').style.width = Math.round((answered / totalQuestions) * 100) + '%';
+        }
+
+        function changeQuestion(direction) {
+            const newIndex = currentQuestion + direction;
+            if (newIndex < 0 || newIndex >= totalQuestions) {
+                if (direction === 1 && newIndex === totalQuestions) {
+                    const answered = userAnswers.filter(a => a !== null).length;
+                    if (answered < totalQuestions) {
+                        document.getElementById('quizStatus').textContent =
+                            `⚠️ أجب على جميع الأسئلة (${answered}/${totalQuestions})`;
+                        document.getElementById('quizStatus').className = 'feedback-line bad';
+                    } else {
+                        submitQuiz();
+                    }
+                }
+                return;
+            }
+
+            document.querySelectorAll('.quiz-question').forEach(el => el.classList.remove('active'));
+            document.querySelector(`.quiz-question[data-index="${newIndex}"]`).classList.add('active');
+            currentQuestion = newIndex;
+            updateQuestionCounter();
+            document.getElementById('quizStatus').textContent = '';
+            document.getElementById('quizStatus').className = 'feedback-line neutral';
+        }
+
+        function submitQuiz() {
+            let correct = 0;
+            let answered = 0;
+
+            quizQuestions.forEach((item, index) => {
+                const selected = userAnswers[index];
+                if (selected !== null) {
+                    answered++;
+                    if (selected === item.correct) correct++;
+                }
+            });
+
+            if (answered < totalQuestions) {
+                document.getElementById('quizStatus').textContent = `⚠️ أجب على جميع الأسئلة (${answered}/${totalQuestions})`;
+                document.getElementById('quizStatus').className = 'feedback-line bad';
+                return;
+            }
+
+            if (quizTimerInterval) {
+                clearInterval(quizTimerInterval);
+                quizTimerInterval = null;
+            }
+
+            document.getElementById('quizStatus').textContent = '';
+            document.getElementById('quizStatus').className = 'feedback-line neutral';
+
+            const wrong = totalQuestions - correct;
+            const percent = Math.round((correct / totalQuestions) * 100);
+
+            document.getElementById('resultScore').textContent = `${correct}/${totalQuestions}`;
+            document.getElementById('resultCorrect').textContent = correct;
+            document.getElementById('resultWrong').textContent = wrong;
+            document.getElementById('resultPercent').textContent = percent + '%';
+
+            let label, desc, stars;
+            if (percent >= 90) {
+                label = '🏆 ممتاز!';
+                desc = 'أنت مبدع ولديك قدرات استثنائية! استمر في تطوير موهبتك.';
+                stars = 15;
+            } else if (percent >= 70) {
+                label = '🌟 جيد جداً!';
+                desc = 'لديك تفكير منطقي قوي، واصل التدريب لتصبح متميزاً.';
+                stars = 10;
+            } else if (percent >= 50) {
+                label = '📚 جيد';
+                desc = 'لديك أساس جيد، ننصحك بمراجعة الدروس والألعاب لتعزيز قدراتك.';
+                stars = 5;
+            } else {
+                label = '💪 يحتاج إلى تطوير';
+                desc = 'لا تقلق! الموهبة تحتاج إلى صقل. العب الألعاب الذهنية واقرأ الدروس لتحسن أدائك.';
+                stars = 2;
+            }
+
+            document.getElementById('resultLabel').textContent = label;
+            document.getElementById('resultDesc').textContent = desc;
+
+            const detailsContainer = document.getElementById('resultDetails');
+            detailsContainer.innerHTML = '';
+            quizQuestions.forEach((item, index) => {
+                const userAns = userAnswers[index];
+                const isCorrect = userAns === item.correct;
+                const div = document.createElement('div');
+                div.className = 'detail-item';
+                div.innerHTML = `
+                        <span>${index + 1}. ${item.q.substring(0, 25)}${item.q.length > 25 ? '...' : ''}</span>
+                        <span class="${isCorrect ? 'correct-answer' : 'wrong-answer'}">
+                            <i class="fas ${isCorrect ? 'fa-check-circle' : 'fa-times-circle'}"></i>
+                            ${isCorrect ? '✅' : `❌ ${item.options[item.correct]}`}
+                        </span>
+                    `;
+                detailsContainer.appendChild(div);
+            });
+
+            addStars(stars);
+
+            document.getElementById('resultModal').classList.add('open');
+            document.body.style.overflow = 'hidden';
+
+            document.querySelectorAll('#quizQuestions input[type="radio"]').forEach(inp => inp.disabled = true);
+        }
+
+        function resetQuiz() {
+            if (quizTimerInterval) {
+                clearInterval(quizTimerInterval);
+                quizTimerInterval = null;
+            }
+
+            userAnswers = new Array(totalQuestions).fill(null);
+            document.querySelectorAll('#quizQuestions input[type="radio"]').forEach(inp => {
+                inp.checked = false;
+                inp.disabled = false;
+            });
+
+            document.getElementById('quizStatus').textContent = '';
+            document.getElementById('quizStatus').className = 'feedback-line neutral';
+
+            currentQuestion = 0;
+            document.querySelectorAll('.quiz-question').forEach(el => el.classList.remove('active'));
+            document.querySelector('.quiz-question[data-index="0"]').classList.add('active');
+            updateQuestionCounter();
+            updateProgress();
+
+            quizStarted = false;
+            document.getElementById('quizContainer').classList.remove('active');
+            document.getElementById('quizStartScreen').style.display = 'flex';
+
+            closeResultModal();
+        }
+
+        function closeResultModal() {
+            document.getElementById('resultModal').classList.remove('open');
             document.body.style.overflow = '';
         }
 
-        document.getElementById('studentModal').addEventListener('click', function(e) {
-            if (e.target === this) closeModal();
+        document.getElementById('resultModal').addEventListener('click', function(e) {
+            if (e.target === this) closeResultModal();
         });
 
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeModal();
-        });
-
-        // =====================================================
-        // THEME SWITCHER
-        // =====================================================
+        // =========================================================
+        // 14. THEME SWITCHER
+        // =========================================================
         const themePanel = document.getElementById('themePanel');
 
         function toggleThemePanel() {
@@ -3048,56 +3194,47 @@
 
         function applyTheme(theme) {
             const root = document.documentElement;
-            switch(theme) {
-                case 'gold':
-                    root.style.setProperty('--gold', '#eec168');
-                    root.style.setProperty('--gold-2', '#c9922e');
-                    root.style.setProperty('--gold-soft', '#fbeecb');
-                    root.style.setProperty('--border', 'rgba(238, 193, 104, 0.14)');
-                    break;
-                case 'teal':
-                    root.style.setProperty('--gold', '#3fddab');
-                    root.style.setProperty('--gold-2', '#1fa87a');
-                    root.style.setProperty('--gold-soft', '#b8f0e0');
-                    root.style.setProperty('--border', 'rgba(63, 221, 171, 0.2)');
-                    break;
-                case 'coral':
-                    root.style.setProperty('--gold', '#ff6b6b');
-                    root.style.setProperty('--gold-2', '#cc4444');
-                    root.style.setProperty('--gold-soft', '#fccccc');
-                    root.style.setProperty('--border', 'rgba(255, 107, 107, 0.2)');
-                    break;
-                case 'blue':
-                    root.style.setProperty('--gold', '#6ea8ff');
-                    root.style.setProperty('--gold-2', '#3d7bd8');
-                    root.style.setProperty('--gold-soft', '#b0c4ff');
-                    root.style.setProperty('--border', 'rgba(110, 168, 255, 0.2)');
-                    break;
-                case 'purple':
-                    root.style.setProperty('--gold', '#9b6bff');
-                    root.style.setProperty('--gold-2', '#6a3dcc');
-                    root.style.setProperty('--gold-soft', '#d4b8ff');
-                    root.style.setProperty('--border', 'rgba(155, 107, 255, 0.2)');
-                    break;
-                case 'reset':
-                default:
-                    root.style.setProperty('--gold', '#eec168');
-                    root.style.setProperty('--gold-2', '#c9922e');
-                    root.style.setProperty('--gold-soft', '#fbeecb');
-                    root.style.setProperty('--border', 'rgba(238, 193, 104, 0.14)');
-                    break;
-            }
-            window._particleColor = '238, 193, 104';
+            const colors = {
+                purple: { gold: '#b388ff', gold2: '#7c4dff', goldSoft: '#e8d5ff', border: 'rgba(179, 136, 255, 0.2)' },
+                gold: { gold: '#eec168', gold2: '#c9922e', goldSoft: '#fbeecb', border: 'rgba(238, 193, 104, 0.14)' },
+                teal: { gold: '#3fddab', gold2: '#1fa87a', goldSoft: '#b8f0e0', border: 'rgba(63, 221, 171, 0.2)' },
+                coral: { gold: '#ff6b6b', gold2: '#cc4444', goldSoft: '#fccccc', border: 'rgba(255, 107, 107, 0.2)' },
+                blue: { gold: '#6ea8ff', gold2: '#3d7bd8', goldSoft: '#b0c4ff', border: 'rgba(110, 168, 255, 0.2)' },
+            };
+            const c = colors[theme] || colors.purple;
+            root.style.setProperty('--gold', c.gold);
+            root.style.setProperty('--gold-2', c.gold2);
+            root.style.setProperty('--gold-soft', c.goldSoft);
+            root.style.setProperty('--border', c.border);
             themePanel.classList.remove('open');
         }
 
-        window._particleColor = '238, 193, 104';
+        // =========================================================
+        // 15. KEYBOARD SHORTCUTS
+        // =========================================================
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeStudentModal();
+                closeResultModal();
+            }
+            if (e.key === 'ArrowRight' && quizStarted) {
+                e.preventDefault();
+                changeQuestion(1);
+            }
+            if (e.key === 'ArrowLeft' && quizStarted) {
+                e.preventDefault();
+                changeQuestion(-1);
+            }
+        });
+
+        // =========================================================
+        // 16. INIT
+        // =========================================================
+        loadStars();
 
         console.log('🚀 موقع موهبة - ثانوية هوزان يعمل بكامل طاقته!');
-
-        setTimeout(() => {
-            initMemoryGame();
-        }, 500);
+        console.log('📌 8 ألعاب ذهنية واختبار من 20 سؤال.');
+        console.log('📌 جميع الألعاب تعمل بشكل كامل.');
     </script>
 
 </body>
